@@ -12,6 +12,8 @@
 		D8DCF2A11D49679200363030 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8DCF29F1D49679200363030 /* Main.storyboard */; };
 		D8DCF2A31D49679200363030 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8DCF2A21D49679200363030 /* Assets.xcassets */; };
 		D8DCF2A61D49679200363030 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8DCF2A41D49679200363030 /* LaunchScreen.storyboard */; };
+		D8DCF2AE1D4989E900363030 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D8DCF2AD1D4989E900363030 /* logo.png */; };
+		D8DCF2B01D49938C00363030 /* GradientBGView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DCF2AF1D49938C00363030 /* GradientBGView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		D8DCF2A21D49679200363030 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D8DCF2A51D49679200363030 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D8DCF2A71D49679200363030 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8DCF2AD1D4989E900363030 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		D8DCF2AF1D49938C00363030 /* GradientBGView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientBGView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +61,11 @@
 				D8DCF29B1D49679200363030 /* AppDelegate.swift */,
 				D8DCF29D1D49679200363030 /* ViewController.swift */,
 				D8DCF29F1D49679200363030 /* Main.storyboard */,
+				D8DCF2AF1D49938C00363030 /* GradientBGView.swift */,
 				D8DCF2A21D49679200363030 /* Assets.xcassets */,
 				D8DCF2A41D49679200363030 /* LaunchScreen.storyboard */,
 				D8DCF2A71D49679200363030 /* Info.plist */,
+				D8DCF2AD1D4989E900363030 /* logo.png */,
 			);
 			path = Inventory;
 			sourceTree = "<group>";
@@ -122,6 +128,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8DCF2AE1D4989E900363030 /* logo.png in Resources */,
 				D8DCF2A61D49679200363030 /* LaunchScreen.storyboard in Resources */,
 				D8DCF2A31D49679200363030 /* Assets.xcassets in Resources */,
 				D8DCF2A11D49679200363030 /* Main.storyboard in Resources */,
@@ -135,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8DCF2B01D49938C00363030 /* GradientBGView.swift in Sources */,
 				D8DCF29E1D49679200363030 /* ViewController.swift in Sources */,
 				D8DCF29C1D49679200363030 /* AppDelegate.swift in Sources */,
 			);
