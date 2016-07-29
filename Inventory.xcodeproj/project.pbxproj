@@ -214,6 +214,8 @@
 		D8DCFD771D4AC0BE00363030 /* preview.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D8DCFCB11D4AC0BE00363030 /* preview.jpg */; };
 		D8DCFD781D4AC0BE00363030 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = D8DCFCB21D4AC0BE00363030 /* readme.txt */; };
 		D8DCFD791D4AC0BE00363030 /* Thumbs.db in Resources */ = {isa = PBXBuildFile; fileRef = D8DCFCB31D4AC0BE00363030 /* Thumbs.db */; };
+		D8DCFD7B1D4AC5F600363030 /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DCFD7A1D4AC5F600363030 /* InventoryViewController.swift */; };
+		D8DCFD7D1D4AC61F00363030 /* InventoryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DCFD7C1D4AC61F00363030 /* InventoryTableCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -426,6 +428,8 @@
 		D8DCFCB11D4AC0BE00363030 /* preview.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = preview.jpg; sourceTree = "<group>"; };
 		D8DCFCB21D4AC0BE00363030 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
 		D8DCFCB31D4AC0BE00363030 /* Thumbs.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thumbs.db; sourceTree = "<group>"; };
+		D8DCFD7A1D4AC5F600363030 /* InventoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
+		D8DCFD7C1D4AC61F00363030 /* InventoryTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryTableCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -462,6 +466,8 @@
 				D8DCF29D1D49679200363030 /* ViewController.swift */,
 				D8DCF29F1D49679200363030 /* Main.storyboard */,
 				D8DCF2B11D4AB3DF00363030 /* PasswordViewController.swift */,
+				D8DCFD7A1D4AC5F600363030 /* InventoryViewController.swift */,
+				D8DCFD7C1D4AC61F00363030 /* InventoryTableCell.swift */,
 				D8DCF2B31D4AB86B00363030 /* Constants.swift */,
 				D8DCF2AF1D49938C00363030 /* GradientBGView.swift */,
 				D8DCF2A21D49679200363030 /* Assets.xcassets */,
@@ -956,7 +962,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8DCFD7D1D4AC61F00363030 /* InventoryTableCell.swift in Sources */,
 				D8DCF2B41D4AB86B00363030 /* Constants.swift in Sources */,
+				D8DCFD7B1D4AC5F600363030 /* InventoryViewController.swift in Sources */,
 				D8DCF2B01D49938C00363030 /* GradientBGView.swift in Sources */,
 				D8DCF2B21D4AB3DF00363030 /* PasswordViewController.swift in Sources */,
 				D8DCF29E1D49679200363030 /* ViewController.swift in Sources */,

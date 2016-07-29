@@ -10,8 +10,18 @@ import Foundation
 
 
 // STORYBOARD CONSTANTS
-let kPasswordSegue = "passwordSegue"
+let kInventoryCellID = "inventoryCell"
 
+let kPasswordSegue = "passwordSegue"
+let kQuantitySegue = "quantitySegue"
+let kBackSegue = "backToTable"
+
+// INVENTORY CONSTANTS
+let kGroups = [
+    "Drinks", "Produce", "Dairy", "Frozen Goods",
+    "Paper Goods", "Detergents/Chemicals", "Nuts/Sweets",
+    "Cheese", "Meats", "Non-Perishables", "Spices/Herbs"
+]
 
 // CONVENIENCE
 let dotChar = "•"
