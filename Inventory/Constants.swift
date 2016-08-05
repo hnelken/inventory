@@ -25,7 +25,7 @@ let kGroups = [
 
 // CONVENIENCE
 let dotChar = "•"
-let password = "1376"
+let password = "9999"
 public extension String {
     var NS: NSString { return (self as NSString) }
 }

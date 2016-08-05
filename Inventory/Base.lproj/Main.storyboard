@@ -153,7 +153,7 @@
                                     <action selector="numberPressed:" destination="1FZ-Dh-rVS" eventType="touchUpInside" id="uUZ-8c-3sf"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to the Inventory!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5oe-ut-AQL">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to the Inventory!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5oe-ut-AQL" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
                                 <rect key="frame" x="132" y="65" width="337" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="T11-yQ-RDi"/>
@@ -178,8 +178,8 @@
                                     <action selector="enterPressed:" destination="1FZ-Dh-rVS" eventType="touchUpInside" id="diG-a5-9Qp"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter a valid password to begin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xT3-dJ-0JA">
-                                <rect key="frame" x="132" y="425" width="337" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter a valid password to begin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xT3-dJ-0JA" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
+                                <rect key="frame" x="132" y="434" width="337" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="DNe-2I-0AL"/>
                                     <constraint firstAttribute="width" constant="337" id="PPx-h8-cg6"/>
@@ -188,7 +188,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_    _    _    _" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="POW-mn-pLk">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_    _    _    _" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="POW-mn-pLk" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
                                 <rect key="frame" x="190" y="116" width="220" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="220" id="bIQ-fY-yTa"/>
@@ -198,7 +198,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aby-2V-UFT">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aby-2V-UFT" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
                                 <rect key="frame" x="191" y="116" width="42" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="U3k-g3-pmA"/>
@@ -208,7 +208,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZ6-Vu-UlH">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZ6-Vu-UlH" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
                                 <rect key="frame" x="249" y="116" width="42" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="42" id="dOa-bk-8fA"/>
@@ -218,7 +218,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R35-hd-Wih">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R35-hd-Wih" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
                                 <rect key="frame" x="309" y="116" width="42" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="6yI-aF-Y4r"/>
@@ -228,7 +228,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VUv-lm-tuS">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VUv-lm-tuS" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
                                 <rect key="frame" x="368" y="116" width="42" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="42" id="LG9-Dh-tKB"/>
@@ -267,8 +267,9 @@
                             <constraint firstItem="nC2-Z8-mMz" firstAttribute="top" secondItem="uhg-3N-Nfz" secondAttribute="bottom" constant="150" id="L0g-Ex-fkc"/>
                             <constraint firstItem="5oe-ut-AQL" firstAttribute="centerX" secondItem="b6Z-GD-yg9" secondAttribute="centerX" id="Lz9-pb-ZsD"/>
                             <constraint firstItem="R35-hd-Wih" firstAttribute="leading" secondItem="5oe-ut-AQL" secondAttribute="trailing" constant="-160" id="WSD-92-qep"/>
-                            <constraint firstItem="xT3-dJ-0JA" firstAttribute="top" secondItem="lFC-59-bfD" secondAttribute="bottom" constant="15" id="XaF-2h-lZI"/>
+                            <constraint firstItem="xT3-dJ-0JA" firstAttribute="top" secondItem="lFC-59-bfD" secondAttribute="bottom" constant="35" id="XaF-2h-lZI"/>
                             <constraint firstItem="uhg-3N-Nfz" firstAttribute="leading" secondItem="gj4-xG-BfB" secondAttribute="trailing" constant="20" id="Xx0-B7-8Xx"/>
+                            <constraint firstItem="nC2-Z8-mMz" firstAttribute="top" secondItem="xT3-dJ-0JA" secondAttribute="bottom" constant="35" id="YhJ-MO-oud"/>
                             <constraint firstItem="JOg-jX-88q" firstAttribute="leading" secondItem="uhg-3N-Nfz" secondAttribute="trailing" constant="20" id="YoQ-OE-hwc"/>
                             <constraint firstItem="NZ6-Vu-UlH" firstAttribute="top" secondItem="5oe-ut-AQL" secondAttribute="bottom" constant="15" id="ZML-QJ-ccp"/>
                             <constraint firstItem="uhg-3N-Nfz" firstAttribute="centerY" secondItem="b6Z-GD-yg9" secondAttribute="centerY" id="aGO-yj-G77"/>
@@ -297,6 +298,7 @@
                             <mask key="constraints">
                                 <exclude reference="ms7-rY-jUS"/>
                                 <exclude reference="43Y-4J-tNg"/>
+                                <exclude reference="XaF-2h-lZI"/>
                                 <exclude reference="DDg-Ir-6Si"/>
                                 <exclude reference="L0g-Ex-fkc"/>
                             </mask>
@@ -338,7 +340,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="91" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RYL-u8-AfT">
-                                <rect key="frame" x="20" y="28" width="560" height="552"/>
+                                <rect key="frame" x="20" y="20" width="560" height="560"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="inventoryCell" rowHeight="91" id="bkt-Dv-4k4" customClass="InventoryTableCell" customModule="Inventory" customModuleProvider="target">
@@ -349,14 +351,19 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4MY-tM-GVx">
-                                                    <rect key="frame" x="8" y="16" width="59" height="59"/>
+                                                    <rect key="frame" x="0.0" y="8" width="64" height="75"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="59" id="fuj-ji-UBg"/>
+                                                        <constraint firstAttribute="width" constant="64" id="fuj-ji-UBg"/>
                                                         <constraint firstAttribute="height" constant="59" id="pPG-wr-6Yu"/>
                                                     </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="pPG-wr-6Yu"/>
+                                                        </mask>
+                                                    </variation>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1C-R0-UM7">
-                                                    <rect key="frame" x="72" y="16" width="380" height="59"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1C-R0-UM7" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
+                                                    <rect key="frame" x="79" y="16" width="358" height="59"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="59" id="9hJ-gs-WzP"/>
                                                         <constraint firstAttribute="width" constant="49" id="EoK-2J-YDM"/>
@@ -370,8 +377,8 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ry-J0-jMx">
-                                                    <rect key="frame" x="457" y="23" width="45" height="45"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ry-J0-jMx" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
+                                                    <rect key="frame" x="442" y="23" width="45" height="45"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="RJx-hy-oW3"/>
                                                         <constraint firstAttribute="width" constant="45" id="kV7-Q1-w96"/>
@@ -380,11 +387,12 @@
                                                     <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WlW-VP-nfA">
-                                                    <rect key="frame" x="507" y="26" width="40" height="40"/>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WlW-VP-nfA">
+                                                    <rect key="frame" x="512" y="29" width="35" height="35"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.69784628380000002" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="lr4-uA-gu6"/>
-                                                        <constraint firstAttribute="width" constant="40" id="rmc-bg-UTB"/>
+                                                        <constraint firstAttribute="height" constant="35" id="lr4-uA-gu6"/>
+                                                        <constraint firstAttribute="width" constant="35" id="rmc-bg-UTB"/>
                                                     </constraints>
                                                     <state key="normal" title="•••">
                                                         <color key="titleColor" red="0.85596196338383823" green="0.19731626627259696" blue="0.19018633082730427" alpha="1" colorSpace="calibratedRGB"/>
@@ -396,13 +404,15 @@
                                                 <constraint firstItem="2Ry-J0-jMx" firstAttribute="centerY" secondItem="c41-id-Aho" secondAttribute="centerY" id="K44-9q-r0N"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="2Ry-J0-jMx" secondAttribute="trailing" constant="45" id="MUV-bM-0Ky"/>
                                                 <constraint firstItem="4MY-tM-GVx" firstAttribute="centerY" secondItem="c41-id-Aho" secondAttribute="centerY" id="UAI-Vd-5lr"/>
-                                                <constraint firstAttribute="leadingMargin" secondItem="4MY-tM-GVx" secondAttribute="leading" id="WPE-Qu-j0r"/>
-                                                <constraint firstItem="t1C-R0-UM7" firstAttribute="leading" secondItem="4MY-tM-GVx" secondAttribute="trailing" constant="5" id="XRB-as-bXm"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="4MY-tM-GVx" secondAttribute="leading" constant="8" id="WPE-Qu-j0r"/>
+                                                <constraint firstItem="t1C-R0-UM7" firstAttribute="leading" secondItem="4MY-tM-GVx" secondAttribute="trailing" constant="15" id="XRB-as-bXm"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="WlW-VP-nfA" secondAttribute="trailing" constant="5" id="ZAz-ys-N9b"/>
                                                 <constraint firstItem="t1C-R0-UM7" firstAttribute="centerY" secondItem="c41-id-Aho" secondAttribute="centerY" id="aTy-ty-7Mf"/>
+                                                <constraint firstItem="4MY-tM-GVx" firstAttribute="top" secondItem="c41-id-Aho" secondAttribute="top" constant="8" id="bun-Nf-e3I"/>
                                                 <constraint firstItem="2Ry-J0-jMx" firstAttribute="leading" secondItem="t1C-R0-UM7" secondAttribute="trailing" constant="5" id="dPH-E7-PMU"/>
                                                 <constraint firstItem="2Ry-J0-jMx" firstAttribute="top" secondItem="c41-id-Aho" secondAttribute="topMargin" constant="19" id="laT-5k-zUQ"/>
-                                                <constraint firstItem="WlW-VP-nfA" firstAttribute="leading" secondItem="2Ry-J0-jMx" secondAttribute="trailing" constant="5" id="nR6-7c-wWZ"/>
+                                                <constraint firstItem="WlW-VP-nfA" firstAttribute="leading" secondItem="2Ry-J0-jMx" secondAttribute="trailing" constant="25" id="nR6-7c-wWZ"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="4MY-tM-GVx" secondAttribute="bottom" id="sAk-Hs-Y6M"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
@@ -425,13 +435,19 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="RYL-u8-AfT" secondAttribute="trailing" id="25v-fP-Fez"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="RYL-u8-AfT" secondAttribute="bottom" constant="20" id="QUO-5b-1EX"/>
                             <constraint firstAttribute="leadingMargin" secondItem="RYL-u8-AfT" secondAttribute="leading" id="a5Q-ca-Ocd"/>
-                            <constraint firstItem="RYL-u8-AfT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="fIZ-Lj-py5"/>
+                            <constraint firstItem="RYL-u8-AfT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="fIZ-Lj-py5"/>
+                            <constraint firstItem="RYL-u8-AfT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="wkr-h6-GVZ"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="fIZ-Lj-py5"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <segue destination="5Vr-3r-AF2" kind="show" identifier="quantitySegue" id="d8C-u9-5fd"/>

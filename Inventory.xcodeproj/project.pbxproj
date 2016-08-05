@@ -216,6 +216,9 @@
 		D8DCFD791D4AC0BE00363030 /* Thumbs.db in Resources */ = {isa = PBXBuildFile; fileRef = D8DCFCB31D4AC0BE00363030 /* Thumbs.db */; };
 		D8DCFD7B1D4AC5F600363030 /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DCFD7A1D4AC5F600363030 /* InventoryViewController.swift */; };
 		D8DCFD7D1D4AC61F00363030 /* InventoryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DCFD7C1D4AC61F00363030 /* InventoryTableCell.swift */; };
+		D8DCFD851D551E4800363030 /* brick.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D8DCFD841D551E4800363030 /* brick.jpg */; };
+		D8DCFD871D551E7900363030 /* BrickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DCFD861D551E7900363030 /* BrickView.swift */; };
+		D8DCFD891D5522AC00363030 /* ShadowLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DCFD881D5522AC00363030 /* ShadowLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -430,6 +433,9 @@
 		D8DCFCB31D4AC0BE00363030 /* Thumbs.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thumbs.db; sourceTree = "<group>"; };
 		D8DCFD7A1D4AC5F600363030 /* InventoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
 		D8DCFD7C1D4AC61F00363030 /* InventoryTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryTableCell.swift; sourceTree = "<group>"; };
+		D8DCFD841D551E4800363030 /* brick.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = brick.jpg; sourceTree = "<group>"; };
+		D8DCFD861D551E7900363030 /* BrickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrickView.swift; sourceTree = "<group>"; };
+		D8DCFD881D5522AC00363030 /* ShadowLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -465,12 +471,15 @@
 				D8DCF29B1D49679200363030 /* AppDelegate.swift */,
 				D8DCF29D1D49679200363030 /* ViewController.swift */,
 				D8DCF29F1D49679200363030 /* Main.storyboard */,
+				D8DCFD861D551E7900363030 /* BrickView.swift */,
 				D8DCF2B11D4AB3DF00363030 /* PasswordViewController.swift */,
 				D8DCFD7A1D4AC5F600363030 /* InventoryViewController.swift */,
+				D8DCFD881D5522AC00363030 /* ShadowLabel.swift */,
 				D8DCFD7C1D4AC61F00363030 /* InventoryTableCell.swift */,
 				D8DCF2B31D4AB86B00363030 /* Constants.swift */,
 				D8DCF2AF1D49938C00363030 /* GradientBGView.swift */,
 				D8DCF2A21D49679200363030 /* Assets.xcassets */,
+				D8DCFD841D551E4800363030 /* brick.jpg */,
 				D8DCFBEC1D4AC0BE00363030 /* 192 Vector icons($4.99) */,
 				D8DCF2A41D49679200363030 /* LaunchScreen.storyboard */,
 				D8DCF2A71D49679200363030 /* Info.plist */,
@@ -948,6 +957,7 @@
 				D8DCFD711D4AC0BE00363030 /* zoom-in.png in Resources */,
 				D8DCFCCB1D4AC0BE00363030 /* calculator1.png in Resources */,
 				D8DCFD351D4AC0BE00363030 /* printer.png in Resources */,
+				D8DCFD851D551E4800363030 /* brick.jpg in Resources */,
 				D8DCFCB91D4AC0BE00363030 /* add-file.png in Resources */,
 				D8DCFCC61D4AC0BE00363030 /* brightly.png in Resources */,
 				D8DCFD4A1D4AC0BE00363030 /* security-+.png in Resources */,
@@ -962,10 +972,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8DCFD871D551E7900363030 /* BrickView.swift in Sources */,
 				D8DCFD7D1D4AC61F00363030 /* InventoryTableCell.swift in Sources */,
 				D8DCF2B41D4AB86B00363030 /* Constants.swift in Sources */,
 				D8DCFD7B1D4AC5F600363030 /* InventoryViewController.swift in Sources */,
 				D8DCF2B01D49938C00363030 /* GradientBGView.swift in Sources */,
+				D8DCFD891D5522AC00363030 /* ShadowLabel.swift in Sources */,
 				D8DCF2B21D4AB3DF00363030 /* PasswordViewController.swift in Sources */,
 				D8DCF29E1D49679200363030 /* ViewController.swift in Sources */,
 				D8DCF29C1D49679200363030 /* AppDelegate.swift in Sources */,
@@ -1120,6 +1132,7 @@
 				D8DCF2AC1D49679200363030 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
