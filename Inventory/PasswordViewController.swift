@@ -20,48 +20,29 @@ class PasswordViewController: UIViewController {
     @IBOutlet weak var eightButton: UIButton!
     @IBOutlet weak var nineButton: UIButton!
     @IBOutlet weak var enterButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!
     
     @IBOutlet weak var charOne: UILabel!
     @IBOutlet weak var charTwo: UILabel!
     @IBOutlet weak var charThree: UILabel!
     @IBOutlet weak var charFour: UILabel!
     
-    var charNum = 1
-    var entry = ""
+    @IBOutlet weak var passwordLabel: ShadowLabel!
+    @IBOutlet weak var entryLabel: ShadowLabel!
+    
+    @IBOutlet weak var logoImage: UIImageView!
+    
+    private var charNum: Int = 1
+    private var entry: String = ""
+    private var opened: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        oneButton.layer.cornerRadius = oneButton.frame.width/2
-        oneButton.clipsToBounds = true
         
-        twoButton.layer.cornerRadius = twoButton.frame.width/2
-        twoButton.clipsToBounds = true
-        
-        threeButton.layer.cornerRadius = threeButton.frame.width/2
-        threeButton.clipsToBounds = true
-        
-        fourButton.layer.cornerRadius = fourButton.frame.width/2
-        fourButton.clipsToBounds = true
-        
-        fiveButton.layer.cornerRadius = fiveButton.frame.width/2
-        fiveButton.clipsToBounds = true
-        
-        sixButton.layer.cornerRadius = sixButton.frame.width/2
-        sixButton.clipsToBounds = true
-        
-        sevenButton.layer.cornerRadius = sevenButton.frame.width/2
-        sevenButton.clipsToBounds = true
-        
-        eightButton.layer.cornerRadius = eightButton.frame.width/2
-        eightButton.clipsToBounds = true
-        
-        nineButton.layer.cornerRadius = nineButton.frame.width/2
-        nineButton.clipsToBounds = true
-        
-        enterButton.layer.cornerRadius = enterButton.frame.height/2
-        enterButton.clipsToBounds = true
+        formatButtons()
+        hideElements()
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,7 +50,142 @@ class PasswordViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    private func hideElements() {
+        // Hidden
+        passwordLabel.hidden = true
+        entryLabel.hidden = true
+        backButton.hidden = true
+        
+        oneButton.hidden = true
+        twoButton.hidden = true
+        threeButton.hidden = true
+        fourButton.hidden = true
+        fiveButton.hidden = true
+        sixButton.hidden = true
+        sevenButton.hidden = true
+        eightButton.hidden = true
+        nineButton.hidden = true
+        
+        // Alphas
+        self.passwordLabel.alpha = 0
+        self.entryLabel.alpha = 0
+        self.backButton.alpha = 0
+        
+        self.oneButton.alpha = 0
+        self.twoButton.alpha = 0
+        self.threeButton.alpha = 0
+        self.fourButton.alpha = 0
+        self.fiveButton.alpha = 0
+        self.sixButton.alpha = 0
+        self.sevenButton.alpha = 0
+        self.eightButton.alpha = 0
+        self.nineButton.alpha = 0
+    }
+    
+    private func showElements() {
+        // Hidden
+        passwordLabel.hidden = false
+        entryLabel.hidden = false
+        backButton.hidden = false
+        
+        oneButton.hidden = false
+        twoButton.hidden = false
+        threeButton.hidden = false
+        fourButton.hidden = false
+        fiveButton.hidden = false
+        sixButton.hidden = false
+        sevenButton.hidden = false
+        eightButton.hidden = false
+        nineButton.hidden = false
+        
+        // Animate alphas
+        UIView.animateWithDuration(1.0, animations: {
+                self.passwordLabel.alpha = 1
+                self.entryLabel.alpha = 1
+                self.backButton.alpha = 1
+            
+                self.oneButton.alpha = 1
+                self.twoButton.alpha = 1
+                self.threeButton.alpha = 1
+                self.fourButton.alpha = 1
+                self.fiveButton.alpha = 1
+                self.sixButton.alpha = 1
+                self.sevenButton.alpha = 1
+                self.eightButton.alpha = 1
+                self.nineButton.alpha = 1
+            
+                self.logoImage.alpha = 0
+            
+                self.enterButton.setTitle("Enter",
+                    forState: .Normal)
+            
+            }, completion: { (status) -> Void in
+                self.logoImage.hidden = true
+            })
+    }
+    
+    // Rounds the corners of all buttons
+    private func formatButtons() {
+        // Button 1
+        oneButton.layer.cornerRadius =
+            oneButton.frame.width/2
+        oneButton.clipsToBounds = true
+        
+        // Button 2
+        twoButton.layer.cornerRadius =
+            twoButton.frame.width/2
+        twoButton.clipsToBounds = true
+        
+        // Button 3
+        threeButton.layer.cornerRadius =
+            threeButton.frame.width/2
+        threeButton.clipsToBounds = true
+        
+        // Button 4
+        fourButton.layer.cornerRadius =
+            fourButton.frame.width/2
+        fourButton.clipsToBounds = true
+    
+        // Button 5
+        fiveButton.layer.cornerRadius =
+            fiveButton.frame.width/2
+        fiveButton.clipsToBounds = true
+        
+        // Button 6
+        sixButton.layer.cornerRadius =
+            sixButton.frame.width/2
+        sixButton.clipsToBounds = true
+        
+        // Button 7
+        sevenButton.layer.cornerRadius =
+            sevenButton.frame.width/2
+        sevenButton.clipsToBounds = true
+        
+        // Button 8
+        eightButton.layer.cornerRadius =
+            eightButton.frame.width/2
+        eightButton.clipsToBounds = true
+        
+        // Button 9
+        nineButton.layer.cornerRadius =
+            nineButton.frame.width/2
+        nineButton.clipsToBounds = true
+        
+        // Enter button
+        enterButton.layer.cornerRadius =
+            enterButton.frame.height/2
+        enterButton.clipsToBounds = true
+    }
+    
     @IBAction func enterPressed(sender: AnyObject) {
+        
+        guard opened else {
+            opened = true
+            showElements()
+            
+            return
+        }
+        
         // Check password
         if charNum == 5 {
             if entry == password {
@@ -124,20 +240,6 @@ class PasswordViewController: UIViewController {
         default:
             break
         }
-        
-        print(entry)
-        
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

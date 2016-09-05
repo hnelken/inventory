@@ -18,9 +18,10 @@ let kBackSegue = "backToTable"
 
 // INVENTORY CONSTANTS
 let kGroups = [
-    "Drinks", "Produce", "Dairy", "Frozen Goods",
-    "Paper Goods", "Detergents/Chemicals", "Nuts/Sweets",
-    "Cheese", "Meats", "Non-Perishables", "Spices/Herbs"
+    "Cheese", "Dairy", "Drinks", "Detergents/Chemicals",
+    "Frozen Goods", "Meats", "Non-Perishables",
+    "Nuts/Sweets", "Paper Goods", "Produce",
+    "Spices/Herbs"
 ]
 
 // CONVENIENCE
