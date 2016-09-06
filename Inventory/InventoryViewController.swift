@@ -10,6 +10,12 @@ import UIKit
 
 class InventoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    // Private Variables
+    private var itemName: String?
+    private var itemImage: UIImage?
+    private var cellCache: [InventoryTableCell] = []
+    
+    // MARK: - View Controller
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,47 +26,75 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
         // Dispose of any resources that can be recreated.
     }
     
+    
+    // MARK: - IB Actions
+    
     @IBAction func unwindToTable(segue: UIStoryboardSegue) {
     
     }
     
+    
+    // MARK: - Table View Datasource / Delegate
+    
+    // numberOfSections
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return kGroups.count
     }
     
+    // numberOfRowsInSection
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
     
+    // titleForHeaderInSection
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return kGroups[section]
     }
     
+    // cellForRow
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(kInventoryCellID) as! InventoryTableCell
         
-        cell.cellTitle.text = "Item Number \(indexPath.row)"
-        cell.cellImageView.image = UIImage(named: "cup.png")
+        //if cellCache.count < indexPath.row {
+            let cell = tableView.dequeueReusableCellWithIdentifier(kInventoryCellID) as! InventoryTableCell
         
-        return cell
+            cell.cellTitle.text = "Item Number \(indexPath.row)"
+            cell.cellImageView.image = UIImage(named: "cup.png")
+            cell.backgroundColor = UIColor.clearColor()
+            
+            //cellCache.append(cell)
+            
+            return cell
+        //}
+        //else {
+            //return cellCache[indexPath.row]
+        //}
     }
     
+/*    // willDisplayCell
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.backgroundColor = UIColor.clearColor()
-    }
+        
+    } */
     
+    // didSelectRow
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        itemName = "Item Number \(indexPath.row)"
+        itemImage = UIImage(named: "cup.png")
+        
+        performSegueWithIdentifier(kItemSelectSegue, sender: self)
+        
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if let vc = segue.destinationViewController as? SelectedItemViewController {
+            vc.itemName = itemName
+            vc.itemImage = itemImage
+        }
     }
-    */
 
 }

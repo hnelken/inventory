@@ -8,13 +8,13 @@
 
 import Foundation
 
-
 // STORYBOARD CONSTANTS
 let kInventoryCellID = "inventoryCell"
 
 let kPasswordSegue = "passwordSegue"
 let kQuantitySegue = "quantitySegue"
-let kBackSegue = "backToTable"
+let kItemSelectSegue = "itemSelectSegue"
+let kBackSegue = "backToTableSegue"
 
 // INVENTORY CONSTANTS
 let kGroups = [

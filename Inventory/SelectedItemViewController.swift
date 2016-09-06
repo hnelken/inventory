@@ -9,29 +9,56 @@
 import UIKit
 
 class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    // CG Constants
+    let kButtonInactiveAlpha: CGFloat = 0.2
+    let kButtonActiveAlpha: CGFloat = 0.8
 
+    // Public References
+    var itemName: String?
+    weak var itemImage: UIImage?
+    
+    // Private Variables
     private var selectedQuantity = 0
     private var selectedUnit = 0
     private var changesMade = false
     
-    @IBOutlet weak var itemLabel: ShadowLabel!
+    // IB Outlets
+    @IBOutlet weak var itemCategoryLabel: ShadowLabel!
+    @IBOutlet weak var itemNameLabel: ShadowLabel!
+    @IBOutlet weak var itemImageView: UIImageView!
     
     @IBOutlet weak var pickerView: UIPickerView!
     
+    @IBOutlet weak var editCategoryButton: UIButton!
+    @IBOutlet weak var editNameButton: UIButton!
     @IBOutlet weak var editImageButton: UIButton!
-    @IBOutlet weak var editLabelButton: UIButton!
     @IBOutlet weak var addToCartButton: UIButton!
     @IBOutlet weak var deleteItemButton: UIButton!
     @IBOutlet weak var saveChangesButton: UIButton!
     
+    
+    // MARK: - View Controller 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Set picture and title for selected item
+        if let name = itemName {
+            itemNameLabel.text = name
+        }
+        
+        if let image = itemImage {
+            itemImageView.image = image
+        }
 
-        // Do any additional setup after loading the view.
-        formatButtons()
-        hideSaveButton(false)
+        // Preselect rows in picker view
         pickerView.selectRow(0, inComponent: 0, animated: false)
         pickerView.selectRow(0, inComponent: 1, animated: false)
+        
+        // Hide/format buttons in view
+        hideSaveButton(false)
+        formatButtons()
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,45 +66,8 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
         // Dispose of any resources that can be recreated.
     }
     
-    
-    // MARK: - Private API
-    
-    private func formatButtons() {
-        editImageButton.layer.cornerRadius = editImageButton.frame.height / 2
-        addToCartButton.layer.cornerRadius = addToCartButton.frame.height / 2
-        deleteItemButton.layer.cornerRadius = deleteItemButton.frame.height / 2
-        saveChangesButton.layer.cornerRadius = saveChangesButton.frame.height / 2
-        
-        editImageButton.clipsToBounds = true
-        addToCartButton.clipsToBounds = true
-        deleteItemButton.clipsToBounds = true
-        saveChangesButton.clipsToBounds = true
-    }
-    
-    private func showSaveButton() {
-        UIView.animateWithDuration(0.2, animations: {
-            self.saveChangesButton.alpha = 0.8
-        
-            }, completion: { (status) in
-                self.saveChangesButton.userInteractionEnabled = true
-        })
-    }
-    
-    private func hideSaveButton(animated: Bool) {
-        saveChangesButton.userInteractionEnabled = false
-        
-        if !animated {
-            saveChangesButton.alpha = 0.2
-        }
-        else {
-            UIView.animateWithDuration(0.2, animations: {
-                self.saveChangesButton.alpha = 0.2
-            })
-        }
-    }
-    
 
-    // MARK: - IBActions
+    // MARK: - IB Actions
     
     @IBAction func addToCartPressed(sender: AnyObject) {
     }
@@ -90,8 +80,11 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     @IBAction func editImagePressed(sender: AnyObject) {
     }
+  
+    @IBAction func editCategoryPressed(sender: AnyObject) {
+    }
     
-    @IBAction func editLabelPressed(sender: AnyObject) {
+    @IBAction func editNamePressed(sender: AnyObject) {
     }
     
     
@@ -146,13 +139,50 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
         
         if let vc = segue.destinationViewController as? InventoryViewController {
             //vc.rowChanged
+        }
+    }
+    
+    
+    // MARK: - Private API
+    
+    private func formatButtons() {
+        // Corner radii
+        editImageButton.layer.cornerRadius = editImageButton.frame.height / 2
+        addToCartButton.layer.cornerRadius = addToCartButton.frame.height / 2
+        deleteItemButton.layer.cornerRadius = deleteItemButton.frame.height / 2
+        saveChangesButton.layer.cornerRadius = saveChangesButton.frame.height / 2
+        
+        // Clip buttons to bounds
+        editImageButton.clipsToBounds = true
+        addToCartButton.clipsToBounds = true
+        deleteItemButton.clipsToBounds = true
+        saveChangesButton.clipsToBounds = true
+    }
+    
+    private func showSaveButton() {
+        // Animate save button into view
+        UIView.animateWithDuration(0.1, animations: {
+            self.saveChangesButton.alpha = self.kButtonActiveAlpha
+            
+            }, completion: { (status) in
+                self.saveChangesButton.userInteractionEnabled = true
+        })
+    }
+    
+    private func hideSaveButton(animated: Bool) {
+        saveChangesButton.userInteractionEnabled = false
+        
+        if !animated {
+            saveChangesButton.alpha = kButtonInactiveAlpha
+        }
+        else {
+            UIView.animateWithDuration(0.1, animations: {
+                self.saveChangesButton.alpha = self.kButtonInactiveAlpha
+            })
         }
     }
 
