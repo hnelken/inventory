@@ -100,26 +100,26 @@ class PasswordViewController: UIViewController {
         
         // Animate alphas
         UIView.animateWithDuration(1.0, animations: {
-                self.passwordLabel.alpha = 1
-                self.entryLabel.alpha = 1
-                self.backButton.alpha = 1
+            self.passwordLabel.alpha = 1
+            self.entryLabel.alpha = 1
+            self.backButton.alpha = 1
             
-                self.oneButton.alpha = 1
-                self.twoButton.alpha = 1
-                self.threeButton.alpha = 1
-                self.fourButton.alpha = 1
-                self.fiveButton.alpha = 1
-                self.sixButton.alpha = 1
-                self.sevenButton.alpha = 1
-                self.eightButton.alpha = 1
-                self.nineButton.alpha = 1
+            self.oneButton.alpha = 1
+            self.twoButton.alpha = 1
+            self.threeButton.alpha = 1
+            self.fourButton.alpha = 1
+            self.fiveButton.alpha = 1
+            self.sixButton.alpha = 1
+            self.sevenButton.alpha = 1
+            self.eightButton.alpha = 1
+            self.nineButton.alpha = 1
             
-                self.logoImage.alpha = 0
+            self.logoImage.alpha = 0
             
-                self.enterButton.setTitle("Enter",
+            self.enterButton.setTitle("Enter",
                     forState: .Normal)
             
-            }, completion: { (status) -> Void in
+            }, completion: { (status) in
                 self.logoImage.hidden = true
             })
     }

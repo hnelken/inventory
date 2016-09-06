@@ -24,6 +24,9 @@ let kGroups = [
     "Spices/Herbs"
 ]
 
+let kQuantityIndex = 0
+let kUnitIndex = 1
+
 // CONVENIENCE
 let dotChar = "•"
 let password = "9999"

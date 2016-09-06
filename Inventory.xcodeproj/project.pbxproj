@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D8753FCF1D7DE6FC00DA4D6C /* hamburger.png in Resources */ = {isa = PBXBuildFile; fileRef = D8753FCE1D7DE6FC00DA4D6C /* hamburger.png */; };
+		D8753FD51D7F3CE000DA4D6C /* SelectedItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8753FD41D7F3CE000DA4D6C /* SelectedItemViewController.swift */; };
 		D8DCF29C1D49679200363030 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DCF29B1D49679200363030 /* AppDelegate.swift */; };
 		D8DCF2A11D49679200363030 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8DCF29F1D49679200363030 /* Main.storyboard */; };
 		D8DCF2A31D49679200363030 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8DCF2A21D49679200363030 /* Assets.xcassets */; };
@@ -221,6 +222,7 @@
 
 /* Begin PBXFileReference section */
 		D8753FCE1D7DE6FC00DA4D6C /* hamburger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hamburger.png; sourceTree = "<group>"; };
+		D8753FD41D7F3CE000DA4D6C /* SelectedItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedItemViewController.swift; sourceTree = "<group>"; };
 		D8DCF2981D49679200363030 /* Inventory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inventory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8DCF29B1D49679200363030 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D8DCF2A01D49679200363030 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -460,6 +462,7 @@
 			children = (
 				D8DCF2B11D4AB3DF00363030 /* PasswordViewController.swift */,
 				D8DCFD7A1D4AC5F600363030 /* InventoryViewController.swift */,
+				D8753FD41D7F3CE000DA4D6C /* SelectedItemViewController.swift */,
 			);
 			name = VCs;
 			sourceTree = "<group>";
@@ -1002,6 +1005,7 @@
 				D8DCF2B41D4AB86B00363030 /* Constants.swift in Sources */,
 				D8DCFD7B1D4AC5F600363030 /* InventoryViewController.swift in Sources */,
 				D8DCF2B01D49938C00363030 /* GradientBGView.swift in Sources */,
+				D8753FD51D7F3CE000DA4D6C /* SelectedItemViewController.swift in Sources */,
 				D8DCFD891D5522AC00363030 /* ShadowLabel.swift in Sources */,
 				D8DCF2B21D4AB3DF00363030 /* PasswordViewController.swift in Sources */,
 				D8DCF29C1D49679200363030 /* AppDelegate.swift in Sources */,
