@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D843CD921D8084E8009144D6 /* left-arrow-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D843CD8E1D8084E8009144D6 /* left-arrow-white.png */; };
+		D843CD931D8084E8009144D6 /* penic-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D843CD8F1D8084E8009144D6 /* penic-white.png */; };
+		D843CD941D8084E8009144D6 /* star-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D843CD901D8084E8009144D6 /* star-white.png */; };
+		D843CD951D8084E8009144D6 /* star-yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = D843CD911D8084E8009144D6 /* star-yellow.png */; };
 		D8753FCF1D7DE6FC00DA4D6C /* hamburger.png in Resources */ = {isa = PBXBuildFile; fileRef = D8753FCE1D7DE6FC00DA4D6C /* hamburger.png */; };
 		D8753FD51D7F3CE000DA4D6C /* SelectedItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8753FD41D7F3CE000DA4D6C /* SelectedItemViewController.swift */; };
 		D8DCF29C1D49679200363030 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DCF29B1D49679200363030 /* AppDelegate.swift */; };
@@ -221,6 +225,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D843CD8E1D8084E8009144D6 /* left-arrow-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left-arrow-white.png"; sourceTree = "<group>"; };
+		D843CD8F1D8084E8009144D6 /* penic-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "penic-white.png"; sourceTree = "<group>"; };
+		D843CD901D8084E8009144D6 /* star-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-white.png"; sourceTree = "<group>"; };
+		D843CD911D8084E8009144D6 /* star-yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-yellow.png"; sourceTree = "<group>"; };
 		D8753FCE1D7DE6FC00DA4D6C /* hamburger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hamburger.png; sourceTree = "<group>"; };
 		D8753FD41D7F3CE000DA4D6C /* SelectedItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedItemViewController.swift; sourceTree = "<group>"; };
 		D8DCF2981D49679200363030 /* Inventory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inventory.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -532,6 +540,10 @@
 		D8DCFBEF1D4AC0BE00363030 /* 32x32 */ = {
 			isa = PBXGroup;
 			children = (
+				D843CD8E1D8084E8009144D6 /* left-arrow-white.png */,
+				D843CD8F1D8084E8009144D6 /* penic-white.png */,
+				D843CD901D8084E8009144D6 /* star-white.png */,
+				D843CD911D8084E8009144D6 /* star-yellow.png */,
 				D8753FCE1D7DE6FC00DA4D6C /* hamburger.png */,
 				D8DCFBF01D4AC0BE00363030 /* !.png */,
 				D8DCFBF11D4AC0BE00363030 /* 360.png */,
@@ -800,6 +812,7 @@
 				D8DCFD301D4AC0BE00363030 /* plane.png in Resources */,
 				D8DCFCD41D4AC0BE00363030 /* cart2.png in Resources */,
 				D8DCFCCE1D4AC0BE00363030 /* call.png in Resources */,
+				D843CD931D8084E8009144D6 /* penic-white.png in Resources */,
 				D8DCFCDE1D4AC0BE00363030 /* custom.png in Resources */,
 				D8DCFCDF1D4AC0BE00363030 /* CUT.png in Resources */,
 				D8DCFCC11D4AC0BE00363030 /* book-tags.png in Resources */,
@@ -832,8 +845,10 @@
 				D8DCFD5A1D4AC0BE00363030 /* tablet.png in Resources */,
 				D8DCFD1B1D4AC0BE00363030 /* mic.png in Resources */,
 				D8DCFCE91D4AC0BE00363030 /* dvd-rom.png in Resources */,
+				D843CD941D8084E8009144D6 /* star-white.png in Resources */,
 				D8DCFD5F1D4AC0BE00363030 /* test.png in Resources */,
 				D8DCFD3E1D4AC0BE00363030 /* repair.png in Resources */,
+				D843CD951D8084E8009144D6 /* star-yellow.png in Resources */,
 				D8DCFCC81D4AC0BE00363030 /* brush1.png in Resources */,
 				D8DCFD4D1D4AC0BE00363030 /* share.png in Resources */,
 				D8DCFCC41D4AC0BE00363030 /* box-up.png in Resources */,
@@ -916,6 +931,7 @@
 				D8DCFD5C1D4AC0BE00363030 /* tags.png in Resources */,
 				D8DCFD191D4AC0BE00363030 /* mail1.png in Resources */,
 				D8DCFD3C1D4AC0BE00363030 /* refresh1.png in Resources */,
+				D843CD921D8084E8009144D6 /* left-arrow-white.png in Resources */,
 				D8DCFD161D4AC0BE00363030 /* mac_folder-set.png in Resources */,
 				D8DCFD4B1D4AC0BE00363030 /* security-x.png in Resources */,
 				D8DCFD5B1D4AC0BE00363030 /* tags-group.png in Resources */,

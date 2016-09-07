@@ -33,3 +33,7 @@ let password = "9999"
 public extension String {
     var NS: NSString { return (self as NSString) }
 }
+
+public extension Selector {
+    static let tapHandler = #selector(SelectedItemViewController.tapHandler(_:))
+}

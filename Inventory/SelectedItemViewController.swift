@@ -15,6 +15,7 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     let kButtonActiveAlpha: CGFloat = 0.8
 
     // Public References
+    var itemGroup: String?
     var itemName: String?
     weak var itemImage: UIImage?
     
@@ -24,18 +25,21 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     private var changesMade = false
     
     // IB Outlets
-    @IBOutlet weak var itemCategoryLabel: ShadowLabel!
+    @IBOutlet weak var itemGroupLabel: ShadowLabel!
     @IBOutlet weak var itemNameLabel: ShadowLabel!
     @IBOutlet weak var itemImageView: UIImageView!
     
     @IBOutlet weak var pickerView: UIPickerView!
     
-    @IBOutlet weak var editCategoryButton: UIButton!
+    @IBOutlet weak var editGroupButton: UIButton!
     @IBOutlet weak var editNameButton: UIButton!
     @IBOutlet weak var editImageButton: UIButton!
     @IBOutlet weak var addToCartButton: UIButton!
     @IBOutlet weak var deleteItemButton: UIButton!
     @IBOutlet weak var saveChangesButton: UIButton!
+    
+    @IBOutlet weak var groupField: UITextField!
+    @IBOutlet weak var nameField: UITextField!
     
     
     // MARK: - View Controller 
@@ -43,7 +47,15 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Add touch recognizer to hide text fields
+        let touch = UITapGestureRecognizer(target: self, action: .tapHandler)
+        view.addGestureRecognizer(touch)
+        
         // Set picture and title for selected item
+        if let group = itemGroup {
+            itemGroupLabel.text = group
+        }
+        
         if let name = itemName {
             itemNameLabel.text = name
         }
@@ -59,6 +71,10 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
         // Hide/format buttons in view
         hideSaveButton(false)
         formatButtons()
+        
+        // Hide text fields
+        groupField.hidden = true
+        nameField.hidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,10 +97,15 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBAction func editImagePressed(sender: AnyObject) {
     }
   
-    @IBAction func editCategoryPressed(sender: AnyObject) {
+    @IBAction func editGroupPressed(sender: AnyObject) {
+        
     }
     
     @IBAction func editNamePressed(sender: AnyObject) {
+        nameField.text = itemNameLabel.text
+        nameField.hidden = false
+        itemNameLabel.hidden = true
+        nameField.becomeFirstResponder()
     }
     
     
@@ -149,6 +170,15 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     // MARK: - Private API
     
+    func tapHandler(sender: UIGestureRecognizer) {
+        if sender.state == .Ended && !nameField.hidden {
+            itemNameLabel.text = nameField.text
+            nameField.resignFirstResponder()
+            nameField.hidden = true
+            itemNameLabel.hidden = false
+        }
+    }
+    
     private func formatButtons() {
         // Corner radii
         editImageButton.layer.cornerRadius = editImageButton.frame.height / 2
@@ -185,5 +215,7 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
             })
         }
     }
+    
+    
 
 }
