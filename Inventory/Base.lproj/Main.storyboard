@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cdS-OV-XDF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cdS-OV-XDF">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -589,7 +589,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Number X Item Number X Item Number X Item Number X Item Number X Item Number X" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iEr-Po-uFq" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
-                                <rect key="frame" x="128" y="171.5" width="452" height="26.5"/>
+                                <rect key="frame" x="128" y="171" width="452" height="26.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="9yb-Ud-g9H"/>
                                     <constraint firstAttribute="width" constant="49" id="CLN-XQ-BVo"/>
@@ -673,14 +673,6 @@
                                     <action selector="editGroupPressed:" destination="5Vr-3r-AF2" eventType="touchUpInside" id="JX3-a8-xeP"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTX-tZ-q2x">
-                                <rect key="frame" x="545" y="28" width="35" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="35" id="oTt-YI-0qV"/>
-                                    <constraint firstAttribute="height" constant="35" id="vfL-hK-bhc"/>
-                                </constraints>
-                                <state key="normal" backgroundImage="star-white.png"/>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Special:" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNi-BG-eqB" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
                                 <rect key="frame" x="475" y="33" width="62" height="25"/>
                                 <constraints>
@@ -701,8 +693,8 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mUr-Ap-qoV">
-                                <rect key="frame" x="128" y="98" width="420" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mUr-Ap-qoV">
+                                <rect key="frame" x="128" y="98" width="452" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
@@ -732,6 +724,20 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTX-tZ-q2x">
+                                <rect key="frame" x="548" y="28" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="oTt-YI-0qV"/>
+                                    <constraint firstAttribute="height" constant="32" id="vfL-hK-bhc"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="star-white.png">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="specialPressed:" destination="5Vr-3r-AF2" eventType="touchUpInside" id="0g6-hA-Yq6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -782,7 +788,7 @@
                             <constraint firstItem="rM9-Jx-DIv" firstAttribute="leading" secondItem="DnR-4q-UCW" secondAttribute="trailing" constant="8" id="ibx-0Z-xYS"/>
                             <constraint firstItem="G5P-BH-MAX" firstAttribute="top" secondItem="8Oh-P7-M8G" secondAttribute="bottom" constant="2" id="j1h-Ya-0gJ"/>
                             <constraint firstItem="5dc-Eg-8ZE" firstAttribute="leading" secondItem="DnR-4q-UCW" secondAttribute="trailing" constant="8" id="j4H-3s-PDb"/>
-                            <constraint firstItem="bTX-tZ-q2x" firstAttribute="leading" secondItem="UNi-BG-eqB" secondAttribute="trailing" constant="8" id="jDN-2c-ylv"/>
+                            <constraint firstItem="bTX-tZ-q2x" firstAttribute="leading" secondItem="UNi-BG-eqB" secondAttribute="trailing" constant="11" id="jDN-2c-ylv"/>
                             <constraint firstItem="Q6N-eS-eGG" firstAttribute="top" secondItem="iEr-Po-uFq" secondAttribute="bottom" constant="8" id="jrk-3M-Xgn"/>
                             <constraint firstItem="LWC-wh-FSq" firstAttribute="top" secondItem="uni-ik-fg8" secondAttribute="bottom" constant="17" id="kRV-hV-mwn"/>
                             <constraint firstItem="mUr-Ap-qoV" firstAttribute="top" secondItem="rM9-Jx-DIv" secondAttribute="bottom" constant="2" id="lu3-yN-6zd"/>
@@ -842,6 +848,7 @@
                         <outlet property="nameField" destination="G5P-BH-MAX" id="hql-c5-wE1"/>
                         <outlet property="pickerView" destination="6j1-Nz-NP0" id="dH6-hm-k1Y"/>
                         <outlet property="saveChangesButton" destination="QUU-25-dey" id="1Qd-F2-Dce"/>
+                        <outlet property="specialButton" destination="bTX-tZ-q2x" id="OXm-Fw-ACm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SaA-pO-SAv" userLabel="First Responder" sceneMemberID="firstResponder"/>

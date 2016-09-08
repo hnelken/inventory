@@ -15,6 +15,7 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     let kButtonActiveAlpha: CGFloat = 0.8
 
     // Public References
+    var isSpecial: Bool = false
     var itemGroup: String?
     var itemName: String?
     weak var itemImage: UIImage?
@@ -23,6 +24,7 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     private var selectedQuantity = 0
     private var selectedUnit = 0
     private var changesMade = false
+    private var special = false
     
     // IB Outlets
     @IBOutlet weak var itemGroupLabel: ShadowLabel!
@@ -37,6 +39,7 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet weak var addToCartButton: UIButton!
     @IBOutlet weak var deleteItemButton: UIButton!
     @IBOutlet weak var saveChangesButton: UIButton!
+    @IBOutlet weak var specialButton: UIButton!
     
     @IBOutlet weak var groupField: UITextField!
     @IBOutlet weak var nameField: UITextField!
@@ -51,7 +54,12 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
         let touch = UITapGestureRecognizer(target: self, action: .tapHandler)
         view.addGestureRecognizer(touch)
         
-        // Set picture and title for selected item
+        // Display selected item settings
+        if isSpecial {
+            special = isSpecial
+            specialButton.setImage(UIImage(named: kYellowStarImage), forState: .Normal)
+        }
+        
         if let group = itemGroup {
             itemGroupLabel.text = group
         }
@@ -84,6 +92,20 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     
 
     // MARK: - IB Actions
+    
+    @IBAction func specialPressed(sender: AnyObject) {
+        
+        let imageName: String
+        if special {
+            special = false
+            imageName = kWhiteStarImage
+        }
+        else {
+            special = true
+            imageName = kYellowStarImage
+        }
+        specialButton.setImage(UIImage(named: imageName), forState: .Normal)
+    }
     
     @IBAction func addToCartPressed(sender: AnyObject) {
     }

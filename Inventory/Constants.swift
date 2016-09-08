@@ -27,9 +27,14 @@ let kGroups = [
 let kQuantityIndex = 0
 let kUnitIndex = 1
 
+// FILENAME CONSTANTS
+let kWhiteStarImage = "star-white"
+let kYellowStarImage = "star-yellow"
+
 // CONVENIENCE
 let dotChar = "•"
 let password = "9999"
+
 public extension String {
     var NS: NSString { return (self as NSString) }
 }
