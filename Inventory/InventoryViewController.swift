@@ -14,7 +14,7 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     private var itemGroup: String?
     private var itemName: String?
     private var itemImage: UIImage?
-    private var cellCache: [InventoryTableCell] = []
+    private var imageCaches: [Int : [UIImage]] = [:]
     
     // MARK: - View Controller
     override func viewDidLoad() {
@@ -55,26 +55,34 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     // cellForRow
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        //if cellCache.count < indexPath.row {
-            let cell = tableView.dequeueReusableCellWithIdentifier(kInventoryCellID) as! InventoryTableCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(kInventoryCellID) as! InventoryTableCell
         
-            cell.cellTitle.text = "Item Number \(indexPath.row)"
-            cell.cellImageView.image = UIImage(named: "cup.png")
-            cell.backgroundColor = UIColor.clearColor()
+        cell.backgroundColor = UIColor.clearColor()
+        cell.cellTitle.text = "Item Number \(indexPath.row)"
+        
+        // Get image cache for section
+        var sectionCache: [UIImage] = []
+        if let cache = imageCaches[indexPath.section] {
+            sectionCache = cache
+        }
+        
+        // Check for image cache hit
+        if sectionCache.count > indexPath.row {
+            cell.cellImageView.image = sectionCache[indexPath.row]
+        }
+        else if let placeHolderImage = UIImage(named: "cup.png") {
+            // Otherwise use a placeholder image and attempt to download the real image
+            sectionCache.append(placeHolderImage)
+            cell.cellImageView.image = placeHolderImage
+            imageCaches[indexPath.section] = sectionCache
             
-            //cellCache.append(cell)
-            
-            return cell
-        //}
-        //else {
-            //return cellCache[indexPath.row]
-        //}
+            //
+            // ADD IMAGE DOWNLOAD OPERATION TO QUEUE HERE
+            //
+        }
+        
+        return cell
     }
-    
-/*    // willDisplayCell
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        
-    } */
     
     // didSelectRow
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -94,9 +102,9 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if let vc = segue.destinationViewController as? SelectedItemViewController {
-            vc.itemGroup = itemGroup
-            vc.itemName = itemName
-            vc.itemImage = itemImage
+            vc.initGroup = itemGroup
+            vc.initName = itemName
+            vc.initImage = itemImage
         }
     }
 
