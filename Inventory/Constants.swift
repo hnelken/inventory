@@ -24,8 +24,9 @@ let kGroups = [
     "Spices/Herbs"
 ]
 
-let kQuantityIndex = 0
-let kUnitIndex = 1
+let kGroupComponent = 0
+let kQuantityComponent = 0
+let kUnitComponent = 1
 
 // FILENAME CONSTANTS
 let kWhiteStarImage = "star-white"

@@ -11,7 +11,7 @@ import UIKit
 class InventoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     // Private Variables
-    private var itemGroup: String?
+    private var itemGroup: Int?
     private var itemName: String?
     private var itemImage: UIImage?
     private var imageCaches: [Int : [UIImage]] = [:]
@@ -87,7 +87,7 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     // didSelectRow
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        itemGroup = kGroups[indexPath.section]
+        itemGroup = indexPath.section
         itemName = "Item Number \(indexPath.row)"
         itemImage = UIImage(named: "cup.png")
         
