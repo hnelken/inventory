@@ -11,6 +11,8 @@ import UIKit
 class InventoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     // Private Variables
+    private var itemQuantity: Int?
+    private var itemUnit: Int?
     private var itemGroup: Int?
     private var itemName: String?
     private var itemImage: UIImage?
@@ -87,6 +89,8 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     // didSelectRow
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        itemQuantity = 25
+        itemUnit = 2
         itemGroup = indexPath.section
         itemName = "Item Number \(indexPath.row)"
         itemImage = UIImage(named: "cup.png")
@@ -102,6 +106,8 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if let vc = segue.destinationViewController as? SelectedItemViewController {
+            vc.initQuantity = itemQuantity
+            vc.initUnit = itemUnit
             vc.initGroup = itemGroup
             vc.initName = itemName
             vc.initImage = itemImage

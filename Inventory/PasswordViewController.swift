@@ -50,6 +50,74 @@ class PasswordViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func enterPressed(sender: AnyObject) {
+        
+        guard opened else {
+            opened = true
+            showElements()
+            
+            return
+        }
+        
+        // Check password
+        if charNum == 5 {
+            if entry == password {
+                performSegueWithIdentifier(kPasswordSegue, sender: self)
+            }
+            else {
+                charNum = 1
+                charOne.text = ""
+                charTwo.text = ""
+                charThree.text = ""
+                charFour.text = ""
+                entry = ""
+            }
+        }
+    }
+    
+    @IBAction func backPressed(sender: AnyObject) {
+        charNum -= 1
+        
+        switch charNum {
+        case 1:
+            charOne.text = ""
+        case 2:
+            charTwo.text = ""
+        case 3:
+            charThree.text = ""
+        case 4:
+            charFour.text = ""
+        default:
+            break
+        }
+        entry = entry.substringToIndex(entry.endIndex.predecessor())
+    }
+    
+    @IBAction func numberPressed(sender: AnyObject) {
+        let num = (sender as! UIView).tag
+        entry.appendContentsOf("\(num)")
+        
+        switch charNum {
+        case 1:
+            charOne.text = dotChar
+            charNum += 1
+        case 2:
+            charTwo.text = dotChar
+            charNum += 1
+        case 3:
+            charThree.text = dotChar
+            charNum += 1
+        case 4:
+            charFour.text = dotChar
+            charNum += 1
+        default:
+            break
+        }
+    }
+
+    
+    // MARK: - Private API
+    
     private func hideElements() {
         // Hidden
         passwordLabel.hidden = true
@@ -117,11 +185,11 @@ class PasswordViewController: UIViewController {
             self.logoImage.alpha = 0
             
             self.enterButton.setTitle("Enter",
-                    forState: .Normal)
+                forState: .Normal)
             
             }, completion: { (status) in
                 self.logoImage.hidden = true
-            })
+        })
     }
     
     // Rounds the corners of all buttons
@@ -145,7 +213,7 @@ class PasswordViewController: UIViewController {
         fourButton.layer.cornerRadius =
             fourButton.frame.width/2
         fourButton.clipsToBounds = true
-    
+        
         // Button 5
         fiveButton.layer.cornerRadius =
             fiveButton.frame.width/2
@@ -176,70 +244,4 @@ class PasswordViewController: UIViewController {
             enterButton.frame.height/2
         enterButton.clipsToBounds = true
     }
-    
-    @IBAction func enterPressed(sender: AnyObject) {
-        
-        guard opened else {
-            opened = true
-            showElements()
-            
-            return
-        }
-        
-        // Check password
-        if charNum == 5 {
-            if entry == password {
-                performSegueWithIdentifier(kPasswordSegue, sender: self)
-            }
-            else {
-                charNum = 1
-                charOne.text = ""
-                charTwo.text = ""
-                charThree.text = ""
-                charFour.text = ""
-                entry = ""
-            }
-        }
-    }
-    
-    @IBAction func backPressed(sender: AnyObject) {
-        charNum -= 1
-        
-        switch charNum {
-        case 1:
-            charOne.text = ""
-        case 2:
-            charTwo.text = ""
-        case 3:
-            charThree.text = ""
-        case 4:
-            charFour.text = ""
-        default:
-            break
-        }
-        entry = entry.substringToIndex(entry.endIndex.predecessor())
-    }
-    
-    @IBAction func numberPressed(sender: AnyObject) {
-        let num = (sender as! UIView).tag
-        entry.appendContentsOf("\(num)")
-        
-        switch charNum {
-        case 1:
-            charOne.text = dotChar
-            charNum += 1
-        case 2:
-            charTwo.text = dotChar
-            charNum += 1
-        case 3:
-            charThree.text = dotChar
-            charNum += 1
-        case 4:
-            charFour.text = dotChar
-            charNum += 1
-        default:
-            break
-        }
-    }
-
 }

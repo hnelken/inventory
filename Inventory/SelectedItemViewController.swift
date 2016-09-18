@@ -16,24 +16,31 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
 
     // Public References
     var initSpecial: Bool?
+    var initQuantity: Int?
+    var initUnit: Int?
     var initGroup: Int?
     var initName: String?
     weak var initImage: UIImage?
     
     // Private Variables
-    private var selectedQuantity = 26
-    private var selectedUnit = 1
+    private var lastGroupRow = 0
+    private var lastQuantityRow = 0
+    private var lastUnitRow = 0
     private var isSpecial = false
     private var amountChanged = false
     private var saveShowing = false
     private var editingGroup = false
+    private var canSave = false
     
     // IB Outlets=
     @IBOutlet weak var itemGroupLabel: ShadowLabel!
     @IBOutlet weak var itemNameLabel: ShadowLabel!
     @IBOutlet weak var itemImageView: UIImageView!
     
-    @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet weak var amountPicker: UIPickerView!
+    @IBOutlet weak var groupPicker: UIPickerView!
+    
+    @IBOutlet weak var flipView: UIView!
     
     @IBOutlet weak var editImageButton: UIButton!
     @IBOutlet weak var addToCartButton: UIButton!
@@ -53,19 +60,31 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
         let touch = UITapGestureRecognizer(target: self, action: .tapHandler)
         view.addGestureRecognizer(touch)
         
-        // Display selected item settings
+        // Get special status of item
         if let special = initSpecial {
             isSpecial = special
-            if isSpecial {
-                specialButton.setImage(UIImage(named: kYellowStarImage), forState: .Normal)
-            }
-            else {
-                specialButton.setImage(UIImage(named: kWhiteStarImage), forState: .Normal)
-            }
+        }
+        else {
+            isSpecial = false
+            initSpecial = false
         }
         
+        // Show special status via button color
+        if isSpecial {
+            specialButton.setImage(UIImage(named: kYellowStarImage), forState: .Normal)
+        }
+        else {
+            specialButton.setImage(UIImage(named: kWhiteStarImage), forState: .Normal)
+        }
+        
+        // Fill in initial item group, name, and image
         if let group = initGroup {
             itemGroupLabel.text = kGroups[group]
+            lastGroupRow = group + 1
+        }
+        else {
+            lastGroupRow = 0
+            initGroup = -1
         }
         
         if let name = initName {
@@ -76,19 +95,36 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
             itemImageView.image = image
         }
 
-        // Preselect rows in picker view
-        if editingGroup {
-            editingGroup = false
+        // Get item quantity
+        if let quantity = initQuantity {
+            lastQuantityRow = quantity + 1
         }
-        pickerView.selectRow(selectedQuantity, inComponent: kQuantityComponent, animated: false)
-        pickerView.selectRow(selectedUnit, inComponent: kUnitComponent, animated: false)
+        else {
+            lastQuantityRow = 0
+            initQuantity = -1
+        }
         
-        // Hide/format buttons in view
-        hideSaveButton(false)
+        // Get unit of measurement
+        if let unit = initUnit {
+            lastUnitRow = unit + 1
+        }
+        else {
+            lastUnitRow = 0
+            initUnit = -1
+        }
+        
+        // Display group, quantity, and unit of measurement in picker views
+        amountPicker.selectRow(lastQuantityRow, inComponent: kQuantityComponent, animated: false)
+        amountPicker.selectRow(lastUnitRow, inComponent: kUnitComponent, animated: false)
+        groupPicker.selectRow(lastGroupRow, inComponent: kGroupComponent, animated: false)
+        
+        // Format views
         formatButtons()
         
-        // Hide text fields
+        // Hide necessary views
+        hideSaveButton(false)
         nameField.hidden = true
+        groupPicker.hidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -112,6 +148,7 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
         }
         specialButton.setImage(UIImage(named: imageName), forState: .Normal)
         
+        // Check if the UI should change
         checkForChanges()
     }
     
@@ -128,7 +165,7 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
   
     @IBAction func editGroupPressed(sender: AnyObject) {
-        flipPickerView(true)
+        flipPickerView()
     }
     
     @IBAction func editNamePressed(sender: AnyObject) {
@@ -138,49 +175,48 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
         nameField.becomeFirstResponder()
     }
     
-    @IBAction func editUnitPressed(sender: AnyObject) {
-        // Flip to picker
-    }
-    
     
     // MARK: - Picker View Datasource/Delegate
     
     // numberOfComponents
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return editingGroup ? 1 : 2
+        return pickerView == groupPicker ? 1 : 2
     }
     
     // numberOfRowsInComponent
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if editingGroup {
+        if pickerView == groupPicker {
             return kGroups.count + 1
         }
-        else {
-            return component == kQuantityComponent ? 101 : 6
+        else {  // Amount picker
+            return (component == kQuantityComponent ? 100 : 5) + 1
         }
     }
     
     // titleForRow
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
         // Check if the item group is being edited
-        if editingGroup {
+        if pickerView == groupPicker {
             // Return item group name selections
-            return row == 0 ? "<Select Group>" : kGroups[row - 1]
+            return row == 0 ? "< Group >" : kGroups[row - 1]
         }
-        else if component == kQuantityComponent {
-            // Return quantity selections
-            return row == 0 ? "<Select Quantity>" : "\(row - 1)"
-        }
-        else {
-            // Return unit type selections
-            return row == 0 ? "<Select Unit Type>" : "Unit type \(row)"
+        else {  // Amount picker
+            if component == kQuantityComponent {
+                // Return quantity selections
+                return row == 0 ? "< Amount >" : "\(row - 1)"
+            }
+            else {
+                // Return unit type selections
+                return row == 0 ? "< Units >" : "\(row - 1)'s"
+            }
         }
     }
     
     // didSelectRow
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
        
-        if !editingGroup {
+        if pickerView == amountPicker {
             itemQuantityOrUnitChanged(component, row: row)
         }
     }
@@ -190,9 +226,9 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if let vc = segue.destinationViewController as? InventoryViewController {
+        //if let vc = segue.destinationViewController as? InventoryViewController {
             //vc.rowChanged
-        }
+        //}
     }
 
     
@@ -209,13 +245,17 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
                 itemNameLabel.hidden = false
             }
             else if editingGroup {
-                // Check if a new group was selected
-                let selectedGroup = pickerView.selectedRowInComponent(kGroupComponent) - 1
-                if selectedGroup != -1 {
-                    itemGroupLabel.text = kGroups[selectedGroup]
+                // Get group selection
+                lastGroupRow = groupPicker.selectedRowInComponent(kGroupComponent)
+                
+                // Display valid selection via label
+                if lastGroupRow != 0 {
+                    itemGroupLabel.text = kGroups[lastGroupRow - 1]
+                    flipPickerView()
                 }
-                flipPickerView(false)
             }
+            
+            // Check if the UI should change
             checkForChanges()
         }
     }
@@ -223,50 +263,100 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     // MARK: - Private API
     
-    private func flipPickerView(toGroup: Bool) {
+    private func flipPickerView() {
         // Flip and reload the picker
-        if toGroup {
+        if !editingGroup {
             editingGroup = true
-            UIView.transitionWithView(self.pickerView, duration: 0.5, options: .TransitionFlipFromRight, animations: {
-                self.pickerView.reloadAllComponents()
+            UIView.transitionWithView(self.flipView,
+                                      duration: 0.75,
+                                      options: .TransitionFlipFromLeft,
+                                      animations: {
+                                        self.amountPicker.hidden = true
+                                        self.groupPicker.hidden = false
                 }, completion: nil)
         }
         else {
             editingGroup = false
-            UIView.transitionWithView(self.pickerView, duration: 0.5, options: .TransitionFlipFromLeft, animations: {
-                self.pickerView.reloadAllComponents()
+            UIView.transitionWithView(self.flipView,
+                                      duration: 0.75,
+                                      options: .TransitionFlipFromRight,
+                                      animations: {
+                                        self.amountPicker.hidden = false
+                                        self.groupPicker.hidden = true
                 }, completion: nil)
         }
     }
     
     private func itemQuantityOrUnitChanged(component: Int, row: Int) {
-        // Respond to selection in quantity/unit picker view depending on current changes status
-        if amountChanged {  // Changes have been made previously
-            // Check if ALL changes have been reverted
-            if selectedQuantity == pickerView.selectedRowInComponent(kQuantityComponent) &&
-                selectedUnit == pickerView.selectedRowInComponent(kUnitComponent) {
-                
-                // Changes have been reverted
-                amountChanged = false
+        
+        // Disallow saving for top row (with "<Select ...>" text)
+        guard row != 0 else {
+            amountChanged = false
+            if saveShowing {
+                hideSaveButton(true)
             }
-        }
-        else {  // No changes have been made yet
-            // Check for changes in...
-            switch component {
-            // Item quantity
-            case kQuantityComponent:
-                amountChanged = selectedQuantity != row
-            // Unit of measurement
-            case kUnitComponent:
-                amountChanged = selectedUnit != row
-            default:
-                // Otherwise previous selection was reselected
-                return
-            }
+            return
         }
         
-        // Signal that changes have been made
+        // Save selection
+        switch component {
+        case kQuantityComponent:
+            // Item quantity
+            lastQuantityRow = row
+        case kUnitComponent:
+            // Unit of measurement
+            lastUnitRow = row
+        default:
+            break
+        }
+        
+        // Check if last selections are different from the initial values
+        amountChanged = lastQuantityRow != initQuantity! + 1
+            || lastUnitRow != initUnit! + 1
+        
+        // Check if the UI should change
         checkForChanges()
+    }
+    
+    private func checkForChanges() {
+        // Check if the amount/unit, special status, item name, or group changed
+        let changesMade = amountChanged || initSpecial != isSpecial
+            || initName != itemNameLabel.text || kGroups[initGroup!] != itemGroupLabel.text
+        
+        // Show or hide the save button depending on the results
+        if changesMade {
+            if !saveShowing {
+                showSaveButton()
+            }
+        }
+        else if saveShowing {
+            hideSaveButton(true)
+        }
+    }
+    
+    private func showSaveButton() {
+        // Animate save button into view
+        saveShowing = true
+        UIView.animateWithDuration(0.25, animations: {
+                self.saveChangesButton.alpha = self.kButtonActiveAlpha
+            }, completion: { (status) in
+                self.saveChangesButton.userInteractionEnabled = true
+        })
+    }
+    
+    private func hideSaveButton(animated: Bool) {
+        // Hide save button via fade animation
+        saveChangesButton.userInteractionEnabled = false
+        saveShowing = false
+        
+        if !animated {
+            saveChangesButton.alpha = kButtonInactiveAlpha
+        }
+        else {
+            UIView.animateWithDuration(0.25, animations: {
+                self.saveChangesButton.alpha = self.kButtonInactiveAlpha
+            })
+        }
     }
     
     private func formatButtons() {
@@ -282,51 +372,6 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
         deleteItemButton.clipsToBounds = true
         saveChangesButton.clipsToBounds = true
     }
-    
-    private func checkForChanges() {
-        // Check if the amount/unit, special status, item name, or group changed
-        let changesMade = (amountChanged || isSpecial != initSpecial
-            || initName != itemNameLabel.text || kGroups[initGroup!] != itemGroupLabel.text)
-        
-        // Show or hide the save button depending on the results
-        if changesMade {
-            if !saveShowing {
-                showSaveButton()
-            }
-        }
-        else if saveShowing {
-            hideSaveButton(true)
-        }
-    }
-    
-    private func showSaveButton() {
-        // Animate save button into view
-        UIView.animateWithDuration(0.1, animations: {
-            self.saveChangesButton.alpha = self.kButtonActiveAlpha
-            
-            }, completion: { (status) in
-                self.saveChangesButton.userInteractionEnabled = true
-        })
-        
-        saveShowing = true
-    }
-    
-    private func hideSaveButton(animated: Bool) {
-        // Hide save button via fade animation
-        saveChangesButton.userInteractionEnabled = false
-        
-        if !animated {
-            saveChangesButton.alpha = kButtonInactiveAlpha
-        }
-        else {
-            UIView.animateWithDuration(0.1, animations: {
-                self.saveChangesButton.alpha = self.kButtonInactiveAlpha
-            })
-        }
-        
-        saveShowing = false
-    }
-    
     
 
 }
