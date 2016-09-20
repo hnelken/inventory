@@ -28,11 +28,13 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     private var lastUnitRow = 0
     private var isSpecial = false
     private var amountChanged = false
-    private var saveShowing = false
+    private var changesMade = false
     private var editingGroup = false
+    private var editingName = false
     private var canSave = false
     
     // IB Outlets=
+    @IBOutlet weak var pickerLabel: ShadowLabel!
     @IBOutlet weak var itemGroupLabel: ShadowLabel!
     @IBOutlet weak var itemNameLabel: ShadowLabel!
     @IBOutlet weak var itemImageView: UIImageView!
@@ -42,10 +44,12 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     @IBOutlet weak var flipView: UIView!
     
-    @IBOutlet weak var editImageButton: UIButton!
-    @IBOutlet weak var addToCartButton: UIButton!
-    @IBOutlet weak var deleteItemButton: UIButton!
-    @IBOutlet weak var saveChangesButton: UIButton!
+    @IBOutlet weak var editGroupButton: FadingButton!
+    @IBOutlet weak var editNameButton: FadingButton!
+    @IBOutlet weak var editImageButton: FadingButton!
+    @IBOutlet weak var addToCartButton: FadingButton!
+    @IBOutlet weak var deleteItemButton: FadingButton!
+    @IBOutlet weak var saveChangesButton: FadingButton!
     @IBOutlet weak var specialButton: UIButton!
     
     @IBOutlet weak var nameField: UITextField!
@@ -80,11 +84,11 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
         // Fill in initial item group, name, and image
         if let group = initGroup {
             itemGroupLabel.text = kGroups[group]
-            lastGroupRow = group + 1
+            lastGroupRow = group
         }
         else {
             lastGroupRow = 0
-            initGroup = -1
+            initGroup = 0
         }
         
         if let name = initName {
@@ -97,20 +101,20 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
 
         // Get item quantity
         if let quantity = initQuantity {
-            lastQuantityRow = quantity + 1
+            lastQuantityRow = quantity
         }
         else {
             lastQuantityRow = 0
-            initQuantity = -1
+            initQuantity = 0
         }
         
         // Get unit of measurement
         if let unit = initUnit {
-            lastUnitRow = unit + 1
+            lastUnitRow = unit
         }
         else {
             lastUnitRow = 0
-            initUnit = -1
+            initUnit = 0
         }
         
         // Display group, quantity, and unit of measurement in picker views
@@ -118,21 +122,78 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
         amountPicker.selectRow(lastUnitRow, inComponent: kUnitComponent, animated: false)
         groupPicker.selectRow(lastGroupRow, inComponent: kGroupComponent, animated: false)
         
-        // Format views
-        formatButtons()
-        
         // Hide necessary views
-        hideSaveButton(false)
+        saveChangesButton.hide(false)
         nameField.hidden = true
         groupPicker.hidden = true
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    
+    // MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        //if let vc = segue.destinationViewController as? InventoryViewController {
+        //vc.rowChanged
+        //}
     }
     
+    
+    // MARK: - Picker View Datasource/Delegate
+    
+    // numberOfComponents
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return pickerView == groupPicker ? 1 : 2
+    }
+    
+    // numberOfRowsInComponent
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if pickerView == groupPicker {
+            return kGroups.count
+        }
+        else {  // Amount picker
+            return (component == kQuantityComponent ? 100 : 5)
+        }
+    }
+    
+    // titleForRow
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        // Check if the item group is being edited
+        if pickerView == groupPicker {
+            // Return item group name selections
+            return kGroups[row]
+        }
+        else {  // Amount picker
+            if component == kQuantityComponent {
+                // Return quantity selections
+                return "\(row)"
+            }
+            else {
+                // Return unit type selections
+                return "\(row)'s"
+            }
+        }
+    }
+    
+    // didSelectRow
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        if pickerView == amountPicker {
+            itemQuantityOrUnitChanged(component, row: row)
+        }
+    }
 
+    
+    // MARK: - Gesture Handlers
+    
+    func tapHandler(sender: UIGestureRecognizer) {
+        if sender.state == .Ended {
+            //endAllEditing()
+        }
+    }
+
+    
     // MARK: - IB Actions
     
     @IBAction func specialPressed(sender: AnyObject) {
@@ -159,128 +220,134 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     @IBAction func deletePressed(sender: AnyObject) {
+        // End editing if in progress
+        if editingGroup || editingName {
+            endAllEditing()
+        }
+        else {  // Otherwise function as delete button
+            // Throw alert view
+        }
     }
     
     @IBAction func editImagePressed(sender: AnyObject) {
     }
   
     @IBAction func editGroupPressed(sender: AnyObject) {
-        flipPickerView()
+        startEditingGroup()
     }
     
     @IBAction func editNamePressed(sender: AnyObject) {
-        nameField.text = itemNameLabel.text
-        nameField.hidden = false
-        itemNameLabel.hidden = true
-        nameField.becomeFirstResponder()
-    }
-    
-    
-    // MARK: - Picker View Datasource/Delegate
-    
-    // numberOfComponents
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return pickerView == groupPicker ? 1 : 2
-    }
-    
-    // numberOfRowsInComponent
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView == groupPicker {
-            return kGroups.count + 1
-        }
-        else {  // Amount picker
-            return (component == kQuantityComponent ? 100 : 5) + 1
-        }
-    }
-    
-    // titleForRow
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        
-        // Check if the item group is being edited
-        if pickerView == groupPicker {
-            // Return item group name selections
-            return row == 0 ? "< Group >" : kGroups[row - 1]
-        }
-        else {  // Amount picker
-            if component == kQuantityComponent {
-                // Return quantity selections
-                return row == 0 ? "< Amount >" : "\(row - 1)"
-            }
-            else {
-                // Return unit type selections
-                return row == 0 ? "< Units >" : "\(row - 1)'s"
-            }
-        }
-    }
-    
-    // didSelectRow
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-       
-        if pickerView == amountPicker {
-            itemQuantityOrUnitChanged(component, row: row)
-        }
-    }
-    
-    
-    // MARK: - Navigation
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        //if let vc = segue.destinationViewController as? InventoryViewController {
-            //vc.rowChanged
-        //}
-    }
-
-    
-    // MARK: - Gesture Handlers
-    
-    func tapHandler(sender: UIGestureRecognizer) {
-        if sender.state == .Ended {
-            // Check if the item name of group was being edited
-            if !nameField.hidden {
-                // Name editing should end, replace text and hide text field
-                itemNameLabel.text = nameField.text
-                nameField.resignFirstResponder()
-                nameField.hidden = true
-                itemNameLabel.hidden = false
-            }
-            else if editingGroup {
-                // Get group selection
-                lastGroupRow = groupPicker.selectedRowInComponent(kGroupComponent)
-                
-                // Display valid selection via label
-                if lastGroupRow != 0 {
-                    itemGroupLabel.text = kGroups[lastGroupRow - 1]
-                    flipPickerView()
-                }
-            }
-            
-            // Check if the UI should change
-            checkForChanges()
-        }
+        startEditingName()
     }
     
     
     // MARK: - Private API
     
+    private func startEditingName() {
+        editingName = true
+        
+        // Show and fill text field, hiding label
+        nameField.text = itemNameLabel.text
+        nameField.hidden = false
+        itemNameLabel.hidden = true
+        
+        // Handle buttons
+        deleteItemButton.setTitle(kDoneButtonTitle, forState: .Normal)
+        editNameButton.toggleHighlight()
+        editGroupButton.hide(true)
+        editImageButton.hide(true)
+        addToCartButton.hide(true)
+        saveChangesButton.hide(true)
+        
+        // Bring up keyboard
+        nameField.becomeFirstResponder()
+    }
+    
+    private func stopEditingName() {
+        editingName = false
+        
+        // Change and show label and hide text field and keyboard
+        itemNameLabel.text = nameField.text
+        nameField.resignFirstResponder()
+        itemNameLabel.hidden = false
+        nameField.hidden = true
+        
+        // Handle buttons
+        deleteItemButton.setTitle(kDeleteButtonTitle, forState: .Normal)
+        editNameButton.toggleHighlight()
+        editGroupButton.show()
+        editImageButton.show()
+        addToCartButton.show()
+        // Save button is accounted for in checkForChanges()
+    }
+    
+    private func startEditingGroup() {
+        editingGroup = true
+        
+        // Handle buttons
+        deleteItemButton.setTitle(kDoneButtonTitle, forState: .Normal)
+        editGroupButton.toggleHighlight()
+        editNameButton.hide(true)
+        editImageButton.hide(true)
+        addToCartButton.hide(true)
+        saveChangesButton.hide(true)
+        
+        flipPickerView()
+    }
+    
+    private func stopEditingGroup() {
+        editingGroup = false
+        
+        // Get group selection
+        lastGroupRow = groupPicker.selectedRowInComponent(kGroupComponent)
+        
+        // Change text label
+        itemGroupLabel.text = kGroups[lastGroupRow]
+        
+        // Handle buttons
+        deleteItemButton.setTitle(kDeleteButtonTitle, forState: .Normal)
+        editGroupButton.toggleHighlight()
+        editNameButton.show()
+        editImageButton.show()
+        addToCartButton.show()
+        // Save button is accounted for in checkForChanges()
+        
+        flipPickerView()
+    }
+    
+    private func endAllEditing() {
+        // Check if the item name or group was being edited
+        if editingName {
+            stopEditingName()
+        }
+        else if editingGroup {
+            stopEditingGroup()
+        }
+        
+        // Check if the UI should change
+        checkForChanges()
+    }
+    
     private func flipPickerView() {
         // Flip and reload the picker
-        if !editingGroup {
-            editingGroup = true
+        if editingGroup {
+            // Editing just began, flip to group picker
             UIView.transitionWithView(self.flipView,
                                       duration: 0.75,
                                       options: .TransitionFlipFromLeft,
                                       animations: {
+                                        self.pickerLabel.text = "Current item group:"
                                         self.amountPicker.hidden = true
                                         self.groupPicker.hidden = false
                 }, completion: nil)
         }
         else {
-            editingGroup = false
+            // Editing just ended, flip to quantity/units picker
             UIView.transitionWithView(self.flipView,
                                       duration: 0.75,
                                       options: .TransitionFlipFromRight,
                                       animations: {
+                                        self.pickerLabel.text = "Current amount in stock:"
                                         self.amountPicker.hidden = false
                                         self.groupPicker.hidden = true
                 }, completion: nil)
@@ -288,15 +355,6 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     private func itemQuantityOrUnitChanged(component: Int, row: Int) {
-        
-        // Disallow saving for top row (with "<Select ...>" text)
-        guard row != 0 else {
-            amountChanged = false
-            if saveShowing {
-                hideSaveButton(true)
-            }
-            return
-        }
         
         // Save selection
         switch component {
@@ -311,8 +369,8 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
         }
         
         // Check if last selections are different from the initial values
-        amountChanged = lastQuantityRow != initQuantity! + 1
-            || lastUnitRow != initUnit! + 1
+        amountChanged = lastQuantityRow != initQuantity!
+            || lastUnitRow != initUnit!
         
         // Check if the UI should change
         checkForChanges()
@@ -320,58 +378,15 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     private func checkForChanges() {
         // Check if the amount/unit, special status, item name, or group changed
-        let changesMade = amountChanged || initSpecial != isSpecial
+        changesMade = amountChanged || initSpecial != isSpecial
             || initName != itemNameLabel.text || kGroups[initGroup!] != itemGroupLabel.text
         
         // Show or hide the save button depending on the results
         if changesMade {
-            if !saveShowing {
-                showSaveButton()
-            }
-        }
-        else if saveShowing {
-            hideSaveButton(true)
-        }
-    }
-    
-    private func showSaveButton() {
-        // Animate save button into view
-        saveShowing = true
-        UIView.animateWithDuration(0.25, animations: {
-                self.saveChangesButton.alpha = self.kButtonActiveAlpha
-            }, completion: { (status) in
-                self.saveChangesButton.userInteractionEnabled = true
-        })
-    }
-    
-    private func hideSaveButton(animated: Bool) {
-        // Hide save button via fade animation
-        saveChangesButton.userInteractionEnabled = false
-        saveShowing = false
-        
-        if !animated {
-            saveChangesButton.alpha = kButtonInactiveAlpha
+            saveChangesButton.show()
         }
         else {
-            UIView.animateWithDuration(0.25, animations: {
-                self.saveChangesButton.alpha = self.kButtonInactiveAlpha
-            })
+            saveChangesButton.hide(true)
         }
     }
-    
-    private func formatButtons() {
-        // Corner radii
-        editImageButton.layer.cornerRadius = editImageButton.frame.height / 2
-        addToCartButton.layer.cornerRadius = addToCartButton.frame.height / 2
-        deleteItemButton.layer.cornerRadius = deleteItemButton.frame.height / 2
-        saveChangesButton.layer.cornerRadius = saveChangesButton.frame.height / 2
-        
-        // Clip buttons to bounds
-        editImageButton.clipsToBounds = true
-        addToCartButton.clipsToBounds = true
-        deleteItemButton.clipsToBounds = true
-        saveChangesButton.clipsToBounds = true
-    }
-    
-
 }

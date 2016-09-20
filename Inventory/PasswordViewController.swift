@@ -61,7 +61,7 @@ class PasswordViewController: UIViewController {
         
         // Check password
         if charNum == 5 {
-            if entry == password {
+            if entry == kPassword {
                 performSegueWithIdentifier(kPasswordSegue, sender: self)
             }
             else {
@@ -99,16 +99,16 @@ class PasswordViewController: UIViewController {
         
         switch charNum {
         case 1:
-            charOne.text = dotChar
+            charOne.text = kDotChar
             charNum += 1
         case 2:
-            charTwo.text = dotChar
+            charTwo.text = kDotChar
             charNum += 1
         case 3:
-            charThree.text = dotChar
+            charThree.text = kDotChar
             charNum += 1
         case 4:
-            charFour.text = dotChar
+            charFour.text = kDotChar
             charNum += 1
         default:
             break

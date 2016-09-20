@@ -29,12 +29,16 @@ let kQuantityComponent = 0
 let kUnitComponent = 1
 
 // FILENAME CONSTANTS
+let kWhitePencilImage = "penic-white"
+let kYellowPencilImage = "penic-highlight"
 let kWhiteStarImage = "star-white"
 let kYellowStarImage = "star-yellow"
 
 // CONVENIENCE
-let dotChar = "•"
-let password = "9999"
+let kDeleteButtonTitle = "Delete Item"
+let kDoneButtonTitle = "Done"
+let kDotChar = "•"
+let kPassword = "9999"
 
 public extension String {
     var NS: NSString { return (self as NSString) }
