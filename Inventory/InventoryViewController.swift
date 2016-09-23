@@ -16,8 +16,8 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     fileprivate var itemGroup: Int?
     fileprivate var itemName: String?
     fileprivate var itemImage: UIImage?
+    fileprivate var selectedIndex: IndexPath = IndexPath(row: 0, section: 0)
     fileprivate var imageCaches: [Int : [UIImage]] = [:]
-    
     fileprivate var sectionItems: [Int : [InventoryItem]] = [
         :
     ]
@@ -28,11 +28,11 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
 
         for i in 0...kGroups.count - 1 {
             sectionItems[i] = [
-                InventoryItem(name: "Item", group: i, special: false),
-                InventoryItem(name: "Item", group: i, special: false),
-                InventoryItem(name: "Item", group: i, special: false),
-                InventoryItem(name: "Item", group: i, special: false),
-                InventoryItem(name: "Item", group: i, special: false)
+                InventoryItem(name: "\(kGroups[i])-Item 1", group: i, special: false),
+                InventoryItem(name: "\(kGroups[i])-Item 2", group: i, special: false),
+                InventoryItem(name: "\(kGroups[i])-Item 3", group: i, special: false),
+                InventoryItem(name: "\(kGroups[i])-Item 4", group: i, special: false),
+                InventoryItem(name: "\(kGroups[i])-Item 5", group: i, special: false)
             ]
         }
     }
@@ -78,20 +78,12 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
             return InventoryTableCell()
         }
         
-        guard let items = sectionItems[indexPath.section] else {
-            print("ERROR: Data not available for index path \(indexPath)")
-            return cell
+        // Get item for index path and fill cell with item info
+        if let item = getItem(for: indexPath) {
+            cell.cellTitle.text = "\(item.name)"
+            cell.cellNumber.text = "\(item.quantity)"
+            cell.cellImageView.image = getImage(for: indexPath)
         }
-        
-        guard items.count > indexPath.row else {
-            print("ERROR: Data not available for index path \(indexPath)")
-            return cell
-        }
-        
-        let item = items[indexPath.row]
-        cell.cellTitle.text = "\(item.name) \(indexPath.row)"
-        cell.cellNumber.text = "\(item.quantity)"
-        cell.cellImageView.image = getImageFromCache(indexPath: indexPath)
         cell.backgroundColor = UIColor.clear
         
         return cell
@@ -100,34 +92,31 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     // didSelectRow
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        itemQuantity = 25
-        itemUnit = 2
-        itemGroup = (indexPath as NSIndexPath).section
-        itemName = "Item Number \((indexPath as NSIndexPath).row)"
-        itemImage = UIImage(named: "cup.png")
-        
+        // Save selected index and perform segue
+        selectedIndex = indexPath
         performSegue(withIdentifier: kItemSelectSegue, sender: self)
-        
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
     
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let vc = segue.destination as? SelectedItemViewController {
-            vc.initQuantity = itemQuantity
-            vc.initUnit = itemUnit
-            vc.initGroup = itemGroup
-            vc.initName = itemName
-            vc.initImage = itemImage
+            
+            // Get item info and image to pass to detail view
+            vc.initImage = getImage(for: selectedIndex)
+            if let item = getItem(for: selectedIndex) {
+                vc.initItem = item
+            }
         }
     }
 
     
     // MARK: - Private API
-    fileprivate func getImageFromCache(indexPath: IndexPath) -> UIImage {
+    
+    fileprivate func getImage(for indexPath: IndexPath) -> UIImage {
         // Get image cache for section
         var sectionCache: [UIImage] = []
         if let cache = imageCaches[indexPath.section] {
@@ -153,5 +142,22 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
         //
         
         return placeHolderImage
+    }
+    
+    fileprivate func getItem(for indexPath: IndexPath) -> InventoryItem? {
+        // Safely get the item list for the index path's section
+        guard let items = sectionItems[indexPath.section] else {
+            print("ERROR: Data not available for index path \(indexPath)")
+            return nil
+        }
+        
+        // Ensure the index path is not out of bounds
+        guard items.count > indexPath.row else {
+            print("ERROR: Data not available for index path \(indexPath)")
+            return nil
+        }
+        
+        // Return the item for the index path
+        return items[indexPath.row]
     }
 }

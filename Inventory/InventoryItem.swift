@@ -16,6 +16,7 @@ class InventoryItem {
     var units: Int = 2
     var quantity: Int = 25
     var special: Bool = false
+    var indexPath: IndexPath?
     
     init(name: String, group: Int, special: Bool) {
         self.name = name

@@ -15,12 +15,14 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     let kButtonActiveAlpha: CGFloat = 0.8
 
     // Public References
-    var initSpecial: Bool?
-    var initQuantity: Int?
-    var initUnit: Int?
-    var initGroup: Int?
-    var initName: String?
+    var initItem: InventoryItem?
     weak var initImage: UIImage?
+    
+    var initSpecial: Bool!
+    var initQuantity: Int!
+    var initUnit: Int!
+    var initGroup: Int!
+    var initName: String!
     
     // Private Variables
     fileprivate var lastGroupRow = 0
@@ -64,16 +66,45 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
         let touch = UITapGestureRecognizer(target: self, action: .tapHandler)
         view.addGestureRecognizer(touch)
         
-        // Get special status of item
-        if let special = initSpecial {
-            isSpecial = special
+        // Get item passed via segue if available
+        let item: InventoryItem
+        if let thisItem = initItem {
+            item = thisItem
         }
         else {
-            isSpecial = false
-            initSpecial = false
+            item = InventoryItem(name: "(default)", group: 0, special: false)
         }
         
-        // Show special status via button color
+        // Transfer settings from selected item
+        
+        // - Special
+        isSpecial = item.special
+        initSpecial = item.special
+        
+        // - Group
+        initGroup = item.group
+        lastGroupRow = item.group
+        
+        // - Name
+        initName = item.name
+        
+        // - Quantity
+        initQuantity = item.quantity
+        lastQuantityRow = initQuantity
+        
+        // - Units of measurement
+        initUnit = item.units
+        lastUnitRow = initUnit
+        
+        
+        // Display settings from selected item
+        
+        // - Show item image
+        if let image = initImage {
+            itemImageView.image = image
+        }
+        
+        // - Show special status via button color
         if isSpecial {
             specialButton.setImage(UIImage(named: kYellowStarImage), for: UIControlState())
         }
@@ -81,46 +112,14 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
             specialButton.setImage(UIImage(named: kWhiteStarImage), for: UIControlState())
         }
         
-        // Fill in initial item group, name, and image
-        if let group = initGroup {
-            itemGroupLabel.text = kGroups[group]
-            lastGroupRow = group
-        }
-        else {
-            lastGroupRow = 0
-            initGroup = 0
-        }
+        // - Show item group and name
+        itemGroupLabel.text = kGroups[initGroup]
+        itemNameLabel.text = initName
         
-        if let name = initName {
-            itemNameLabel.text = name
-        }
-        
-        if let image = initImage {
-            itemImageView.image = image
-        }
-
-        // Get item quantity
-        if let quantity = initQuantity {
-            lastQuantityRow = quantity
-        }
-        else {
-            lastQuantityRow = 0
-            initQuantity = 0
-        }
-        
-        // Get unit of measurement
-        if let unit = initUnit {
-            lastUnitRow = unit
-        }
-        else {
-            lastUnitRow = 0
-            initUnit = 0
-        }
-        
-        // Display group, quantity, and unit of measurement in picker views
+        // - Show current selections in picker views
+        groupPicker.selectRow(lastGroupRow, inComponent: kGroupComponent, animated: false)
         amountPicker.selectRow(lastQuantityRow, inComponent: kQuantityComponent, animated: false)
         amountPicker.selectRow(lastUnitRow, inComponent: kUnitComponent, animated: false)
-        groupPicker.selectRow(lastGroupRow, inComponent: kGroupComponent, animated: false)
         
         // Hide necessary views
         saveChangesButton.disable()
@@ -366,23 +365,23 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
         if editingGroup {
             // Editing just began, flip to group picker
             UIView.transition(with: self.flipView,
-                                      duration: 0.75,
-                                      options: .transitionFlipFromLeft,
-                                      animations: {
-                                        self.pickerLabel.text = "Current item group:"
-                                        self.amountPicker.isHidden = true
-                                        self.groupPicker.isHidden = false
+                              duration: 0.75,
+                              options: .transitionFlipFromLeft,
+                              animations: {
+                                self.pickerLabel.text = "Current item group:"
+                                self.amountPicker.isHidden = true
+                                self.groupPicker.isHidden = false
                 }, completion: nil)
         }
         else {
             // Editing just ended, flip to quantity/units picker
             UIView.transition(with: self.flipView,
-                                      duration: 0.75,
-                                      options: .transitionFlipFromRight,
-                                      animations: {
-                                        self.pickerLabel.text = "Current amount in stock:"
-                                        self.amountPicker.isHidden = false
-                                        self.groupPicker.isHidden = true
+                              duration: 0.75,
+                              options: .transitionFlipFromRight,
+                              animations: {
+                                self.pickerLabel.text = "Current amount in stock:"
+                                self.amountPicker.isHidden = false
+                                self.groupPicker.isHidden = true
                 }, completion: nil)
         }
     }
@@ -412,7 +411,7 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     fileprivate func checkForChanges() {
         // Check if the amount/unit, special status, item name, or group changed
         changesMade = amountChanged || initSpecial != isSpecial
-            || initName != itemNameLabel.text || kGroups[initGroup!] != itemGroupLabel.text
+            || initName != itemNameLabel.text || kGroups[initGroup] != itemGroupLabel.text
         
         // Show or hide the save button depending on the results
         if changesMade {
