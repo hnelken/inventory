@@ -23,7 +23,6 @@ let kGroups = [
     "Nuts/Sweets", "Paper Goods", "Produce",
     "Spices/Herbs"
 ]
-
 let kGroupComponent = 0
 let kQuantityComponent = 0
 let kUnitComponent = 1

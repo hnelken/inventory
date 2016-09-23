@@ -18,10 +18,23 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     fileprivate var itemImage: UIImage?
     fileprivate var imageCaches: [Int : [UIImage]] = [:]
     
+    fileprivate var sectionItems: [Int : [InventoryItem]] = [
+        :
+    ]
+    
     // MARK: - View Controller
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        for i in 0...kGroups.count - 1 {
+            sectionItems[i] = [
+                InventoryItem(name: "Item", group: i, special: false),
+                InventoryItem(name: "Item", group: i, special: false),
+                InventoryItem(name: "Item", group: i, special: false),
+                InventoryItem(name: "Item", group: i, special: false),
+                InventoryItem(name: "Item", group: i, special: false)
+            ]
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,12 +54,15 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     
     // numberOfSections
     func numberOfSections(in tableView: UITableView) -> Int {
-        return kGroups.count
+        return sectionItems.count
     }
     
     // numberOfRowsInSection
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        guard let items = sectionItems[section] else {
+            return 0
+        }
+        return items.count
     }
     
     // titleForHeaderInSection
@@ -57,31 +73,26 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     // cellForRow
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: kInventoryCellID) as! InventoryTableCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: kInventoryCellID) as? InventoryTableCell else {
+            print("ERROR: Inventory table cell could not be dequeued")
+            return InventoryTableCell()
+        }
         
+        guard let items = sectionItems[indexPath.section] else {
+            print("ERROR: Data not available for index path \(indexPath)")
+            return cell
+        }
+        
+        guard items.count > indexPath.row else {
+            print("ERROR: Data not available for index path \(indexPath)")
+            return cell
+        }
+        
+        let item = items[indexPath.row]
+        cell.cellTitle.text = "\(item.name) \(indexPath.row)"
+        cell.cellNumber.text = "\(item.quantity)"
+        cell.cellImageView.image = getImageFromCache(indexPath: indexPath)
         cell.backgroundColor = UIColor.clear
-        cell.cellTitle.text = "Item Number \((indexPath as NSIndexPath).row)"
-        
-        // Get image cache for section
-        var sectionCache: [UIImage] = []
-        if let cache = imageCaches[(indexPath as NSIndexPath).section] {
-            sectionCache = cache
-        }
-        
-        // Check for image cache hit
-        if sectionCache.count > (indexPath as NSIndexPath).row {
-            cell.cellImageView.image = sectionCache[(indexPath as NSIndexPath).row]
-        }
-        else if let placeHolderImage = UIImage(named: "cup.png") {
-            // Otherwise use a placeholder image and attempt to download the real image
-            sectionCache.append(placeHolderImage)
-            cell.cellImageView.image = placeHolderImage
-            imageCaches[(indexPath as NSIndexPath).section] = sectionCache
-            
-            //
-            // ADD IMAGE DOWNLOAD OPERATION TO QUEUE HERE
-            //
-        }
         
         return cell
     }
@@ -114,4 +125,33 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
 
+    
+    // MARK: - Private API
+    fileprivate func getImageFromCache(indexPath: IndexPath) -> UIImage {
+        // Get image cache for section
+        var sectionCache: [UIImage] = []
+        if let cache = imageCaches[indexPath.section] {
+            sectionCache = cache
+        }
+        
+        // Check for image cache hit
+        if sectionCache.count > indexPath.row {
+            return sectionCache[indexPath.row]
+        }
+        
+        guard let placeHolderImage = UIImage(named: "cup.png") else {
+            print("ERROR: Couldn't retrieve placeholder image")
+            return UIImage()
+        }
+        
+        // Otherwise use a placeholder image and attempt to download the real image
+        sectionCache.append(placeHolderImage)
+        imageCaches[indexPath.section] = sectionCache
+        
+        //
+        // ADD IMAGE DOWNLOAD OPERATION TO QUEUE HERE
+        //
+        
+        return placeHolderImage
+    }
 }
