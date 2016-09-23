@@ -10,17 +10,17 @@ import UIKit
 
 class PasswordViewController: UIViewController {
 
-    @IBOutlet weak var oneButton: UIButton!
-    @IBOutlet weak var twoButton: UIButton!
-    @IBOutlet weak var threeButton: UIButton!
-    @IBOutlet weak var fourButton: UIButton!
-    @IBOutlet weak var fiveButton: UIButton!
-    @IBOutlet weak var sixButton: UIButton!
-    @IBOutlet weak var sevenButton: UIButton!
-    @IBOutlet weak var eightButton: UIButton!
-    @IBOutlet weak var nineButton: UIButton!
-    @IBOutlet weak var enterButton: UIButton!
-    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var oneButton: FadingButton!
+    @IBOutlet weak var twoButton: FadingButton!
+    @IBOutlet weak var threeButton: FadingButton!
+    @IBOutlet weak var fourButton: FadingButton!
+    @IBOutlet weak var fiveButton: FadingButton!
+    @IBOutlet weak var sixButton: FadingButton!
+    @IBOutlet weak var sevenButton: FadingButton!
+    @IBOutlet weak var eightButton: FadingButton!
+    @IBOutlet weak var nineButton: FadingButton!
+    @IBOutlet weak var enterButton: FadingButton!
+    @IBOutlet weak var backButton: FadingButton!
     
     @IBOutlet weak var charOne: UILabel!
     @IBOutlet weak var charTwo: UILabel!
@@ -32,16 +32,16 @@ class PasswordViewController: UIViewController {
     
     @IBOutlet weak var logoImage: UIImageView!
     
-    private var charNum: Int = 1
-    private var entry: String = ""
-    private var opened: Bool = false
+    fileprivate var charNum: Int = 1
+    fileprivate var entry: String = ""
+    fileprivate var opened: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        formatButtons()
+        //formatButtons()
         hideElements()
     }
 
@@ -50,7 +50,7 @@ class PasswordViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func enterPressed(sender: AnyObject) {
+    @IBAction func enterPressed(_ sender: AnyObject) {
         
         guard opened else {
             opened = true
@@ -62,7 +62,7 @@ class PasswordViewController: UIViewController {
         // Check password
         if charNum == 5 {
             if entry == kPassword {
-                performSegueWithIdentifier(kPasswordSegue, sender: self)
+                performSegue(withIdentifier: kPasswordSegue, sender: self)
             }
             else {
                 charNum = 1
@@ -75,7 +75,7 @@ class PasswordViewController: UIViewController {
         }
     }
     
-    @IBAction func backPressed(sender: AnyObject) {
+    @IBAction func backPressed(_ sender: AnyObject) {
         charNum -= 1
         
         switch charNum {
@@ -90,12 +90,12 @@ class PasswordViewController: UIViewController {
         default:
             break
         }
-        entry = entry.substringToIndex(entry.endIndex.predecessor())
+        entry = entry.substring(to: entry.characters.index(before: entry.endIndex))
     }
     
-    @IBAction func numberPressed(sender: AnyObject) {
+    @IBAction func numberPressed(_ sender: AnyObject) {
         let num = (sender as! UIView).tag
-        entry.appendContentsOf("\(num)")
+        entry.append("\(num)")
         
         switch charNum {
         case 1:
@@ -118,21 +118,38 @@ class PasswordViewController: UIViewController {
     
     // MARK: - Private API
     
-    private func hideElements() {
-        // Hidden
-        passwordLabel.hidden = true
-        entryLabel.hidden = true
-        backButton.hidden = true
+    fileprivate func hideElements() {
+        // Labels
+        self.passwordLabel.hide()
+        self.entryLabel.hide()
         
-        oneButton.hidden = true
-        twoButton.hidden = true
-        threeButton.hidden = true
-        fourButton.hidden = true
-        fiveButton.hidden = true
-        sixButton.hidden = true
-        sevenButton.hidden = true
-        eightButton.hidden = true
-        nineButton.hidden = true
+        // Buttons
+        self.backButton.hide()
+        self.oneButton.hide()
+        self.twoButton.hide()
+        self.threeButton.hide()
+        self.fourButton.hide()
+        self.fiveButton.hide()
+        self.sixButton.hide()
+        self.sevenButton.hide()
+        self.eightButton.hide()
+        self.nineButton.hide()
+        
+        /*
+        // Hidden
+        passwordLabel.isHidden = true
+        entryLabel.isHidden = true
+        backButton.isHidden = true
+        
+        oneButton.isHidden = true
+        twoButton.isHidden = true
+        threeButton.isHidden = true
+        fourButton.isHidden = true
+        fiveButton.isHidden = true
+        sixButton.isHidden = true
+        sevenButton.isHidden = true
+        eightButton.isHidden = true
+        nineButton.isHidden = true
         
         // Alphas
         self.passwordLabel.alpha = 0
@@ -148,26 +165,46 @@ class PasswordViewController: UIViewController {
         self.sevenButton.alpha = 0
         self.eightButton.alpha = 0
         self.nineButton.alpha = 0
+ */
     }
     
-    private func showElements() {
-        // Hidden
-        passwordLabel.hidden = false
-        entryLabel.hidden = false
-        backButton.hidden = false
+    fileprivate func showElements() {
+        /* Hidden
+        passwordLabel.isHidden = false
+        entryLabel.isHidden = false
+        backButton.isHidden = false
         
-        oneButton.hidden = false
-        twoButton.hidden = false
-        threeButton.hidden = false
-        fourButton.hidden = false
-        fiveButton.hidden = false
-        sixButton.hidden = false
-        sevenButton.hidden = false
-        eightButton.hidden = false
-        nineButton.hidden = false
+        oneButton.isHidden = false
+        twoButton.isHidden = false
+        threeButton.isHidden = false
+        fourButton.isHidden = false
+        fiveButton.isHidden = false
+        sixButton.isHidden = false
+        sevenButton.isHidden = false
+        eightButton.isHidden = false
+        nineButton.isHidden = false
+        */
         
         // Animate alphas
-        UIView.animateWithDuration(1.0, animations: {
+        UIView.animate(withDuration: 1.0, animations: {
+            
+            // Labels
+            self.passwordLabel.show()
+            self.entryLabel.show()
+            
+            // Buttons
+            self.backButton.enable()
+            self.oneButton.enable()
+            self.twoButton.enable()
+            self.threeButton.enable()
+            self.fourButton.enable()
+            self.fiveButton.enable()
+            self.sixButton.enable()
+            self.sevenButton.enable()
+            self.eightButton.enable()
+            self.nineButton.enable()
+            
+            /*
             self.passwordLabel.alpha = 1
             self.entryLabel.alpha = 1
             self.backButton.alpha = 1
@@ -181,19 +218,20 @@ class PasswordViewController: UIViewController {
             self.sevenButton.alpha = 1
             self.eightButton.alpha = 1
             self.nineButton.alpha = 1
+            */
             
             self.logoImage.alpha = 0
             
             self.enterButton.setTitle("Enter",
-                forState: .Normal)
+                for: UIControlState())
             
             }, completion: { (status) in
-                self.logoImage.hidden = true
+                self.logoImage.isHidden = true
         })
     }
     
     // Rounds the corners of all buttons
-    private func formatButtons() {
+    fileprivate func formatButtons() {
         // Button 1
         oneButton.layer.cornerRadius =
             oneButton.frame.width/2

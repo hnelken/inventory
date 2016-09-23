@@ -35,10 +35,12 @@ let kWhiteStarImage = "star-white"
 let kYellowStarImage = "star-yellow"
 
 // CONVENIENCE
+let kButtonFadeDuration = 0.35
 let kDeleteButtonTitle = "Delete Item"
 let kDoneButtonTitle = "Done"
-let kDotChar = "•"
 let kPassword = "9999"
+let kDotChar = "•"
+
 
 public extension String {
     var NS: NSString { return (self as NSString) }

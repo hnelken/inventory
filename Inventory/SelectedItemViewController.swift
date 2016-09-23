@@ -23,15 +23,15 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     weak var initImage: UIImage?
     
     // Private Variables
-    private var lastGroupRow = 0
-    private var lastQuantityRow = 0
-    private var lastUnitRow = 0
-    private var isSpecial = false
-    private var amountChanged = false
-    private var changesMade = false
-    private var editingGroup = false
-    private var editingName = false
-    private var canSave = false
+    fileprivate var lastGroupRow = 0
+    fileprivate var lastQuantityRow = 0
+    fileprivate var lastUnitRow = 0
+    fileprivate var isSpecial = false
+    fileprivate var amountChanged = false
+    fileprivate var changesMade = false
+    fileprivate var editingGroup = false
+    fileprivate var editingName = false
+    fileprivate var canSave = false
     
     // IB Outlets=
     @IBOutlet weak var pickerLabel: ShadowLabel!
@@ -75,10 +75,10 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
         
         // Show special status via button color
         if isSpecial {
-            specialButton.setImage(UIImage(named: kYellowStarImage), forState: .Normal)
+            specialButton.setImage(UIImage(named: kYellowStarImage), for: UIControlState())
         }
         else {
-            specialButton.setImage(UIImage(named: kWhiteStarImage), forState: .Normal)
+            specialButton.setImage(UIImage(named: kWhiteStarImage), for: UIControlState())
         }
         
         // Fill in initial item group, name, and image
@@ -123,15 +123,15 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
         groupPicker.selectRow(lastGroupRow, inComponent: kGroupComponent, animated: false)
         
         // Hide necessary views
-        saveChangesButton.hide(false)
-        nameField.hidden = true
-        groupPicker.hidden = true
+        saveChangesButton.disable()
+        nameField.isHidden = true
+        groupPicker.isHidden = true
     }
     
     
     // MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         //if let vc = segue.destinationViewController as? InventoryViewController {
         //vc.rowChanged
@@ -142,12 +142,12 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     // MARK: - Picker View Datasource/Delegate
     
     // numberOfComponents
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return pickerView == groupPicker ? 1 : 2
     }
     
     // numberOfRowsInComponent
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == groupPicker {
             return kGroups.count
         }
@@ -157,7 +157,7 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     // titleForRow
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
         // Check if the item group is being edited
         if pickerView == groupPicker {
@@ -177,7 +177,7 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     // didSelectRow
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         if pickerView == amountPicker {
             itemQuantityOrUnitChanged(component, row: row)
@@ -187,8 +187,8 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     // MARK: - Gesture Handlers
     
-    func tapHandler(sender: UIGestureRecognizer) {
-        if sender.state == .Ended {
+    func tapHandler(_ sender: UIGestureRecognizer) {
+        if sender.state == .ended {
             //endAllEditing()
         }
     }
@@ -196,7 +196,7 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     // MARK: - IB Actions
     
-    @IBAction func specialPressed(sender: AnyObject) {
+    @IBAction func specialPressed(_ sender: AnyObject) {
         
         let imageName: String
         if isSpecial {
@@ -207,19 +207,19 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
             isSpecial = true
             imageName = kYellowStarImage
         }
-        specialButton.setImage(UIImage(named: imageName), forState: .Normal)
+        specialButton.setImage(UIImage(named: imageName), for: UIControlState())
         
         // Check if the UI should change
         checkForChanges()
     }
     
-    @IBAction func addToCartPressed(sender: AnyObject) {
+    @IBAction func addToCartPressed(_ sender: AnyObject) {
     }
     
-    @IBAction func savePressed(sender: AnyObject) {
+    @IBAction func savePressed(_ sender: AnyObject) {
     }
     
-    @IBAction func deletePressed(sender: AnyObject) {
+    @IBAction func deletePressed(_ sender: AnyObject) {
         // End editing if in progress
         if editingGroup || editingName {
             endAllEditing()
@@ -229,93 +229,102 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
         }
     }
     
-    @IBAction func editImagePressed(sender: AnyObject) {
+    @IBAction func editImagePressed(_ sender: AnyObject) {
     }
   
-    @IBAction func editGroupPressed(sender: AnyObject) {
+    @IBAction func editGroupPressed(_ sender: AnyObject) {
         startEditingGroup()
     }
     
-    @IBAction func editNamePressed(sender: AnyObject) {
+    @IBAction func editNamePressed(_ sender: AnyObject) {
         startEditingName()
     }
     
     
     // MARK: - Private API
     
-    private func startEditingName() {
+    fileprivate func startEditingName() {
         editingName = true
         
         // Show and fill text field, hiding label
         nameField.text = itemNameLabel.text
-        nameField.hidden = false
-        itemNameLabel.hidden = true
+        nameField.isHidden = false
+        itemNameLabel.isHidden = true
         
         // Handle buttons
-        deleteItemButton.setTitle(kDoneButtonTitle, forState: .Normal)
+        deleteItemButton.setTitle(kDoneButtonTitle, for: UIControlState())
         editNameButton.toggleHighlight()
-        editGroupButton.hide(true)
-        editImageButton.hide(true)
-        addToCartButton.hide(true)
-        saveChangesButton.hide(true)
+        
+        UIView.animate(withDuration: kButtonFadeDuration, animations: {
+            self.editGroupButton.disable()
+            self.editImageButton.disable()
+            self.addToCartButton.disable()
+            self.saveChangesButton.disable()
+            }, completion: nil)
         
         // Bring up keyboard
         nameField.becomeFirstResponder()
     }
     
-    private func stopEditingName() {
+    fileprivate func stopEditingName() {
         editingName = false
         
         // Change and show label and hide text field and keyboard
         itemNameLabel.text = nameField.text
         nameField.resignFirstResponder()
-        itemNameLabel.hidden = false
-        nameField.hidden = true
+        itemNameLabel.isHidden = false
+        nameField.isHidden = true
         
         // Handle buttons
-        deleteItemButton.setTitle(kDeleteButtonTitle, forState: .Normal)
+        deleteItemButton.setTitle(kDeleteButtonTitle, for: UIControlState())
         editNameButton.toggleHighlight()
-        editGroupButton.show()
-        editImageButton.show()
-        addToCartButton.show()
+        
+        UIView.animate(withDuration: kButtonFadeDuration, animations: {
+            self.editGroupButton.enable()
+            self.editImageButton.enable()
+            self.addToCartButton.enable()
+            }, completion: nil)
         // Save button is accounted for in checkForChanges()
     }
     
-    private func startEditingGroup() {
+    fileprivate func startEditingGroup() {
         editingGroup = true
         
         // Handle buttons
-        deleteItemButton.setTitle(kDoneButtonTitle, forState: .Normal)
+        deleteItemButton.setTitle(kDoneButtonTitle, for: UIControlState())
         editGroupButton.toggleHighlight()
-        editNameButton.hide(true)
-        editImageButton.hide(true)
-        addToCartButton.hide(true)
-        saveChangesButton.hide(true)
         
+        UIView.animate(withDuration: kButtonFadeDuration, animations: {
+            self.editNameButton.disable()
+            self.editImageButton.disable()
+            self.addToCartButton.disable()
+            self.saveChangesButton.disable()
+            }, completion: nil)
+    
         flipPickerView()
     }
     
-    private func stopEditingGroup() {
+    fileprivate func stopEditingGroup() {
         editingGroup = false
         
         // Get group selection
-        lastGroupRow = groupPicker.selectedRowInComponent(kGroupComponent)
+        lastGroupRow = groupPicker.selectedRow(inComponent: kGroupComponent)
         
         // Change text label
         itemGroupLabel.text = kGroups[lastGroupRow]
         
         // Handle buttons
-        deleteItemButton.setTitle(kDeleteButtonTitle, forState: .Normal)
+        deleteItemButton.setTitle(kDeleteButtonTitle, for: UIControlState())
         editGroupButton.toggleHighlight()
-        editNameButton.show()
-        editImageButton.show()
-        addToCartButton.show()
+        editNameButton.enable()
+        editImageButton.enable()
+        addToCartButton.enable()
         // Save button is accounted for in checkForChanges()
         
         flipPickerView()
     }
     
-    private func endAllEditing() {
+    fileprivate func endAllEditing() {
         // Check if the item name or group was being edited
         if editingName {
             stopEditingName()
@@ -328,33 +337,33 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
         checkForChanges()
     }
     
-    private func flipPickerView() {
+    fileprivate func flipPickerView() {
         // Flip and reload the picker
         if editingGroup {
             // Editing just began, flip to group picker
-            UIView.transitionWithView(self.flipView,
+            UIView.transition(with: self.flipView,
                                       duration: 0.75,
-                                      options: .TransitionFlipFromLeft,
+                                      options: .transitionFlipFromLeft,
                                       animations: {
                                         self.pickerLabel.text = "Current item group:"
-                                        self.amountPicker.hidden = true
-                                        self.groupPicker.hidden = false
+                                        self.amountPicker.isHidden = true
+                                        self.groupPicker.isHidden = false
                 }, completion: nil)
         }
         else {
             // Editing just ended, flip to quantity/units picker
-            UIView.transitionWithView(self.flipView,
+            UIView.transition(with: self.flipView,
                                       duration: 0.75,
-                                      options: .TransitionFlipFromRight,
+                                      options: .transitionFlipFromRight,
                                       animations: {
                                         self.pickerLabel.text = "Current amount in stock:"
-                                        self.amountPicker.hidden = false
-                                        self.groupPicker.hidden = true
+                                        self.amountPicker.isHidden = false
+                                        self.groupPicker.isHidden = true
                 }, completion: nil)
         }
     }
     
-    private func itemQuantityOrUnitChanged(component: Int, row: Int) {
+    fileprivate func itemQuantityOrUnitChanged(_ component: Int, row: Int) {
         
         // Save selection
         switch component {
@@ -376,17 +385,19 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
         checkForChanges()
     }
     
-    private func checkForChanges() {
+    fileprivate func checkForChanges() {
         // Check if the amount/unit, special status, item name, or group changed
         changesMade = amountChanged || initSpecial != isSpecial
             || initName != itemNameLabel.text || kGroups[initGroup!] != itemGroupLabel.text
         
         // Show or hide the save button depending on the results
         if changesMade {
-            saveChangesButton.show()
+            saveChangesButton.enable()
         }
         else {
-            saveChangesButton.hide(true)
+            UIView.animate(withDuration: kButtonFadeDuration, animations: {
+                self.saveChangesButton.disable()
+                }, completion: nil)
         }
     }
 }

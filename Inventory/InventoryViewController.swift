@@ -11,12 +11,12 @@ import UIKit
 class InventoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     // Private Variables
-    private var itemQuantity: Int?
-    private var itemUnit: Int?
-    private var itemGroup: Int?
-    private var itemName: String?
-    private var itemImage: UIImage?
-    private var imageCaches: [Int : [UIImage]] = [:]
+    fileprivate var itemQuantity: Int?
+    fileprivate var itemUnit: Int?
+    fileprivate var itemGroup: Int?
+    fileprivate var itemName: String?
+    fileprivate var itemImage: UIImage?
+    fileprivate var imageCaches: [Int : [UIImage]] = [:]
     
     // MARK: - View Controller
     override func viewDidLoad() {
@@ -32,7 +32,7 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     
     // MARK: - IB Actions
     
-    @IBAction func unwindToTable(segue: UIStoryboardSegue) {
+    @IBAction func unwindToTable(_ segue: UIStoryboardSegue) {
     
     }
     
@@ -40,43 +40,43 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     // MARK: - Table View Datasource / Delegate
     
     // numberOfSections
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return kGroups.count
     }
     
     // numberOfRowsInSection
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
     
     // titleForHeaderInSection
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return kGroups[section]
     }
     
     // cellForRow
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(kInventoryCellID) as! InventoryTableCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: kInventoryCellID) as! InventoryTableCell
         
-        cell.backgroundColor = UIColor.clearColor()
-        cell.cellTitle.text = "Item Number \(indexPath.row)"
+        cell.backgroundColor = UIColor.clear
+        cell.cellTitle.text = "Item Number \((indexPath as NSIndexPath).row)"
         
         // Get image cache for section
         var sectionCache: [UIImage] = []
-        if let cache = imageCaches[indexPath.section] {
+        if let cache = imageCaches[(indexPath as NSIndexPath).section] {
             sectionCache = cache
         }
         
         // Check for image cache hit
-        if sectionCache.count > indexPath.row {
-            cell.cellImageView.image = sectionCache[indexPath.row]
+        if sectionCache.count > (indexPath as NSIndexPath).row {
+            cell.cellImageView.image = sectionCache[(indexPath as NSIndexPath).row]
         }
         else if let placeHolderImage = UIImage(named: "cup.png") {
             // Otherwise use a placeholder image and attempt to download the real image
             sectionCache.append(placeHolderImage)
             cell.cellImageView.image = placeHolderImage
-            imageCaches[indexPath.section] = sectionCache
+            imageCaches[(indexPath as NSIndexPath).section] = sectionCache
             
             //
             // ADD IMAGE DOWNLOAD OPERATION TO QUEUE HERE
@@ -87,25 +87,25 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     // didSelectRow
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         itemQuantity = 25
         itemUnit = 2
-        itemGroup = indexPath.section
-        itemName = "Item Number \(indexPath.row)"
+        itemGroup = (indexPath as NSIndexPath).section
+        itemName = "Item Number \((indexPath as NSIndexPath).row)"
         itemImage = UIImage(named: "cup.png")
         
-        performSegueWithIdentifier(kItemSelectSegue, sender: self)
+        performSegue(withIdentifier: kItemSelectSegue, sender: self)
         
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
     
     // MARK: - Navigation
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if let vc = segue.destinationViewController as? SelectedItemViewController {
+        if let vc = segue.destination as? SelectedItemViewController {
             vc.initQuantity = itemQuantity
             vc.initUnit = itemUnit
             vc.initGroup = itemGroup

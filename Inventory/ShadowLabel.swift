@@ -18,20 +18,30 @@ class ShadowLabel: UILabel {
     }
     */
     
-    override func drawTextInRect(rect: CGRect) {
+    override func drawText(in rect: CGRect) {
         let offset = CGSize(width: 2, height: 2)
         let colorValues: [CGFloat] = [0, 0, 0, 0.8]
     
         let context = UIGraphicsGetCurrentContext()
-        CGContextSaveGState(context)
+        context?.saveGState()
     
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let color = CGColorCreate(colorSpace, colorValues)
-        CGContextSetShadowWithColor(context, offset, 5, color)
+        let color = CGColor(colorSpace: colorSpace, components: colorValues)
+        context?.setShadow(offset: offset, blur: 5, color: color)
     
-        super.drawTextInRect(rect)
+        super.drawText(in: rect)
     
-        CGContextRestoreGState(context);
+        context?.restoreGState();
+    }
+    
+    func hide() {
+        self.alpha = 0
+        self.isHidden = true
+    }
+    
+    func show() {
+        self.isHidden = false
+        self.alpha = 1
     }
 
 }

@@ -13,14 +13,14 @@ class GradientBGView: UIView {
     
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         
         // Drawing code
         
         let gradient: CAGradientLayer = CAGradientLayer()
         gradient.frame = rect
-        gradient.colors = [UIColor.lightGrayColor().CGColor, UIColor.grayColor().CGColor]
-        layer.insertSublayer(gradient, atIndex: 0)
+        gradient.colors = [UIColor.lightGray.cgColor, UIColor.gray.cgColor]
+        layer.insertSublayer(gradient, at: 0)
     }
  
 
