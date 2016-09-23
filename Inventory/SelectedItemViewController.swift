@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
     // CG Constants
     let kButtonInactiveAlpha: CGFloat = 0.2
@@ -139,6 +139,15 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     
+    // MARK: - Text Field Delegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        endAllEditing()
+        
+        return true
+    }
+    
+    
     // MARK: - Picker View Datasource/Delegate
     
     // numberOfComponents
@@ -156,24 +165,36 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
         }
     }
     
-    // titleForRow
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        
+        let font = UIFont(name: "HelveticaNeue-Light", size: 20.0)
+        let style = NSMutableParagraphStyle()
+        style.alignment = .center
+        
+        let attributes: [String : Any] = [
+            NSFontAttributeName: font,
+            NSParagraphStyleAttributeName: style
+        ]
+        
+        let attributedTitle: NSAttributedString
         
         // Check if the item group is being edited
         if pickerView == groupPicker {
             // Return item group name selections
-            return kGroups[row]
+            attributedTitle = NSAttributedString(string: kGroups[row], attributes: attributes)
         }
         else {  // Amount picker
             if component == kQuantityComponent {
                 // Return quantity selections
-                return "\(row)"
+                attributedTitle = NSAttributedString(string: "\(row)", attributes: attributes)
             }
             else {
                 // Return unit type selections
-                return "\(row)'s"
+                attributedTitle = NSAttributedString(string: "\(row)'s", attributes: attributes)
             }
         }
+        
+        return attributedTitle
     }
     
     // didSelectRow
@@ -188,8 +209,8 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     // MARK: - Gesture Handlers
     
     func tapHandler(_ sender: UIGestureRecognizer) {
-        if sender.state == .ended {
-            //endAllEditing()
+        if sender.state == .ended && editingName {
+            endAllEditing()
         }
     }
 
@@ -316,9 +337,12 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
         // Handle buttons
         deleteItemButton.setTitle(kDeleteButtonTitle, for: UIControlState())
         editGroupButton.toggleHighlight()
-        editNameButton.enable()
-        editImageButton.enable()
-        addToCartButton.enable()
+        UIView.animate(withDuration: kButtonFadeDuration, animations: {
+            self.editNameButton.enable()
+            self.editImageButton.enable()
+            self.addToCartButton.enable()
+            }, completion: nil)
+        
         // Save button is accounted for in checkForChanges()
         
         flipPickerView()
@@ -392,7 +416,9 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
         
         // Show or hide the save button depending on the results
         if changesMade {
-            saveChangesButton.enable()
+            UIView.animate(withDuration: kButtonFadeDuration, animations: {
+                self.saveChangesButton.enable()
+                }, completion: nil)
         }
         else {
             UIView.animate(withDuration: kButtonFadeDuration, animations: {
