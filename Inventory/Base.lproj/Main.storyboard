@@ -676,13 +676,6 @@
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1L-2j-p02">
                                 <subviews>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZoX-Yf-VxE" userLabel="Amount Picker">
-                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="5Vr-3r-AF2" id="xw2-Wz-7gk"/>
-                                            <outlet property="delegate" destination="5Vr-3r-AF2" id="RUV-jD-ZDY"/>
-                                        </connections>
-                                    </pickerView>
                                     <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gdf-FM-eRP" userLabel="Group Picker">
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
@@ -709,25 +702,54 @@
                                             </mask>
                                         </variation>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZoZ-I3-Bz9">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="48" id="1J4-yn-pcs"/>
+                                            <constraint firstAttribute="height" constant="48" id="Uwc-sK-LYq"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="add.png"/>
+                                        <connections>
+                                            <action selector="plusPressed:" destination="5Vr-3r-AF2" eventType="touchUpInside" id="duu-gC-O5a"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NbB-18-1k3" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="105" id="MT1-r1-N1k"/>
+                                            <constraint firstAttribute="height" constant="82" id="c3y-RN-BUJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="60"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QiM-pC-usU">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="48" id="892-iZ-rZ1"/>
+                                            <constraint firstAttribute="height" constant="48" id="qzy-z1-PSR"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="add.png"/>
+                                        <connections>
+                                            <action selector="minusPressed:" destination="5Vr-3r-AF2" eventType="touchUpInside" id="kft-ZZ-30e"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="ZoZ-I3-Bz9" firstAttribute="top" secondItem="NbB-18-1k3" secondAttribute="bottom" constant="-65" id="2SP-QT-PW9"/>
+                                    <constraint firstItem="NbB-18-1k3" firstAttribute="top" secondItem="zc5-L3-tiL" secondAttribute="bottom" constant="24" id="3TP-at-HzE"/>
                                     <constraint firstItem="gdf-FM-eRP" firstAttribute="top" secondItem="Q1L-2j-p02" secondAttribute="top" id="41Y-Va-txi"/>
                                     <constraint firstAttribute="bottom" secondItem="gdf-FM-eRP" secondAttribute="bottom" id="5OH-3P-Rnw"/>
-                                    <constraint firstAttribute="bottom" secondItem="ZoX-Yf-VxE" secondAttribute="bottom" id="7pU-x2-Qq5"/>
+                                    <constraint firstItem="ZoZ-I3-Bz9" firstAttribute="leading" secondItem="NbB-18-1k3" secondAttribute="trailing" constant="8" id="7IH-SW-FEz"/>
                                     <constraint firstItem="zc5-L3-tiL" firstAttribute="top" secondItem="Q1L-2j-p02" secondAttribute="top" id="9gA-MO-Cbl"/>
-                                    <constraint firstItem="ZoX-Yf-VxE" firstAttribute="leading" secondItem="Q1L-2j-p02" secondAttribute="leading" id="JSh-8c-pJr"/>
-                                    <constraint firstItem="ZoX-Yf-VxE" firstAttribute="top" secondItem="zc5-L3-tiL" secondAttribute="bottom" constant="2" id="RPh-xo-xTJ"/>
+                                    <constraint firstItem="NbB-18-1k3" firstAttribute="centerX" secondItem="Q1L-2j-p02" secondAttribute="centerX" id="Ho5-y1-f83"/>
                                     <constraint firstItem="zc5-L3-tiL" firstAttribute="leading" secondItem="Q1L-2j-p02" secondAttribute="leading" id="VYK-XF-UEq"/>
                                     <constraint firstItem="gdf-FM-eRP" firstAttribute="leading" secondItem="Q1L-2j-p02" secondAttribute="leading" id="fhu-bm-c4W"/>
+                                    <constraint firstItem="NbB-18-1k3" firstAttribute="leading" secondItem="QiM-pC-usU" secondAttribute="trailing" constant="1" id="hnI-Rj-Ymq"/>
+                                    <constraint firstItem="QiM-pC-usU" firstAttribute="top" secondItem="NbB-18-1k3" secondAttribute="bottom" constant="-65" id="iGa-cr-sG6"/>
                                     <constraint firstAttribute="trailing" secondItem="gdf-FM-eRP" secondAttribute="trailing" id="muM-Gj-u5o"/>
                                     <constraint firstItem="gdf-FM-eRP" firstAttribute="top" secondItem="zc5-L3-tiL" secondAttribute="bottom" constant="2" id="vZ3-3g-4UT"/>
-                                    <constraint firstAttribute="trailing" secondItem="ZoX-Yf-VxE" secondAttribute="trailing" id="ymU-JW-ngp"/>
-                                    <constraint firstItem="ZoX-Yf-VxE" firstAttribute="top" secondItem="Q1L-2j-p02" secondAttribute="top" id="zM8-3m-Ka7"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="zM8-3m-Ka7"/>
                                         <exclude reference="41Y-Va-txi"/>
                                     </mask>
                                 </variation>
@@ -754,6 +776,11 @@
                                     <outlet property="delegate" destination="5Vr-3r-AF2" id="j8q-0L-xf7"/>
                                 </connections>
                             </textField>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xAZ-RP-K3b">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="ckC-A8-9N5"/>
+                                </constraints>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -765,6 +792,7 @@
                             <constraint firstItem="Q6N-eS-eGG" firstAttribute="top" secondItem="iEr-Po-uFq" secondAttribute="bottom" constant="52" id="6HU-IA-y2e"/>
                             <constraint firstItem="clf-N4-joJ" firstAttribute="top" secondItem="mGz-zp-Vhx" secondAttribute="bottom" constant="24" id="6ln-gf-Ifc"/>
                             <constraint firstItem="mGz-zp-Vhx" firstAttribute="top" secondItem="Q1L-2j-p02" secondAttribute="bottom" constant="25" id="8Gg-zs-4Ms"/>
+                            <constraint firstItem="QUU-25-dey" firstAttribute="leading" secondItem="xAZ-RP-K3b" secondAttribute="trailing" constant="7" id="AIJ-6W-vuR"/>
                             <constraint firstItem="bTX-tZ-q2x" firstAttribute="top" secondItem="NdX-fW-cEq" secondAttribute="bottom" constant="8" id="AUB-iG-gfV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="G5P-BH-MAX" secondAttribute="trailing" id="CSC-R6-FgS"/>
                             <constraint firstItem="5dc-Eg-8ZE" firstAttribute="leading" secondItem="DnR-4q-UCW" secondAttribute="trailing" constant="8" id="CSr-eA-5eC"/>
@@ -779,6 +807,7 @@
                             <constraint firstItem="iEr-Po-uFq" firstAttribute="leading" secondItem="SKL-JE-r15" secondAttribute="trailing" constant="5" id="QDb-hN-MQA"/>
                             <constraint firstItem="iEr-Po-uFq" firstAttribute="leading" secondItem="8Oh-P7-M8G" secondAttribute="trailing" constant="-22" id="QlN-o9-mLd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iEr-Po-uFq" secondAttribute="trailing" constant="130" id="Qva-nP-8qc"/>
+                            <constraint firstItem="xAZ-RP-K3b" firstAttribute="top" secondItem="Q6N-eS-eGG" secondAttribute="bottom" constant="2" id="RWf-Jl-2la"/>
                             <constraint firstItem="iEr-Po-uFq" firstAttribute="leading" secondItem="DnR-4q-UCW" secondAttribute="trailing" constant="8" id="Rav-Us-nFd"/>
                             <constraint firstItem="uni-ik-fg8" firstAttribute="top" secondItem="NdX-fW-cEq" secondAttribute="bottom" constant="8" id="TNq-si-gTl"/>
                             <constraint firstItem="iEr-Po-uFq" firstAttribute="leading" secondItem="DnR-4q-UCW" secondAttribute="trailing" constant="8" id="TcN-5r-HWU"/>
@@ -817,6 +846,7 @@
                             <constraint firstItem="DnR-4q-UCW" firstAttribute="top" secondItem="iEr-Po-uFq" secondAttribute="bottom" constant="-132" id="pbN-Ds-jg3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bTX-tZ-q2x" secondAttribute="trailing" id="sDv-Po-vxr"/>
                             <constraint firstItem="G5P-BH-MAX" firstAttribute="leading" secondItem="DnR-4q-UCW" secondAttribute="trailing" constant="8" id="sNR-t1-NBp"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="xAZ-RP-K3b" secondAttribute="leading" id="t8I-rS-Qun"/>
                             <constraint firstItem="Q6N-eS-eGG" firstAttribute="top" secondItem="SKL-JE-r15" secondAttribute="bottom" constant="22" id="um1-MW-W1p"/>
                             <constraint firstItem="QUU-25-dey" firstAttribute="centerX" secondItem="qqi-2a-esk" secondAttribute="centerX" id="vuU-RP-t53"/>
                             <constraint firstItem="iEr-Po-uFq" firstAttribute="top" secondItem="8Oh-P7-M8G" secondAttribute="bottom" constant="8" id="wFl-cg-Mxk"/>
@@ -824,20 +854,15 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="CSr-eA-5eC"/>
-                                <exclude reference="hBu-je-zYR"/>
-                                <exclude reference="WFx-II-TEu"/>
                                 <exclude reference="5vr-bf-nux"/>
                                 <exclude reference="MBF-Vr-xCD"/>
                                 <exclude reference="XRw-fe-k3h"/>
                                 <exclude reference="pbN-Ds-jg3"/>
+                                <exclude reference="CSr-eA-5eC"/>
+                                <exclude reference="hBu-je-zYR"/>
                                 <exclude reference="aQw-lB-Ccf"/>
                                 <exclude reference="kRV-hV-mwn"/>
-                                <exclude reference="TgL-oW-ijN"/>
-                                <exclude reference="jNi-mH-zy2"/>
-                                <exclude reference="6HU-IA-y2e"/>
-                                <exclude reference="jrk-3M-Xgn"/>
-                                <exclude reference="XTQ-ic-iH9"/>
+                                <exclude reference="WFx-II-TEu"/>
                                 <exclude reference="Men-6H-nVb"/>
                                 <exclude reference="Pqb-RJ-SkF"/>
                                 <exclude reference="QDb-hN-MQA"/>
@@ -848,15 +873,21 @@
                                 <exclude reference="mCI-9c-f9T"/>
                                 <exclude reference="mfP-Xc-vns"/>
                                 <exclude reference="wFl-cg-Mxk"/>
+                                <exclude reference="6HU-IA-y2e"/>
+                                <exclude reference="jrk-3M-Xgn"/>
+                                <exclude reference="XTQ-ic-iH9"/>
                                 <exclude reference="8Gg-zs-4Ms"/>
                                 <exclude reference="MUY-Ps-jeh"/>
+                                <exclude reference="TgL-oW-ijN"/>
+                                <exclude reference="jNi-mH-zy2"/>
                                 <exclude reference="6ln-gf-Ifc"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="addToCartButton" destination="Q6N-eS-eGG" id="MCY-SI-sPU"/>
-                        <outlet property="amountPicker" destination="ZoX-Yf-VxE" id="S0c-eA-tIV"/>
+                        <outlet property="amountLabel" destination="NbB-18-1k3" id="2Si-dt-bNX"/>
+                        <outlet property="amountPicker" destination="xAZ-RP-K3b" id="Ttk-gl-c09"/>
                         <outlet property="deleteItemButton" destination="mGz-zp-Vhx" id="fBc-eT-bq4"/>
                         <outlet property="editGroupButton" destination="rM9-Jx-DIv" id="lzC-mE-c4n"/>
                         <outlet property="editImageButton" destination="SKL-JE-r15" id="QdC-nc-Uh0"/>
@@ -866,8 +897,10 @@
                         <outlet property="itemGroupLabel" destination="5dc-Eg-8ZE" id="zdv-ub-qaM"/>
                         <outlet property="itemImageView" destination="DnR-4q-UCW" id="hko-DE-AtR"/>
                         <outlet property="itemNameLabel" destination="iEr-Po-uFq" id="P9n-Up-z9g"/>
+                        <outlet property="minusButton" destination="QiM-pC-usU" id="gQE-d3-Gx9"/>
                         <outlet property="nameField" destination="G5P-BH-MAX" id="hql-c5-wE1"/>
                         <outlet property="pickerLabel" destination="zc5-L3-tiL" id="U5g-nz-WCW"/>
+                        <outlet property="plusButton" destination="ZoZ-I3-Bz9" id="aAW-N6-wbM"/>
                         <outlet property="saveChangesButton" destination="QUU-25-dey" id="1Qd-F2-Dce"/>
                         <outlet property="specialButton" destination="bTX-tZ-q2x" id="OXm-Fw-ACm"/>
                     </connections>
@@ -916,6 +949,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="add.png" width="32" height="32"/>
         <image name="cart.png" width="32" height="32"/>
         <image name="cup.png" width="32" height="32"/>
         <image name="hamburger.png" width="32" height="32"/>

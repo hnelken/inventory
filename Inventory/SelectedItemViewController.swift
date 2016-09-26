@@ -39,6 +39,8 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet weak var pickerLabel: ShadowLabel!
     @IBOutlet weak var itemGroupLabel: ShadowLabel!
     @IBOutlet weak var itemNameLabel: ShadowLabel!
+    @IBOutlet weak var amountLabel: ShadowLabel!
+    
     @IBOutlet weak var itemImageView: UIImageView!
     
     @IBOutlet weak var amountPicker: UIPickerView!
@@ -46,6 +48,8 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     @IBOutlet weak var flipView: UIView!
     
+    @IBOutlet weak var minusButton: UIButton!
+    @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var editGroupButton: FadingButton!
     @IBOutlet weak var editNameButton: FadingButton!
     @IBOutlet weak var editImageButton: FadingButton!
@@ -116,6 +120,9 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
         itemGroupLabel.text = kGroups[initGroup]
         itemNameLabel.text = initName
         
+        // - Show item quantity
+        amountLabel.text = "\(lastQuantityRow)"
+        
         // - Show current selections in picker views
         groupPicker.selectRow(lastGroupRow, inComponent: kGroupComponent, animated: false)
         amountPicker.selectRow(lastQuantityRow, inComponent: kQuantityComponent, animated: false)
@@ -167,7 +174,7 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         
-        let font = UIFont(name: "HelveticaNeue-Light", size: 20.0)
+        let font = UIFont(name: kFontName, size: 20.0)
         let style = NSMutableParagraphStyle()
         style.alignment = .center
         
@@ -270,6 +277,20 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     @IBAction func editNamePressed(_ sender: AnyObject) {
         startEditingName()
+    }
+    
+    @IBAction func plusPressed(_ sender: AnyObject) {
+        lastQuantityRow += 1
+        amountLabel.text = "\(lastQuantityRow)"
+        amountChanged = lastQuantityRow != initQuantity
+        checkForChanges()
+    }
+    
+    @IBAction func minusPressed(_ sender: AnyObject) {
+        lastQuantityRow -= 1
+        amountLabel.text = "\(lastQuantityRow)"
+        amountChanged = lastQuantityRow != initQuantity
+        checkForChanges()
     }
     
     

@@ -39,8 +39,7 @@ let kDeleteButtonTitle = "Delete Item"
 let kDoneButtonTitle = "Done"
 let kPassword = "9999"
 let kDotChar = "•"
-
-
+let kFontName = "HelveticaNeue-Light"
 public extension String {
     var NS: NSString { return (self as NSString) }
 }
