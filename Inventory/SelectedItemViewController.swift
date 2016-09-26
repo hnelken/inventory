@@ -141,7 +141,8 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     // MARK: - Text Field Delegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        endAllEditing()
+        // Stop editing and save
+        endAllEditing(true)
         
         return true
     }
@@ -170,7 +171,7 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
         let style = NSMutableParagraphStyle()
         style.alignment = .center
         
-        let attributes: [String : Any] = [
+        var attributes: [String : Any] = [
             NSFontAttributeName: font,
             NSParagraphStyleAttributeName: style
         ]
@@ -180,15 +181,25 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
         // Check if the item group is being edited
         if pickerView == groupPicker {
             // Return item group name selections
+            if row == initGroup {
+                attributes[NSForegroundColorAttributeName] = UIColor.white
+            }
             attributedTitle = NSAttributedString(string: kGroups[row], attributes: attributes)
         }
         else {  // Amount picker
             if component == kQuantityComponent {
                 // Return quantity selections
+                if row == initQuantity {
+                    attributes[NSForegroundColorAttributeName] = UIColor.white
+                }
                 attributedTitle = NSAttributedString(string: "\(row)", attributes: attributes)
             }
             else {
                 // Return unit type selections
+                if row == initUnit {
+                    
+                    attributes[NSForegroundColorAttributeName] = UIColor.white
+                }
                 attributedTitle = NSAttributedString(string: "\(row)'s", attributes: attributes)
             }
         }
@@ -209,7 +220,7 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     func tapHandler(_ sender: UIGestureRecognizer) {
         if sender.state == .ended && editingName {
-            endAllEditing()
+            stopEditingName(false)
         }
     }
 
@@ -242,7 +253,8 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBAction func deletePressed(_ sender: AnyObject) {
         // End editing if in progress
         if editingGroup || editingName {
-            endAllEditing()
+            // Stop editing and save changes
+            endAllEditing(true)
         }
         else {  // Otherwise function as delete button
             // Throw alert view
@@ -286,11 +298,13 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
         nameField.becomeFirstResponder()
     }
     
-    fileprivate func stopEditingName() {
+    fileprivate func stopEditingName(_ saveChanges: Bool) {
         editingName = false
         
         // Change and show label and hide text field and keyboard
-        itemNameLabel.text = nameField.text
+        if saveChanges {
+            itemNameLabel.text = nameField.text
+        }
         nameField.resignFirstResponder()
         itemNameLabel.isHidden = false
         nameField.isHidden = true
@@ -347,10 +361,10 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
         flipPickerView()
     }
     
-    fileprivate func endAllEditing() {
+    fileprivate func endAllEditing(_ saveChanges: Bool) {
         // Check if the item name or group was being edited
         if editingName {
-            stopEditingName()
+            stopEditingName(saveChanges)
         }
         else if editingGroup {
             stopEditingGroup()
