@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+class SelectedItemViewController: UIViewController, AKPickerViewDataSource, AKPickerViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
     // CG Constants
     let kButtonInactiveAlpha: CGFloat = 0.2
@@ -44,6 +44,8 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet weak var itemImageView: UIImageView!
     
     @IBOutlet weak var groupPicker: UIPickerView!
+    
+    @IBOutlet weak var unitPicker: AKPickerView!
     
     @IBOutlet weak var amountView: UIView!
     
@@ -139,6 +141,8 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
         amountViewWidth.constant = view.frame.width - 40
         pickerViewWidth.constant = view.frame.width - 40
         
+        unitPicker.dataSource = self
+        unitPicker.delegate = self
     }
     
     
@@ -152,6 +156,27 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     
+    // MARK: - AKPickerView Data Source / Delegate
+    
+    func numberOfItemsInPickerView(_ pickerView: AKPickerView) -> Int {
+        return kUnits.count
+    }
+    
+    func pickerView(_ pickerView: AKPickerView, marginForItem item: Int) -> CGSize {
+        return CGSize(width: 25, height: 45)
+    }
+    
+    func pickerView(_ pickerView: AKPickerView, titleForItem item: Int) -> String {
+        return kUnits[item]
+    }
+    
+    func pickerView(_ pickerView: AKPickerView, configureLabel label: UILabel, forItem item: Int) {
+        label.font = UIFont(name: kFontName, size: 20.0)
+        label.textAlignment = .center
+        label.attributedText = NSAttributedString(string: kUnits[item],
+                                                  attributes: [NSForegroundColorAttributeName: UIColor.white])
+    }
+    
     // MARK: - Text Field Delegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
@@ -162,7 +187,7 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     
-    // MARK: - Picker View Datasource/Delegate
+    // MARK: - Picker View Datasource / Delegate
     
     // numberOfComponents
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
