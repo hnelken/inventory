@@ -43,10 +43,9 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     @IBOutlet weak var itemImageView: UIImageView!
     
-    @IBOutlet weak var amountPicker: UIPickerView!
     @IBOutlet weak var groupPicker: UIPickerView!
     
-    @IBOutlet weak var flipView: UIView!
+    @IBOutlet weak var amountView: UIView!
     
     @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
@@ -58,8 +57,12 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet weak var saveChangesButton: FadingButton!
     @IBOutlet weak var specialButton: UIButton!
     
-    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var pickerViewWidth: NSLayoutConstraint!
+    @IBOutlet weak var pickerViewCenter: NSLayoutConstraint!
+    @IBOutlet weak var amountViewWidth: NSLayoutConstraint!
+    @IBOutlet weak var amountViewCenter: NSLayoutConstraint!
     
+    @IBOutlet weak var nameField: UITextField!
     
     // MARK: - View Controller 
     
@@ -119,19 +122,23 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
         // - Show item group and name
         itemGroupLabel.text = kGroups[initGroup]
         itemNameLabel.text = initName
+        groupPicker.selectRow(lastGroupRow, inComponent: kGroupComponent, animated: false)
         
         // - Show item quantity
         amountLabel.text = "\(lastQuantityRow)"
         
-        // - Show current selections in picker views
-        groupPicker.selectRow(lastGroupRow, inComponent: kGroupComponent, animated: false)
-        amountPicker.selectRow(lastQuantityRow, inComponent: kQuantityComponent, animated: false)
-        amountPicker.selectRow(lastUnitRow, inComponent: kUnitComponent, animated: false)
-        
         // Hide necessary views
         saveChangesButton.disable()
         nameField.isHidden = true
-        groupPicker.isHidden = true
+        groupPicker.isHidden = false
+        
+        // Format views via constraints
+        amountViewCenter.constant = 0
+        pickerViewCenter.constant = view.frame.width
+        
+        amountViewWidth.constant = view.frame.width - 40
+        pickerViewWidth.constant = view.frame.width - 40
+        
     }
     
     
@@ -159,69 +166,32 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     // numberOfComponents
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return pickerView == groupPicker ? 1 : 2
+        return 1
     }
     
     // numberOfRowsInComponent
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView == groupPicker {
-            return kGroups.count
-        }
-        else {  // Amount picker
-            return (component == kQuantityComponent ? 100 : 5)
-        }
+        return kGroups.count
     }
     
-    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+    // viewForRow
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         
-        let font = UIFont(name: kFontName, size: 20.0)
-        let style = NSMutableParagraphStyle()
-        style.alignment = .center
-        
-        var attributes: [String : Any] = [
-            NSFontAttributeName: font,
-            NSParagraphStyleAttributeName: style
-        ]
-        
-        let attributedTitle: NSAttributedString
-        
-        // Check if the item group is being edited
-        if pickerView == groupPicker {
-            // Return item group name selections
-            if row == initGroup {
-                attributes[NSForegroundColorAttributeName] = UIColor.white
-            }
-            attributedTitle = NSAttributedString(string: kGroups[row], attributes: attributes)
+        let title = getAttributedPickerTitle(for: row)
+        guard let label = view as? ShadowLabel else {
+            let pickerLabel = ShadowLabel()
+            pickerLabel.font = UIFont(name: kFontName, size: 24.0)
+            pickerLabel.textAlignment = .center
+            pickerLabel.attributedText = title
+            return pickerLabel
         }
-        else {  // Amount picker
-            if component == kQuantityComponent {
-                // Return quantity selections
-                if row == initQuantity {
-                    attributes[NSForegroundColorAttributeName] = UIColor.white
-                }
-                attributedTitle = NSAttributedString(string: "\(row)", attributes: attributes)
-            }
-            else {
-                // Return unit type selections
-                if row == initUnit {
-                    
-                    attributes[NSForegroundColorAttributeName] = UIColor.white
-                }
-                attributedTitle = NSAttributedString(string: "\(row)'s", attributes: attributes)
-            }
-        }
-        
-        return attributedTitle
-    }
-    
-    // didSelectRow
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        if pickerView == amountPicker {
-            itemQuantityOrUnitChanged(component, row: row)
-        }
+        label.attributedText = title
+        return label
     }
 
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 40
+    }
     
     // MARK: - Gesture Handlers
     
@@ -296,6 +266,12 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     // MARK: - Private API
     
+    fileprivate func getAttributedPickerTitle(for row: Int) -> NSAttributedString {
+        return NSAttributedString(string: kGroups[row], attributes: [
+            NSForegroundColorAttributeName: UIColor.white
+            ])
+    }
+    
     fileprivate func startEditingName() {
         editingName = true
         
@@ -356,7 +332,7 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
             self.saveChangesButton.disable()
             }, completion: nil)
     
-        flipPickerView()
+        slideViews()
     }
     
     fileprivate func stopEditingGroup() {
@@ -379,7 +355,7 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
         
         // Save button is accounted for in checkForChanges()
         
-        flipPickerView()
+        slideViews()
     }
     
     fileprivate func endAllEditing(_ saveChanges: Bool) {
@@ -395,52 +371,25 @@ class SelectedItemViewController: UIViewController, UIPickerViewDelegate, UIPick
         checkForChanges()
     }
     
-    fileprivate func flipPickerView() {
-        // Flip and reload the picker
-        if editingGroup {
-            // Editing just began, flip to group picker
-            UIView.transition(with: self.flipView,
-                              duration: 0.75,
-                              options: .transitionFlipFromLeft,
-                              animations: {
-                                self.pickerLabel.text = "Current item group:"
-                                self.amountPicker.isHidden = true
-                                self.groupPicker.isHidden = false
-                }, completion: nil)
-        }
-        else {
-            // Editing just ended, flip to quantity/units picker
-            UIView.transition(with: self.flipView,
-                              duration: 0.75,
-                              options: .transitionFlipFromRight,
-                              animations: {
-                                self.pickerLabel.text = "Current amount in stock:"
-                                self.amountPicker.isHidden = false
-                                self.groupPicker.isHidden = true
-                }, completion: nil)
-        }
-    }
-    
-    fileprivate func itemQuantityOrUnitChanged(_ component: Int, row: Int) {
+    fileprivate func slideViews() {
+        self.view.layoutIfNeeded()
         
-        // Save selection
-        switch component {
-        case kQuantityComponent:
-            // Item quantity
-            lastQuantityRow = row
-        case kUnitComponent:
-            // Unit of measurement
-            lastUnitRow = row
-        default:
-            break
+        // Check which transition is occurring
+        
+        if editingGroup {   //  Beginning editing
+            //  Slide views to show group picker view
+            self.amountViewCenter.constant = -self.view.frame.width
+            self.pickerViewCenter.constant = 0
         }
-        
-        // Check if last selections are different from the initial values
-        amountChanged = lastQuantityRow != initQuantity!
-            || lastUnitRow != initUnit!
-        
-        // Check if the UI should change
-        checkForChanges()
+        else {  //  Editing is endging
+            // Slide views to show amount/units view
+            self.amountViewCenter.constant = 0
+            self.pickerViewCenter.constant = self.view.frame.width
+        }
+        // Animate changes
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+        }
     }
     
     fileprivate func checkForChanges() {
