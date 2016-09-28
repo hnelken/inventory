@@ -54,7 +54,7 @@ private protocol AKCollectionViewLayoutDelegate {
  Private. A subclass of UICollectionViewCell used in AKPickerView's collection view.
  */
 private class AKCollectionViewCell: UICollectionViewCell {
-    var label: UILabel!
+    var label: ShadowLabel!
     var imageView: UIImageView!
     var font = UIFont.systemFont(ofSize: UIFont.systemFontSize)
     var highlightedFont = UIFont.systemFont(ofSize: UIFont.systemFontSize)
@@ -73,7 +73,7 @@ private class AKCollectionViewCell: UICollectionViewCell {
         self.layer.shouldRasterize = true
         self.layer.rasterizationScale = UIScreen.main.scale
         
-        self.label = UILabel(frame: self.contentView.bounds)
+        self.label = ShadowLabel(frame: self.contentView.bounds)
         self.label.backgroundColor = UIColor.clear
         self.label.textAlignment = .center
         self.label.textColor = UIColor.gray

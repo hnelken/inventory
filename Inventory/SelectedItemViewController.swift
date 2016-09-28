@@ -171,11 +171,12 @@ class SelectedItemViewController: UIViewController, AKPickerViewDataSource, AKPi
     }
     
     func pickerView(_ pickerView: AKPickerView, configureLabel label: UILabel, forItem item: Int) {
-        label.font = UIFont(name: kFontName, size: 20.0)
+        label.font = UIFont(name: kFontName, size: 24.0)
         label.textAlignment = .center
         label.attributedText = NSAttributedString(string: kUnits[item],
                                                   attributes: [NSForegroundColorAttributeName: UIColor.white])
     }
+    
     
     // MARK: - Text Field Delegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
