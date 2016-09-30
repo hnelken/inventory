@@ -81,7 +81,7 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
         // Get item for index path and fill cell with item info
         if let item = getItem(for: indexPath) {
             cell.cellTitle.text = "\(item.name)"
-            cell.cellNumber.text = "\(item.quantity)"
+            cell.cellNumber.text = "\(item.quantity) \(kUnits[item.units])"
             cell.cellImageView.image = getImage(for: indexPath)
         }
         cell.backgroundColor = UIColor.clear
