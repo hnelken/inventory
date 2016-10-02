@@ -337,11 +337,11 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="91" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RYL-u8-AfT">
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="inventoryGroupCell" rowHeight="65" id="bkt-Dv-4k4" customClass="InventoryTableCell" customModule="Inventory" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="65"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="inventoryGroupCell" rowHeight="50" id="bkt-Dv-4k4" customClass="InventoryTableCell" customModule="Inventory" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bkt-Dv-4k4" id="c41-id-Aho">
-                                            <frame key="frameInset" width="375" height="65"/>
+                                            <frame key="frameInset" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1C-R0-UM7" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
@@ -371,7 +371,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="inventoryItemCell" rowHeight="91" id="rFa-7R-vdS" customClass="InventoryTableCell" customModule="Inventory" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="93" width="375" height="91"/>
+                                        <rect key="frame" x="0.0" y="78" width="375" height="91"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rFa-7R-vdS" id="qOi-HJ-uMj">
                                             <frame key="frameInset" width="375" height="91"/>
@@ -393,7 +393,7 @@
                                                         <constraint firstAttribute="width" constant="49" id="BiY-nC-61e"/>
                                                         <constraint firstAttribute="height" constant="50" id="wc7-y7-4MM"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">

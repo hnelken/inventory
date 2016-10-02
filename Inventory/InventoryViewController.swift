@@ -79,10 +79,15 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-  /*  // titleForHeaderInSection
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return kGroups[section]
-    }   */
+    // titleForHeaderInSection
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            return 50
+        }
+        else {
+            return 91
+        }
+    }
     
     // cellForRow
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -118,7 +123,7 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
             inventoryTable.reloadData()
             sectionOpen[indexPath.section] = !open
             let section = NSIndexSet(index: indexPath.section)
-            inventoryTable.reloadSections((section as IndexSet), with: .automatic)
+            inventoryTable.reloadSections((section as IndexSet), with: .none)
         }
         else {
             // Save selected index and perform segue
