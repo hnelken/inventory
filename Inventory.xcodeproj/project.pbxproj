@@ -18,6 +18,8 @@
 		D8753FD51D7F3CE000DA4D6C /* SelectedItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8753FD41D7F3CE000DA4D6C /* SelectedItemViewController.swift */; };
 		D8ADD8E81D9F13ED0020B715 /* add1-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D8ADD8E61D9F13ED0020B715 /* add1-white.png */; };
 		D8ADD8E91D9F13ED0020B715 /* minus-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D8ADD8E71D9F13ED0020B715 /* minus-white.png */; };
+		D8ADD8EB1DA072070020B715 /* hamburger-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D8ADD8EA1DA072070020B715 /* hamburger-white.png */; };
+		D8ADD8ED1DA074060020B715 /* file-writing.png in Resources */ = {isa = PBXBuildFile; fileRef = D8ADD8EC1DA074060020B715 /* file-writing.png */; };
 		D8BAE2A51D95A207006EB38B /* InventoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BAE2A41D95A207006EB38B /* InventoryItem.swift */; };
 		D8DCF29C1D49679200363030 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DCF29B1D49679200363030 /* AppDelegate.swift */; };
 		D8DCF2A11D49679200363030 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8DCF29F1D49679200363030 /* Main.storyboard */; };
@@ -242,6 +244,8 @@
 		D8753FD41D7F3CE000DA4D6C /* SelectedItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedItemViewController.swift; sourceTree = "<group>"; };
 		D8ADD8E61D9F13ED0020B715 /* add1-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add1-white.png"; sourceTree = "<group>"; };
 		D8ADD8E71D9F13ED0020B715 /* minus-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "minus-white.png"; sourceTree = "<group>"; };
+		D8ADD8EA1DA072070020B715 /* hamburger-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hamburger-white.png"; sourceTree = "<group>"; };
+		D8ADD8EC1DA074060020B715 /* file-writing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "file-writing.png"; sourceTree = "<group>"; };
 		D8BAE2A41D95A207006EB38B /* InventoryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryItem.swift; sourceTree = "<group>"; };
 		D8DCF2981D49679200363030 /* Inventory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inventory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8DCF29B1D49679200363030 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -555,6 +559,7 @@
 		D8DCFBEF1D4AC0BE00363030 /* 32x32 */ = {
 			isa = PBXGroup;
 			children = (
+				D8ADD8EA1DA072070020B715 /* hamburger-white.png */,
 				D8ADD8E61D9F13ED0020B715 /* add1-white.png */,
 				D8ADD8E71D9F13ED0020B715 /* minus-white.png */,
 				D808F0ED1D919CD4000FA30B /* penic-highlight.png */,
@@ -630,6 +635,7 @@
 				D8DCFC301D4AC0BE00363030 /* file-x.png */,
 				D8DCFC311D4AC0BE00363030 /* file.png */,
 				D8DCFC321D4AC0BE00363030 /* file1.png */,
+				D8ADD8EC1DA074060020B715 /* file-writing.png */,
 				D8DCFC331D4AC0BE00363030 /* file_write.png */,
 				D8DCFC341D4AC0BE00363030 /* flower.png */,
 				D8DCFC351D4AC0BE00363030 /* folder.png */,
@@ -892,6 +898,7 @@
 				D8DCF2A61D49679200363030 /* LaunchScreen.storyboard in Resources */,
 				D8DCFCEB1D4AC0BE00363030 /* face.png in Resources */,
 				D8DCFCF61D4AC0BE00363030 /* file-x.png in Resources */,
+				D8ADD8ED1DA074060020B715 /* file-writing.png in Resources */,
 				D8DCFD0C1D4AC0BE00363030 /* lightning.png in Resources */,
 				D8DCFD6B1D4AC0BE00363030 /* vlc.png in Resources */,
 				D8DCFD121D4AC0BE00363030 /* loudspeaker.png in Resources */,
@@ -942,6 +949,7 @@
 				D8DCFCBA1D4AC0BE00363030 /* add.png in Resources */,
 				D8DCFD011D4AC0BE00363030 /* home.png in Resources */,
 				D8DCFCFC1D4AC0BE00363030 /* forbid.png in Resources */,
+				D8ADD8EB1DA072070020B715 /* hamburger-white.png in Resources */,
 				D8DCFCD21D4AC0BE00363030 /* cart.png in Resources */,
 				D8DCFD291D4AC0BE00363030 /* no-sound.png in Resources */,
 				D8DCFD4E1D4AC0BE00363030 /* signal-77.png in Resources */,

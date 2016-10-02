@@ -10,36 +10,40 @@ import UIKit
 
 class InventoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    // Private Variables
+    // MARK: - Private Variables
     fileprivate var itemQuantity: Int?
     fileprivate var itemUnit: Int?
     fileprivate var itemGroup: Int?
     fileprivate var itemName: String?
     fileprivate var itemImage: UIImage?
     fileprivate var selectedIndex: IndexPath = IndexPath(row: 0, section: 0)
+    fileprivate var sectionOpen: [Int : Bool] = [:]
     fileprivate var imageCaches: [Int : [UIImage]] = [:]
-    fileprivate var sectionItems: [Int : [InventoryItem]] = [
-        :
-    ]
+    fileprivate var sectionItems: [Int : [InventoryItem]] = [:]
+    
+    
+    // MARK: - IB Outlets
+    @IBOutlet weak var inventoryTable: UITableView!
+    
     
     // MARK: - View Controller
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         for i in 0...kGroups.count - 1 {
             sectionItems[i] = [
-                InventoryItem(name: "\(kGroups[i])-Item 1", group: i, special: false),
-                InventoryItem(name: "\(kGroups[i])-Item 2", group: i, special: false),
-                InventoryItem(name: "\(kGroups[i])-Item 3", group: i, special: false),
-                InventoryItem(name: "\(kGroups[i])-Item 4", group: i, special: false),
-                InventoryItem(name: "\(kGroups[i])-Item 5", group: i, special: false)
+                InventoryItem(name: "\(kGroups[i]) - Item 1", group: i, special: false),
+                InventoryItem(name: "\(kGroups[i]) - Item 2", group: i, special: false),
+                InventoryItem(name: "\(kGroups[i]) - Item 3", group: i, special: false),
+                InventoryItem(name: "\(kGroups[i]) - Item 4", group: i, special: false),
+                InventoryItem(name: "\(kGroups[i]) - Item 5", group: i, special: false)
             ]
+            sectionOpen[i] = false
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        //let blue = UIColor(colorLiteralRed: 52/255, green: 145/255, blue: 215/255, alpha: 1)
+        tabBarController?.tabBar.barTintColor = .groupTableViewBackground
+        
     }
     
     
@@ -59,32 +63,45 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     
     // numberOfRowsInSection
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let items = sectionItems[section] else {
-            return 0
+        
+        guard let open = sectionOpen[section] else {
+            return 1
         }
-        return items.count
+        
+        if open {
+            guard let items = sectionItems[section] else {
+                return 1
+            }
+            return items.count + 1
+        }
+        else {
+            return 1
+        }
     }
     
-    // titleForHeaderInSection
+  /*  // titleForHeaderInSection
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return kGroups[section]
-    }
+    }   */
     
     // cellForRow
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: kInventoryCellID) as? InventoryTableCell else {
-            print("ERROR: Inventory table cell could not be dequeued")
-            return InventoryTableCell()
-        }
+        let cell = getCell(for: indexPath)
         
-        // Get item for index path and fill cell with item info
-        if let item = getItem(for: indexPath) {
-            cell.cellTitle.text = "\(item.name)"
-            cell.cellNumber.text = "\(item.quantity) \(kUnits[item.units])"
-            cell.cellImageView.image = getImage(for: indexPath)
+        if indexPath.row == 0 {
+            // Section cell
+            cell.cellTitle.text = kGroups[indexPath.section]
         }
-        cell.backgroundColor = UIColor.clear
+        else {  // Normal item cell
+            // Get item for index path and fill cell with item info
+            if let item = getItem(for: indexPath) {
+                cell.cellTitle.text = "\(item.name)"
+                cell.cellNumber.text = "\(item.quantity) \(kUnits[item.units])"
+                cell.cellImageView.image = getImage(for: indexPath)
+            }
+            cell.backgroundColor = UIColor.clear
+        }
         
         return cell
     }
@@ -92,9 +109,22 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     // didSelectRow
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        // Save selected index and perform segue
-        selectedIndex = indexPath
-        performSegue(withIdentifier: kItemSelectSegue, sender: self)
+        if indexPath.row == 0 {
+            
+            guard let open = sectionOpen[indexPath.section] else {
+                print("ERROR: Section status not found")
+                return
+            }
+            inventoryTable.reloadData()
+            sectionOpen[indexPath.section] = !open
+            let section = NSIndexSet(index: indexPath.section)
+            inventoryTable.reloadSections((section as IndexSet), with: .automatic)
+        }
+        else {
+            // Save selected index and perform segue
+            selectedIndex = indexPath
+            performSegue(withIdentifier: kItemSelectSegue, sender: self)
+        }
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
@@ -116,6 +146,23 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     
     // MARK: - Private API
     
+    fileprivate func getCell(for indexPath: IndexPath) -> InventoryTableCell {
+        
+        let cellID: String
+        if indexPath.row == 0 {
+            cellID = kGroupCellID
+        }
+        else {
+            cellID = kItemCellID
+        }
+        
+        guard let cell = inventoryTable.dequeueReusableCell(withIdentifier: cellID) as? InventoryTableCell else {
+            print("ERROR: Inventory table cell could not be dequeued")
+            return InventoryTableCell()
+        }
+        return cell
+    }
+    
     fileprivate func getImage(for indexPath: IndexPath) -> UIImage {
         // Get image cache for section
         var sectionCache: [UIImage] = []
@@ -124,8 +171,8 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
         }
         
         // Check for image cache hit
-        if sectionCache.count > indexPath.row {
-            return sectionCache[indexPath.row]
+        if sectionCache.count > indexPath.row - 1 {
+            return sectionCache[indexPath.row - 1]
         }
         
         guard let placeHolderImage = UIImage(named: "cup.png") else {
@@ -152,12 +199,12 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
         }
         
         // Ensure the index path is not out of bounds
-        guard items.count > indexPath.row else {
+        guard items.count > indexPath.row - 1 else {
             print("ERROR: Data not available for index path \(indexPath)")
             return nil
         }
         
         // Return the item for the index path
-        return items[indexPath.row]
+        return items[indexPath.row - 1]
     }
 }

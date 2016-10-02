@@ -133,6 +133,7 @@ class SelectedItemViewController: UIViewController, AKPickerViewDataSource, AKPi
         // Format views via constraints
         amountViewCenter.constant = 0
         pickerViewCenter.constant = view.frame.width
+       // groupPicker.isHidden = true
         amountViewWidth.constant = view.frame.width - 40
         pickerViewWidth.constant = view.frame.width - 40
         
@@ -355,7 +356,7 @@ class SelectedItemViewController: UIViewController, AKPickerViewDataSource, AKPi
             self.saveChangesButton.disable()
             }, completion: nil)
     
-        slideViews()
+        slideViews(true)
     }
     
     fileprivate func stopEditingGroup() {
@@ -378,7 +379,7 @@ class SelectedItemViewController: UIViewController, AKPickerViewDataSource, AKPi
         
         // Save button is accounted for in checkForChanges()
         
-        slideViews()
+        slideViews(true)
     }
     
     fileprivate func endAllEditing(_ saveChanges: Bool) {
@@ -394,25 +395,33 @@ class SelectedItemViewController: UIViewController, AKPickerViewDataSource, AKPi
         checkForChanges()
     }
     
-    fileprivate func slideViews() {
-        self.view.layoutIfNeeded()
+    fileprivate func slideViews(_ slide: Bool) {
+        view.layoutIfNeeded()
         
         // Check which transition is occurring
         
         if editingGroup {   //  Beginning editing
             //  Slide views to show group picker view
-            self.amountViewCenter.constant = -self.view.frame.width
-            self.pickerViewCenter.constant = 0
+            amountViewCenter.constant = -self.view.frame.width
+            pickerViewCenter.constant = 0
         }
-        else {  //  Editing is endging
+        else {  //  Editing is ending
             // Slide views to show amount/units view
-            self.amountViewCenter.constant = 0
-            self.pickerViewCenter.constant = self.view.frame.width
+            amountView.isHidden = false
+            amountViewCenter.constant = 0
+            pickerViewCenter.constant = self.view.frame.width
         }
+        
         // Animate changes
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.5, animations: {
             self.view.layoutIfNeeded()
-        }
+            }, completion: { (status) in
+                if self.editingGroup {
+                    self.amountView.isHidden = true
+                }
+        })
+        
+        
     }
     
     fileprivate func checkForChanges() {

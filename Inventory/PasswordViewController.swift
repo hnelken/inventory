@@ -40,14 +40,11 @@ class PasswordViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        //formatButtons()
         hideElements()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewDidLayoutSubviews() {
+        navigationController?.isNavigationBarHidden = true
     }
     
     @IBAction func enterPressed(_ sender: AnyObject) {
@@ -134,56 +131,9 @@ class PasswordViewController: UIViewController {
         self.sevenButton.hide()
         self.eightButton.hide()
         self.nineButton.hide()
-        
-        /*
-        // Hidden
-        passwordLabel.isHidden = true
-        entryLabel.isHidden = true
-        backButton.isHidden = true
-        
-        oneButton.isHidden = true
-        twoButton.isHidden = true
-        threeButton.isHidden = true
-        fourButton.isHidden = true
-        fiveButton.isHidden = true
-        sixButton.isHidden = true
-        sevenButton.isHidden = true
-        eightButton.isHidden = true
-        nineButton.isHidden = true
-        
-        // Alphas
-        self.passwordLabel.alpha = 0
-        self.entryLabel.alpha = 0
-        self.backButton.alpha = 0
-        
-        self.oneButton.alpha = 0
-        self.twoButton.alpha = 0
-        self.threeButton.alpha = 0
-        self.fourButton.alpha = 0
-        self.fiveButton.alpha = 0
-        self.sixButton.alpha = 0
-        self.sevenButton.alpha = 0
-        self.eightButton.alpha = 0
-        self.nineButton.alpha = 0
- */
     }
     
     fileprivate func showElements() {
-        /* Hidden
-        passwordLabel.isHidden = false
-        entryLabel.isHidden = false
-        backButton.isHidden = false
-        
-        oneButton.isHidden = false
-        twoButton.isHidden = false
-        threeButton.isHidden = false
-        fourButton.isHidden = false
-        fiveButton.isHidden = false
-        sixButton.isHidden = false
-        sevenButton.isHidden = false
-        eightButton.isHidden = false
-        nineButton.isHidden = false
-        */
         
         // Animate alphas
         UIView.animate(withDuration: 1.0, animations: {
@@ -204,22 +154,6 @@ class PasswordViewController: UIViewController {
             self.eightButton.enable()
             self.nineButton.enable()
             
-            /*
-            self.passwordLabel.alpha = 1
-            self.entryLabel.alpha = 1
-            self.backButton.alpha = 1
-            
-            self.oneButton.alpha = 1
-            self.twoButton.alpha = 1
-            self.threeButton.alpha = 1
-            self.fourButton.alpha = 1
-            self.fiveButton.alpha = 1
-            self.sixButton.alpha = 1
-            self.sevenButton.alpha = 1
-            self.eightButton.alpha = 1
-            self.nineButton.alpha = 1
-            */
-            
             self.logoImage.alpha = 0
             
             self.enterButton.setTitle("Enter",
@@ -228,58 +162,5 @@ class PasswordViewController: UIViewController {
             }, completion: { (status) in
                 self.logoImage.isHidden = true
         })
-    }
-    
-    // Rounds the corners of all buttons
-    fileprivate func formatButtons() {
-        // Button 1
-        oneButton.layer.cornerRadius =
-            oneButton.frame.width/2
-        oneButton.clipsToBounds = true
-        
-        // Button 2
-        twoButton.layer.cornerRadius =
-            twoButton.frame.width/2
-        twoButton.clipsToBounds = true
-        
-        // Button 3
-        threeButton.layer.cornerRadius =
-            threeButton.frame.width/2
-        threeButton.clipsToBounds = true
-        
-        // Button 4
-        fourButton.layer.cornerRadius =
-            fourButton.frame.width/2
-        fourButton.clipsToBounds = true
-        
-        // Button 5
-        fiveButton.layer.cornerRadius =
-            fiveButton.frame.width/2
-        fiveButton.clipsToBounds = true
-        
-        // Button 6
-        sixButton.layer.cornerRadius =
-            sixButton.frame.width/2
-        sixButton.clipsToBounds = true
-        
-        // Button 7
-        sevenButton.layer.cornerRadius =
-            sevenButton.frame.width/2
-        sevenButton.clipsToBounds = true
-        
-        // Button 8
-        eightButton.layer.cornerRadius =
-            eightButton.frame.width/2
-        eightButton.clipsToBounds = true
-        
-        // Button 9
-        nineButton.layer.cornerRadius =
-            nineButton.frame.width/2
-        nineButton.clipsToBounds = true
-        
-        // Enter button
-        enterButton.layer.cornerRadius =
-            enterButton.frame.height/2
-        enterButton.clipsToBounds = true
     }
 }

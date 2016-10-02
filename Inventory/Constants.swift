@@ -9,7 +9,8 @@
 import Foundation
 
 // STORYBOARD CONSTANTS
-let kInventoryCellID = "inventoryCell"
+let kItemCellID = "inventoryItemCell"
+let kGroupCellID = "inventoryGroupCell"
 
 let kPasswordSegue = "passwordSegue"
 let kQuantitySegue = "quantitySegue"
