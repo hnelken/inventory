@@ -13,6 +13,7 @@ class InventoryTableCell: UITableViewCell {
     @IBOutlet weak var cellImageView: UIImageView!
     @IBOutlet weak var cellTitle: UILabel!
     @IBOutlet weak var cellNumber: UILabel!
+    @IBOutlet weak var arrowView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

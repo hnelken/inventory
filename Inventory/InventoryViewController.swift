@@ -41,9 +41,9 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
             sectionOpen[i] = false
         }
         
-        //let blue = UIColor(colorLiteralRed: 52/255, green: 145/255, blue: 215/255, alpha: 1)
-        tabBarController?.tabBar.barTintColor = .groupTableViewBackground
-        
+        let color = UIColor(colorLiteralRed: 92/255, green: 94/255, blue: 102/255, alpha: 1)
+        tabBarController?.tabBar.barTintColor = color
+        tabBarController?.tabBar.tintColor = .white
     }
     
     
@@ -97,6 +97,7 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
         if indexPath.row == 0 {
             // Section cell
             cell.cellTitle.text = kGroups[indexPath.section]
+            cell.backgroundColor = UIColor.clear
         }
         else {  // Normal item cell
             // Get item for index path and fill cell with item info
@@ -105,7 +106,6 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
                 cell.cellNumber.text = "\(item.quantity) \(kUnits[item.units])"
                 cell.cellImageView.image = getImage(for: indexPath)
             }
-            cell.backgroundColor = UIColor.clear
         }
         
         return cell
@@ -122,6 +122,14 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
             }
             inventoryTable.reloadData()
             sectionOpen[indexPath.section] = !open
+            if open {
+                // Section is now closed
+                
+            }
+            else {
+                // Section just opened
+                
+            }
             let section = NSIndexSet(index: indexPath.section)
             inventoryTable.reloadSections((section as IndexSet), with: .none)
         }
