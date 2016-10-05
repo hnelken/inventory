@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class SelectedItemViewController: UIViewController, AKPickerViewDataSource, AKPickerViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
@@ -248,6 +249,7 @@ class SelectedItemViewController: UIViewController, AKPickerViewDataSource, AKPi
     }
     
     @IBAction func addToCartPressed(_ sender: AnyObject) {
+        addItemToCart(initItem!)
     }
     
     @IBAction func savePressed(_ sender: AnyObject) {
@@ -289,6 +291,33 @@ class SelectedItemViewController: UIViewController, AKPickerViewDataSource, AKPi
     
     
     // MARK: - Private API
+    
+    fileprivate func addItemToCart(_ item: InventoryItem) {
+        
+        // Get managed object context
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        // Create cart item
+        let entity = NSEntityDescription.entity(forEntityName: "CartItem", in: managedContext)
+        let cartItem = CartItem(entity: entity!, insertInto: managedContext)
+        
+        // Make changes to item entity
+        cartItem.name = item.name
+        cartItem.special = item.special
+        cartItem.group = Int32(item.group)
+        cartItem.quantity = Int32(item.quantity)
+        cartItem.unitType = Int32(item.unitType)
+        cartItem.imageName = item.imageName
+        
+        // Save context
+        do {
+            try managedContext.save()
+            appDelegate.items.append(cartItem)
+        } catch let error as NSError  {
+            print("Could not add item to cart \(error), \(error.userInfo)")
+        }
+    }
     
     fileprivate func getAttributedPickerTitle(for row: Int) -> NSAttributedString {
         return NSAttributedString(string: kGroups[row], attributes: [

@@ -334,7 +334,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="91" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RYL-u8-AfT">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="91" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RYL-u8-AfT">
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -580,7 +580,7 @@
         <!--Shopping Cart-->
         <scene sceneID="Rlo-bv-zhr">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="bhU-j8-VzU" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="bhU-j8-VzU" customClass="ShoppingCartViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sfX-eE-Kqi"/>
                         <viewControllerLayoutGuide type="bottom" id="JS8-5Z-sy9"/>
@@ -649,40 +649,8 @@
                                 <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="inventoryGroupCell" rowHeight="50" id="CC2-fn-eUR" customClass="InventoryTableCell" customModule="Inventory" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CC2-fn-eUR" id="AI6-1A-7gd">
-                                            <frame key="frameInset" width="375" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XDV-as-EWl" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="49" id="GDf-ah-aJS"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="GDf-ah-aJS"/>
-                                                        </mask>
-                                                    </variation>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="XDV-as-EWl" secondAttribute="trailing" constant="15" id="CKP-qm-myP"/>
-                                                <constraint firstAttribute="topMargin" secondItem="XDV-as-EWl" secondAttribute="top" id="XUW-xA-7M9"/>
-                                                <constraint firstItem="XDV-as-EWl" firstAttribute="leading" secondItem="AI6-1A-7gd" secondAttribute="leadingMargin" constant="15" id="bZS-7p-WYz"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="XDV-as-EWl" secondAttribute="bottom" id="dDN-hj-2oM"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="cellTitle" destination="XDV-as-EWl" id="5Qv-6P-Mbh"/>
-                                        </connections>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="inventoryItemCell" rowHeight="91" id="BjA-gJ-QTl" customClass="InventoryTableCell" customModule="Inventory" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="78" width="375" height="91"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="91"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BjA-gJ-QTl" id="E7n-YL-JWS">
                                             <frame key="frameInset" width="375" height="91"/>
@@ -784,8 +752,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Bnj-1j-qhp"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="8vm-fz-i0B"/>
+                                    <outlet property="dataSource" destination="bhU-j8-VzU" id="WDT-e8-so7"/>
+                                    <outlet property="delegate" destination="bhU-j8-VzU" id="rBz-rN-4id"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -801,6 +769,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Shopping Cart" image="cart1-white.png" badgeValue="25" id="DZD-pT-t2w"/>
+                    <connections>
+                        <outlet property="shoppingCart" destination="hlh-au-Dpc" id="2Vu-nb-Dwy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t88-zz-acD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

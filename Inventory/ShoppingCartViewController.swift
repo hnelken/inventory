@@ -10,8 +10,10 @@ import UIKit
 import CoreData
 
 class ShoppingCartViewController: UIViewController, UITableViewDataSource {
-
-    var items = [NSManagedObject]()
+    
+    var items = [CartItem]()
+    
+    @IBOutlet weak var shoppingCart: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,23 +24,24 @@ class ShoppingCartViewController: UIViewController, UITableViewDataSource {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        //1
-        let appDelegate =
-            UIApplication.shared.delegate as! AppDelegate
-        
+        // Get managed object context
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         
-        //2
-        let fetchRequest: NSFetchRequest<NSManagedObject> = NSFetchRequest(entityName: "Item")
+        // Create fetch request for items in cart
+        let fetchRequest: NSFetchRequest<CartItem> = NSFetchRequest(entityName: "CartItem")
         
         //3
         do {
             let results =
                 try managedContext.fetch(fetchRequest)
-            items = results
+            appDelegate.items = results
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
+        
+        items = appDelegate.items
+        shoppingCart.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -57,51 +60,49 @@ class ShoppingCartViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: kItemCellID)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: kItemCellID) as? InventoryTableCell else {
+            print("ERROR: Inventory table cell could not be dequeued")
+            return InventoryTableCell()
+        }
         
+        // Get item for index path and fill cell with item info
         let item = items[indexPath.row]
-        cell?.textLabel?.text = item.value(forKey: "name") as? String
-        return cell!
+        
+        if let name = item.name {
+            cell.cellTitle.text = "\(name)"
+        }
+        cell.cellNumber.text = "\(item.quantity) \(kUnits[Int(item.unitType)])"
+        cell.cellImageView.image = getImage(for: indexPath)
+        
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
+        
+        
+        return cell
     }
     
-    fileprivate func addItemToCart(_ item: NSManagedObject) {
-        
-        // Make changes to item entity
-        item.setValue(true, forKey: "inCart")
+    fileprivate func removeItemFromCart(_ cartItem: NSManagedObject) {
         
         // Get managed object context
-        let appDelegate =
-            UIApplication.shared.delegate as! AppDelegate
-        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
+        
+        // Delete item from store
+        managedContext.delete(cartItem)
         
         // Save context
         do {
             try managedContext.save()
-            items.append(item)
         } catch let error as NSError  {
-            print("Could not save \(error), \(error.userInfo)")
+            print("Could not remove item from cart \(error), \(error.userInfo)")
         }
     }
     
-    fileprivate func removeItemFromCart(_ item: NSManagedObject) {
-        
-        // Make changes to item entity
-        item.setValue(false, forKey: "inCart")
-        
-        // Get managed object context
-        let appDelegate =
-            UIApplication.shared.delegate as! AppDelegate
-        
-        let managedContext = appDelegate.managedObjectContext
-        
-        // Save context
-        do {
-            try managedContext.save()
-            items.append(item)
-        } catch let error as NSError  {
-            print("Could not save \(error), \(error.userInfo)")
+    fileprivate func getImage(for indexPath: IndexPath) -> UIImage {
+        guard let placeHolderImage = UIImage(named: "cup.png") else {
+            print("ERROR: Couldn't retrieve placeholder image")
+            return UIImage()
         }
+        return placeHolderImage
     }
 
     /*

@@ -500,8 +500,8 @@
 			children = (
 				D8DCF2B11D4AB3DF00363030 /* PasswordViewController.swift */,
 				D8DCFD7A1D4AC5F600363030 /* InventoryViewController.swift */,
-				D8753FD41D7F3CE000DA4D6C /* SelectedItemViewController.swift */,
 				D872BFEA1DA573380071542A /* ShoppingCartViewController.swift */,
+				D8753FD41D7F3CE000DA4D6C /* SelectedItemViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
