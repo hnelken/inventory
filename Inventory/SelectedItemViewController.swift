@@ -97,7 +97,7 @@ class SelectedItemViewController: UIViewController, AKPickerViewDataSource, AKPi
         lastQuantityRow = initQuantity
         
         // -    Units of measurement
-        initUnit = item.units
+        initUnit = item.unitType
         lastUnitRow = initUnit
         
         // Display settings from selected item

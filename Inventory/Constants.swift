@@ -8,6 +8,9 @@
 
 import Foundation
 
+// CORE DATA CONSTANTS
+
+
 // STORYBOARD CONSTANTS
 let kItemCellID = "inventoryItemCell"
 let kGroupCellID = "inventoryGroupCell"

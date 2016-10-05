@@ -115,7 +115,7 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
             // Get item for index path and fill cell with item info
             if let item = getItem(for: indexPath) {
                 cell.cellTitle.text = "\(item.name)"
-                cell.cellNumber.text = "\(item.quantity) \(kUnits[item.units])"
+                cell.cellNumber.text = "\(item.quantity) \(kUnits[item.unitType])"
                 cell.cellImageView.image = getImage(for: indexPath)
             }
             cell.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)

@@ -13,8 +13,9 @@ class InventoryItem {
     var imageName: String = "cup.png"
     var name: String = "Item name"
     var group: Int = 0
-    var units: Int = 2
+    var unitType: Int = 2
     var quantity: Int = 25
+    var inCart: Bool = false
     var special: Bool = false
     var indexPath: IndexPath?
     

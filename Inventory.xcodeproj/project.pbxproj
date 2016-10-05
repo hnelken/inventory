@@ -14,6 +14,8 @@
 		D843CD931D8084E8009144D6 /* penic-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D843CD8F1D8084E8009144D6 /* penic-white.png */; };
 		D843CD941D8084E8009144D6 /* star-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D843CD901D8084E8009144D6 /* star-white.png */; };
 		D843CD951D8084E8009144D6 /* star-yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = D843CD911D8084E8009144D6 /* star-yellow.png */; };
+		D872BFE91DA56C720071542A /* InventoryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D872BFE71DA56C720071542A /* InventoryModel.xcdatamodeld */; };
+		D872BFEB1DA573380071542A /* ShoppingCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D872BFEA1DA573380071542A /* ShoppingCartViewController.swift */; };
 		D8753FCF1D7DE6FC00DA4D6C /* hamburger.png in Resources */ = {isa = PBXBuildFile; fileRef = D8753FCE1D7DE6FC00DA4D6C /* hamburger.png */; };
 		D8753FD51D7F3CE000DA4D6C /* SelectedItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8753FD41D7F3CE000DA4D6C /* SelectedItemViewController.swift */; };
 		D8ADD8E81D9F13ED0020B715 /* add1-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D8ADD8E61D9F13ED0020B715 /* add1-white.png */; };
@@ -244,6 +246,8 @@
 		D843CD8F1D8084E8009144D6 /* penic-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "penic-white.png"; sourceTree = "<group>"; };
 		D843CD901D8084E8009144D6 /* star-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-white.png"; sourceTree = "<group>"; };
 		D843CD911D8084E8009144D6 /* star-yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-yellow.png"; sourceTree = "<group>"; };
+		D872BFE81DA56C720071542A /* InventoryModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = InventoryModel.xcdatamodel; sourceTree = "<group>"; };
+		D872BFEA1DA573380071542A /* ShoppingCartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCartViewController.swift; sourceTree = "<group>"; };
 		D8753FCE1D7DE6FC00DA4D6C /* hamburger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hamburger.png; sourceTree = "<group>"; };
 		D8753FD41D7F3CE000DA4D6C /* SelectedItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedItemViewController.swift; sourceTree = "<group>"; };
 		D8ADD8E61D9F13ED0020B715 /* add1-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add1-white.png"; sourceTree = "<group>"; };
@@ -497,6 +501,7 @@
 				D8DCF2B11D4AB3DF00363030 /* PasswordViewController.swift */,
 				D8DCFD7A1D4AC5F600363030 /* InventoryViewController.swift */,
 				D8753FD41D7F3CE000DA4D6C /* SelectedItemViewController.swift */,
+				D872BFEA1DA573380071542A /* ShoppingCartViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -505,6 +510,7 @@
 			isa = PBXGroup;
 			children = (
 				D8DCF29B1D49679200363030 /* AppDelegate.swift */,
+				D872BFE71DA56C720071542A /* InventoryModel.xcdatamodeld */,
 				D8DCF2B31D4AB86B00363030 /* Constants.swift */,
 				D8BAE2A41D95A207006EB38B /* InventoryItem.swift */,
 			);
@@ -1070,8 +1076,10 @@
 				D8DCFD7B1D4AC5F600363030 /* InventoryViewController.swift in Sources */,
 				D8DCF2B01D49938C00363030 /* GradientBGView.swift in Sources */,
 				D8753FD51D7F3CE000DA4D6C /* SelectedItemViewController.swift in Sources */,
+				D872BFE91DA56C720071542A /* InventoryModel.xcdatamodeld in Sources */,
 				D8DCFD891D5522AC00363030 /* ShadowLabel.swift in Sources */,
 				D8BAE2A51D95A207006EB38B /* InventoryItem.swift in Sources */,
+				D872BFEB1DA573380071542A /* ShoppingCartViewController.swift in Sources */,
 				D8DCF2B21D4AB3DF00363030 /* PasswordViewController.swift in Sources */,
 				D8DCF29C1D49679200363030 /* AppDelegate.swift in Sources */,
 				D808F0F01D91D31B000FA30B /* AKPickerView.swift in Sources */,
@@ -1238,6 +1246,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D872BFE71DA56C720071542A /* InventoryModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D872BFE81DA56C720071542A /* InventoryModel.xcdatamodel */,
+			);
+			currentVersion = D872BFE81DA56C720071542A /* InventoryModel.xcdatamodel */;
+			path = InventoryModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D8DCF2901D49679200363030 /* Project object */;
 }
