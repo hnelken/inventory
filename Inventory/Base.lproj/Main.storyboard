@@ -334,7 +334,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="91" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RYL-u8-AfT">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="91" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RYL-u8-AfT">
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -343,7 +343,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bkt-Dv-4k4" id="c41-id-Aho">
-                                            <frame key="frameInset" width="375" height="49"/>
+                                            <frame key="frameInset" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1C-R0-UM7" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
@@ -374,11 +374,10 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="VUc-PI-Uv2" secondAttribute="trailing" id="4Dx-0d-NBX"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="VUc-PI-Uv2" secondAttribute="trailing" constant="15" id="4Dx-0d-NBX"/>
                                                 <constraint firstAttribute="topMargin" secondItem="t1C-R0-UM7" secondAttribute="top" id="XSS-8Z-ZLV"/>
                                                 <constraint firstItem="t1C-R0-UM7" firstAttribute="leading" secondItem="c41-id-Aho" secondAttribute="leadingMargin" constant="15" id="YX6-un-jZV"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="t1C-R0-UM7" secondAttribute="bottom" id="bA0-r8-4sL"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="t1C-R0-UM7" secondAttribute="trailing" constant="35" id="dBD-oK-Viy"/>
                                                 <constraint firstItem="VUc-PI-Uv2" firstAttribute="centerY" secondItem="c41-id-Aho" secondAttribute="centerY" id="flD-GZ-lpC"/>
                                                 <constraint firstItem="VUc-PI-Uv2" firstAttribute="leading" secondItem="t1C-R0-UM7" secondAttribute="trailing" constant="10" id="hye-an-OJd"/>
                                             </constraints>
@@ -392,7 +391,7 @@
                                         <rect key="frame" x="0.0" y="78" width="375" height="91"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rFa-7R-vdS" id="qOi-HJ-uMj">
-                                            <frame key="frameInset" width="375" height="90"/>
+                                            <frame key="frameInset" width="375" height="91"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u51-Ur-b9V">
@@ -626,10 +625,10 @@
                                         <nil key="highlightedColor"/>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="brn-73-u80"/>
-                                                <exclude reference="pOD-YZ-exr"/>
-                                                <exclude reference="cef-PX-9Zc"/>
                                                 <exclude reference="GWb-PQ-MSn"/>
+                                                <exclude reference="brn-73-u80"/>
+                                                <exclude reference="cef-PX-9Zc"/>
+                                                <exclude reference="pOD-YZ-exr"/>
                                             </mask>
                                         </variation>
                                     </label>
@@ -654,7 +653,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CC2-fn-eUR" id="AI6-1A-7gd">
-                                            <frame key="frameInset" width="375" height="49"/>
+                                            <frame key="frameInset" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XDV-as-EWl" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
@@ -686,7 +685,7 @@
                                         <rect key="frame" x="0.0" y="78" width="375" height="91"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BjA-gJ-QTl" id="E7n-YL-JWS">
-                                            <frame key="frameInset" width="375" height="90"/>
+                                            <frame key="frameInset" width="375" height="91"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ifd-sn-Zab">
@@ -771,8 +770,8 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="oXp-Gp-Upc"/>
                                                     <exclude reference="3on-ru-bcY"/>
+                                                    <exclude reference="oXp-Gp-Upc"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>

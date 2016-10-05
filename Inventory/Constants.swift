@@ -37,6 +37,8 @@ let kWhitePencilImage = "penic-white"
 let kYellowPencilImage = "penic-highlight"
 let kWhiteStarImage = "star-white"
 let kYellowStarImage = "star-yellow"
+let kOpenGroupImage = "down-triangle-white"
+let kClosedGroupImage = "right-triangle-white"
 
 // CONVENIENCE
 let kButtonFadeDuration = 0.35

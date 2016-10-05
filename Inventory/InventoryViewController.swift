@@ -98,6 +98,18 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
             // Section cell
             cell.cellTitle.text = kGroups[indexPath.section]
             cell.backgroundColor = UIColor.clear
+            
+            guard let open = sectionOpen[indexPath.section] else {
+                print("ERROR: Section status not found")
+                return cell
+            }
+            
+            if open {
+                cell.arrowView.image = UIImage(named: kOpenGroupImage)
+            }
+            else {
+                cell.arrowView.image = UIImage(named: kClosedGroupImage)
+            }
         }
         else {  // Normal item cell
             // Get item for index path and fill cell with item info
@@ -106,6 +118,7 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
                 cell.cellNumber.text = "\(item.quantity) \(kUnits[item.units])"
                 cell.cellImageView.image = getImage(for: indexPath)
             }
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
         }
         
         return cell
@@ -122,14 +135,6 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
             }
             inventoryTable.reloadData()
             sectionOpen[indexPath.section] = !open
-            if open {
-                // Section is now closed
-                
-            }
-            else {
-                // Section just opened
-                
-            }
             let section = NSIndexSet(index: indexPath.section)
             inventoryTable.reloadSections((section as IndexSet), with: .none)
         }
