@@ -299,8 +299,8 @@ class SelectedItemViewController: UIViewController, AKPickerViewDataSource, AKPi
         let managedContext = appDelegate.managedObjectContext
         
         // Create cart item
-        let entity = NSEntityDescription.entity(forEntityName: "CartItem", in: managedContext)
-        let cartItem = CartItem(entity: entity!, insertInto: managedContext)
+        let entity = NSEntityDescription.entity(forEntityName: kItemEntityName, in: managedContext)
+        let cartItem = Item(entity: entity!, insertInto: managedContext)
         
         // Make changes to item entity
         cartItem.name = item.name

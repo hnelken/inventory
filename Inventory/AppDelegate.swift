@@ -14,10 +14,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    var items = [CartItem]()
+    var items = [Item]()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Create fetch request for items in cart
+        let fetchRequest: NSFetchRequest<Item> = NSFetchRequest(entityName: kItemEntityName)
+        
+        do {
+            let results =
+                try managedObjectContext.fetch(fetchRequest)
+            items = results
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
+        if items.count == 0 {
+            print("Database empty")
+            installDatabase()
+        }
+        
         return true
     }
 
@@ -44,6 +61,67 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //self.saveContext()
     }
 
+    
+    // MARK: - Public API
+    
+    func addItemToInventory(_ item: InventoryItem) {
+        
+        // Create cart item
+        let entity = NSEntityDescription.entity(forEntityName: kItemEntityName, in: managedObjectContext)
+        let newItem = Item(entity: entity!, insertInto: managedObjectContext)
+        
+        // Make changes to item entity
+        newItem.name = item.name
+        newItem.special = item.special
+        newItem.group = Int32(item.group)
+        newItem.quantity = Int32(item.quantity)
+        newItem.unitType = Int32(item.unitType)
+        newItem.imageName = item.imageName
+        newItem.inCart = item.inCart
+        
+        // Save context
+        do {
+            try managedObjectContext.save()
+            items.append(newItem)
+        } catch let error as NSError  {
+            print("Could not add item to inventory \(error), \(error.userInfo)")
+        }
+    }
+    
+    
+    // MARK: - Private API
+    fileprivate func installDatabase() {
+        
+        //----FILL "kItems" FROM SERVER HERE-----//
+        /*->->-CHANGE THIS->->*/installTestData()
+        //---------------------------------------//
+        
+        // Add entries in CoreData for each inventory item
+        for i in 0...kGroups.count - 1 {
+            let group = kItems[i]
+            
+            if group != nil || group!.count > 0 {
+                for j in 0...group!.count - 1 {
+                    let item = InventoryItem(name: group![j], group: i, special: false)
+                    addItemToInventory(item)
+                }
+            }
+        }
+        print("Added default items to CoreData")
+    }
+    
+    fileprivate func installTestData() {
+        for i in 0...kGroups.count - 1 {
+            kItems[i] = [
+                "\(kGroups[i]) - Item 1",
+                "\(kGroups[i]) - Item 2",
+                "\(kGroups[i]) - Item 3",
+                "\(kGroups[i]) - Item 4",
+                "\(kGroups[i]) - Item 5"
+            ]
+        }
+    }
+    
     
     // MARK: - Core Data stack
     

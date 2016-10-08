@@ -11,7 +11,7 @@ import CoreData
 
 class ShoppingCartViewController: UIViewController, UITableViewDataSource {
     
-    var items = [CartItem]()
+    var items = [Item]()
     
     @IBOutlet weak var shoppingCart: UITableView!
     
@@ -29,7 +29,7 @@ class ShoppingCartViewController: UIViewController, UITableViewDataSource {
         let managedContext = appDelegate.managedObjectContext
         
         // Create fetch request for items in cart
-        let fetchRequest: NSFetchRequest<CartItem> = NSFetchRequest(entityName: "CartItem")
+        let fetchRequest: NSFetchRequest<Item> = NSFetchRequest(entityName: kItemEntityName)
         
         //3
         do {
