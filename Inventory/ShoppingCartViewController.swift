@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ShoppingCartViewController: UIViewController, UITableViewDataSource {
+class ShoppingCartViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var items = [Item]()
     
@@ -24,24 +24,7 @@ class ShoppingCartViewController: UIViewController, UITableViewDataSource {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Get managed object context
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
-        
-        // Create fetch request for items in cart
-        let fetchRequest: NSFetchRequest<Item> = NSFetchRequest(entityName: kItemEntityName)
-        
-        //3
-        do {
-            let results =
-                try managedContext.fetch(fetchRequest)
-            appDelegate.items = results
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-        
-        items = appDelegate.items
-        shoppingCart.reloadData()
+        refreshCart()
     }
     
     override func didReceiveMemoryWarning() {
@@ -74,10 +57,14 @@ class ShoppingCartViewController: UIViewController, UITableViewDataSource {
         cell.cellNumber.text = "\(item.quantity) \(kUnits[Int(item.unitType)])"
         cell.cellImageView.image = getImage(for: indexPath)
         
-        cell.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
-        
-        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let delegate = (UIApplication.shared.delegate as! AppDelegate)
+        delegate.removeItemFromCart(items[indexPath.row])
+        refreshCart()
+        shoppingCart.deselectRow(at: indexPath, animated: true)
     }
     
     fileprivate func removeItemFromCart(_ cartItem: NSManagedObject) {
@@ -103,6 +90,13 @@ class ShoppingCartViewController: UIViewController, UITableViewDataSource {
             return UIImage()
         }
         return placeHolderImage
+    }
+    
+    fileprivate func refreshCart() {
+        // Get cart items from delegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        items = appDelegate.getItemsInCart()
+        shoppingCart.reloadData()
     }
 
     /*

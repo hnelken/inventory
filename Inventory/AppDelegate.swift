@@ -99,7 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func getItemsInCart() -> [Item] {
         let fetchRequest = NSFetchRequest<Item>(entityName: kItemEntityName)
-        fetchRequest.predicate = NSPredicate(format: "inCart == %b", true as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "inCart == true")
         //fetchRequest.sortDescriptors = [] //optionally you can specify the order in which entities should ordered after fetch finishes
         
         do {
@@ -108,6 +108,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         catch {
             print("Could not fetch items in shopping cart")
             return [Item]()
+        }
+    }
+    
+    func addItemToCart(_ item: Item) {
+        // Make sure item isnt in cart
+        guard !item.inCart else {
+            return
+        }
+        
+        // Make change to item
+        item.inCart = true
+        
+        // Save context
+        do {
+            try managedObjectContext.save()
+        } catch let error as NSError  {
+            print("Could not add item to cart \(error), \(error.userInfo)")
+        }
+    }
+    
+    func removeItemFromCart(_ item: Item) {
+        // Make sure item isnt in cart
+        guard item.inCart else {
+            return
+        }
+        
+        // Make change to item
+        item.inCart = false
+        
+        // Save context
+        do {
+            try managedObjectContext.save()
+        } catch let error as NSError  {
+            print("Could not remove item from cart \(error), \(error.userInfo)")
         }
     }
     

@@ -143,7 +143,7 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
             // Get item info and image to pass to detail view
             vc.initImage = getImage(for: selectedIndex)
             if let item = getItem(for: selectedIndex) {
-                vc.initItem = InventoryItem(name: "", group: 0, special: false)
+                vc.initItem = item
             }
         }
     }

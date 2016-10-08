@@ -12,7 +12,7 @@ import CoreData
 class SelectedItemViewController: UIViewController, AKPickerViewDataSource, AKPickerViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
     // MARK: - Public References
-    var initItem: InventoryItem?
+    var initItem: Item?
     weak var initImage: UIImage?
     
     // MARK: - Private Variables
@@ -73,12 +73,9 @@ class SelectedItemViewController: UIViewController, AKPickerViewDataSource, AKPi
         view.addGestureRecognizer(touch)
         
         // Get item passed via segue if available
-        let item: InventoryItem
-        if let thisItem = initItem {
-            item = thisItem
-        }
-        else {  // Otherwise make a dummy one for safety
-            item = InventoryItem(name: "(default)", group: 0, special: false)
+        guard let item = initItem else {
+            print("ERROR: No item passed to detail view controller")
+            return
         }
         
         // Transfer settings from selected item
@@ -87,18 +84,18 @@ class SelectedItemViewController: UIViewController, AKPickerViewDataSource, AKPi
         initSpecial = item.special
         
         // -    Group
-        initGroup = item.group
-        lastGroupRow = item.group
+        initGroup = Int(item.group)
+        lastGroupRow = initGroup
         
         // -    Name
         initName = item.name
         
         // -    Quantity
-        initQuantity = item.quantity
+        initQuantity = Int(item.quantity)
         lastQuantityRow = initQuantity
         
         // -    Units of measurement
-        initUnit = item.unitType
+        initUnit = Int(item.unitType)
         lastUnitRow = initUnit
         
         // Display settings from selected item
@@ -108,12 +105,8 @@ class SelectedItemViewController: UIViewController, AKPickerViewDataSource, AKPi
         }
         
         // -    Show special status via button color
-        if isSpecial {
-            specialButton.setImage(UIImage(named: kYellowStarImage), for: UIControlState())
-        }
-        else {
-            specialButton.setImage(UIImage(named: kWhiteStarImage), for: UIControlState())
-        }
+        let imageName = isSpecial ? kYellowStarImage : kWhiteStarImage
+        specialButton.setImage(UIImage(named: imageName), for: UIControlState())
         
         // -    Show item group and name
         itemGroupLabel.text = kGroups[initGroup]
@@ -249,10 +242,13 @@ class SelectedItemViewController: UIViewController, AKPickerViewDataSource, AKPi
     }
     
     @IBAction func addToCartPressed(_ sender: AnyObject) {
-        addItemToCart(initItem!)
+        if let item = initItem {
+            (UIApplication.shared.delegate as! AppDelegate).addItemToCart(item)
+        }
     }
     
     @IBAction func savePressed(_ sender: AnyObject) {
+        
     }
     
     @IBAction func deletePressed(_ sender: AnyObject) {
@@ -291,33 +287,6 @@ class SelectedItemViewController: UIViewController, AKPickerViewDataSource, AKPi
     
     
     // MARK: - Private API
-    
-    fileprivate func addItemToCart(_ item: InventoryItem) {
-        
-        // Get managed object context
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
-        
-        // Create cart item
-        let entity = NSEntityDescription.entity(forEntityName: kItemEntityName, in: managedContext)
-        let cartItem = Item(entity: entity!, insertInto: managedContext)
-        
-        // Make changes to item entity
-        cartItem.name = item.name
-        cartItem.special = item.special
-        cartItem.group = Int32(item.group)
-        cartItem.quantity = Int32(item.quantity)
-        cartItem.unitType = Int32(item.unitType)
-        cartItem.imageName = item.imageName
-        
-        // Save context
-        do {
-            try managedContext.save()
-            appDelegate.items.append(cartItem)
-        } catch let error as NSError  {
-            print("Could not add item to cart \(error), \(error.userInfo)")
-        }
-    }
     
     fileprivate func getAttributedPickerTitle(for row: Int) -> NSAttributedString {
         return NSAttributedString(string: kGroups[row], attributes: [
