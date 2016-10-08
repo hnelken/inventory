@@ -19,18 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        // Create fetch request for items in cart
-        let fetchRequest: NSFetchRequest<Item> = NSFetchRequest(entityName: kItemEntityName)
+        //----
+        // UPDATE DATABASE FROM WEB HERE
+        //----
         
-        do {
-            let results =
-                try managedObjectContext.fetch(fetchRequest)
-            items = results
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-        
-        if items.count == 0 {
+        // Check if database is installed
+        if isDatabaseEmpty() {
             print("Database empty")
             installDatabase()
         }
@@ -88,8 +82,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    func getItems(in group: Int) -> [Item] {
+        
+        let fetchRequest = NSFetchRequest<Item>(entityName: kItemEntityName)
+        fetchRequest.predicate = NSPredicate(format: "group == %d", group)
+
+        do {
+            return try managedObjectContext.fetch(fetchRequest)
+        }
+        catch {
+            print("Could not fetch items from group")
+            return [Item]()
+        }
+        
+    }
+    
+    func getItemsInCart() -> [Item] {
+        let fetchRequest = NSFetchRequest<Item>(entityName: kItemEntityName)
+        fetchRequest.predicate = NSPredicate(format: "inCart == %b", true as CVarArg)
+        //fetchRequest.sortDescriptors = [] //optionally you can specify the order in which entities should ordered after fetch finishes
+        
+        do {
+            return try managedObjectContext.fetch(fetchRequest)
+        }
+        catch {
+            print("Could not fetch items in shopping cart")
+            return [Item]()
+        }
+    }
     
     // MARK: - Private API
+    
+    // Check if the database has been installed before
+    func isDatabaseEmpty() -> Bool {
+        // Create fetch request for items in cart
+        let fetchRequest: NSFetchRequest<Item> = NSFetchRequest(entityName: kItemEntityName)
+        
+        do {
+            let results =
+                try managedObjectContext.fetch(fetchRequest)
+            return results.count == 0
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+            return true
+        }
+    }
+    
+    // Install the data from the server for the first time
     fileprivate func installDatabase() {
         
         //----FILL "kItems" FROM SERVER HERE-----//
@@ -110,6 +149,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("Added default items to CoreData")
     }
     
+    // Install some test data in kItems global var
     fileprivate func installTestData() {
         for i in 0...kGroups.count - 1 {
             kItems[i] = [

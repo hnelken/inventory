@@ -17,10 +17,11 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     fileprivate var itemName: String?
     fileprivate var itemImage: UIImage?
     fileprivate var selectedIndex: IndexPath = IndexPath(row: 0, section: 0)
-    fileprivate var sectionOpen: [Int : Bool] = [:]
-    fileprivate var imageCaches: [Int : [UIImage]] = [:]
-    fileprivate var sectionItems: [Int : [InventoryItem]] = [:]
-    
+    fileprivate var groups: [Int: [String: Any]] = [:]
+    fileprivate var groupOpen: [Bool] = [Bool]()
+    //fileprivate var imageCaches: [Int : [UIImage]] = [:]
+    //fileprivate var sectionItems: [Int : [InventoryItem]] = [:]
+
     
     // MARK: - IB Outlets
     @IBOutlet weak var inventoryTable: UITableView!
@@ -30,17 +31,18 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for i in 0...kGroups.count - 1 {
-            sectionItems[i] = [
-                InventoryItem(name: "\(kGroups[i]) - Item 1", group: i, special: false),
-                InventoryItem(name: "\(kGroups[i]) - Item 2", group: i, special: false),
-                InventoryItem(name: "\(kGroups[i]) - Item 3", group: i, special: false),
-                InventoryItem(name: "\(kGroups[i]) - Item 4", group: i, special: false),
-                InventoryItem(name: "\(kGroups[i]) - Item 5", group: i, special: false)
+        for group in 0...kGroups.count - 1 {
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            
+            groups[group] = [
+                kGroupImagesKey : [UIImage](),
+                kGroupItemsKey : appDelegate.getItems(in: group)
             ]
-            sectionOpen[i] = false
+            groupOpen.append(false)
         }
         
+        // Style the tab bar
         let color = UIColor(colorLiteralRed: 92/255, green: 94/255, blue: 102/255, alpha: 1)
         tabBarController?.tabBar.barTintColor = color
         tabBarController?.tabBar.tintColor = .white
@@ -58,28 +60,24 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     
     // numberOfSections
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sectionItems.count
+        return groups.count
     }
     
     // numberOfRowsInSection
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        guard let open = sectionOpen[section] else {
-            return 1
-        }
-        
-        if open {
-            guard let items = sectionItems[section] else {
-                return 1
-            }
-            return items.count + 1
+       
+        // Check if section is open
+        if getOpenStatus(for: section) {
+            // Open sections show all items and a header
+            return getItems(in: section).count + 1
         }
         else {
+            // Closed sections show only the header
             return 1
         }
     }
     
-    // titleForHeaderInSection
+    // heightForRow
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
             return 50
@@ -98,13 +96,8 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
             // Section cell
             cell.cellTitle.text = kGroups[indexPath.section]
             cell.backgroundColor = UIColor.clear
-            
-            guard let open = sectionOpen[indexPath.section] else {
-                print("ERROR: Section status not found")
-                return cell
-            }
-            
-            if open {
+        
+            if getOpenStatus(for: indexPath.section) {
                 cell.arrowView.image = UIImage(named: kOpenGroupImage)
             }
             else {
@@ -114,11 +107,13 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
         else {  // Normal item cell
             // Get item for index path and fill cell with item info
             if let item = getItem(for: indexPath) {
-                cell.cellTitle.text = "\(item.name)"
-                cell.cellNumber.text = "\(item.quantity) \(kUnits[item.unitType])"
+                cell.cellTitle.text = "\(item.name!)"
+                cell.cellNumber.text = "\(item.quantity) \(kUnits[Int(item.unitType)])"
                 cell.cellImageView.image = getImage(for: indexPath)
             }
-            cell.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
+            if indexPath.row != getItems(in: indexPath.section).count - 1 {
+                cell.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+            }
         }
         
         return cell
@@ -128,15 +123,7 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.row == 0 {
-            
-            guard let open = sectionOpen[indexPath.section] else {
-                print("ERROR: Section status not found")
-                return
-            }
-            inventoryTable.reloadData()
-            sectionOpen[indexPath.section] = !open
-            let section = NSIndexSet(index: indexPath.section)
-            inventoryTable.reloadSections((section as IndexSet), with: .none)
+            toggleOpenStatus(for: indexPath.section)
         }
         else {
             // Save selected index and perform segue
@@ -156,7 +143,7 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
             // Get item info and image to pass to detail view
             vc.initImage = getImage(for: selectedIndex)
             if let item = getItem(for: selectedIndex) {
-                vc.initItem = item
+                vc.initItem = InventoryItem(name: "", group: 0, special: false)
             }
         }
     }
@@ -164,6 +151,56 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     
     // MARK: - Private API
     
+    // Returns whether the given group list has dropped down or not
+    fileprivate func getOpenStatus(for group: Int) -> Bool {
+        if groupOpen.count > group {
+            return groupOpen[group]
+        }
+        return false
+    }
+    
+    // Toggles a group drop down list
+    fileprivate func toggleOpenStatus(for group: Int) {
+        if groupOpen.count > group {
+            inventoryTable.reloadData()
+            groupOpen[group] = !groupOpen[group]
+            let section = NSIndexSet(index: group)
+            inventoryTable.reloadSections((section as IndexSet), with: .none)
+        }
+    }
+    
+    // Returns the image cache for the given group
+    fileprivate func getImageCache(for group: Int) -> [UIImage] {
+        if let groupDict = groups[group] {
+            if let cache = groupDict[kGroupImagesKey] as? [UIImage] {
+                return cache
+            }
+        }
+        return [UIImage]()
+    }
+    
+    // Appends a new image to the cache for the given group
+    fileprivate func addImageToCache(for group: Int, image: UIImage) {
+        if var groupDict = groups[group] {
+            if var cache = groupDict[kGroupImagesKey] as? [UIImage] {
+                // Otherwise use a placeholder image and attempt to download the real image
+                cache.append(image)
+                groupDict[kGroupImagesKey] = cache
+            }
+        }
+    }
+    
+    // Returns the items belonging to the given group
+    fileprivate func getItems(in group: Int) -> [Item] {
+        if let groupDict = groups[group] {
+            if let items = groupDict[kGroupItemsKey] as? [Item] {
+                return items
+            }
+        }
+        return [Item]()
+    }
+    
+    // Returns the cell with the correct identifier based on the given index path
     fileprivate func getCell(for indexPath: IndexPath) -> InventoryTableCell {
         
         let cellID: String
@@ -181,48 +218,44 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
         return cell
     }
     
+    // Returns the image for the item at the given index path
     fileprivate func getImage(for indexPath: IndexPath) -> UIImage {
+        
         // Get image cache for section
-        var sectionCache: [UIImage] = []
-        if let cache = imageCaches[indexPath.section] {
-            sectionCache = cache
+        var cache: [UIImage] = getImageCache(for: indexPath.section)
+        if cache.count > indexPath.row - 1 {
+            return cache[indexPath.row - 1]
         }
         
-        // Check for image cache hit
-        if sectionCache.count > indexPath.row - 1 {
-            return sectionCache[indexPath.row - 1]
-        }
-        
-        guard let placeHolderImage = UIImage(named: "cup.png") else {
-            print("ERROR: Couldn't retrieve placeholder image")
-            return UIImage()
-        }
-        
-        // Otherwise use a placeholder image and attempt to download the real image
-        sectionCache.append(placeHolderImage)
-        imageCaches[indexPath.section] = sectionCache
+        // Cache missed, try to get placeholder image while downloading
         
         //
         // ADD IMAGE DOWNLOAD OPERATION TO QUEUE HERE
         //
         
+        guard let placeHolderImage = UIImage(named: "cup.png") else {
+            print("ERROR: Couldn't retrieve placeholder image")
+            return UIImage()
+        }
+        addImageToCache(for: indexPath.section, image: placeHolderImage)
+        
         return placeHolderImage
     }
     
-    fileprivate func getItem(for indexPath: IndexPath) -> InventoryItem? {
-        // Safely get the item list for the index path's section
-        guard let items = sectionItems[indexPath.section] else {
-            print("ERROR: Data not available for index path \(indexPath)")
-            return nil
-        }
+    // Returns the item object from the given index path
+    fileprivate func getItem(for indexPath: IndexPath) -> Item? {
+        
+        // Get the items from the same group
+        let items = getItems(in: indexPath.section)
         
         // Ensure the index path is not out of bounds
-        guard items.count > indexPath.row - 1 else {
+        if items.count > indexPath.row - 1 {
+            // Return the item for the index path
+            return items[indexPath.row - 1]
+        }
+        else {
             print("ERROR: Data not available for index path \(indexPath)")
             return nil
         }
-        
-        // Return the item for the index path
-        return items[indexPath.row - 1]
     }
 }

@@ -44,6 +44,10 @@ let kUnits = [
     "lbs", "bottles", "cases", "grams", "bags"
 ]
 
+let kGroupOpenKey = "open"
+let kGroupImagesKey = "cache"
+let kGroupItemsKey = "items"
+
 let kGroupComponent = 0
 let kQuantityComponent = 0
 let kUnitComponent = 1
