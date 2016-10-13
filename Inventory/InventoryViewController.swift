@@ -19,9 +19,7 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     fileprivate var selectedIndex: IndexPath = IndexPath(row: 0, section: 0)
     fileprivate var groups: [Int: [String: Any]] = [:]
     fileprivate var groupOpen: [Bool] = [Bool]()
-    //fileprivate var imageCaches: [Int : [UIImage]] = [:]
-    //fileprivate var sectionItems: [Int : [InventoryItem]] = [:]
-
+    fileprivate var firstTime: Bool = true
     
     // MARK: - IB Outlets
     @IBOutlet weak var inventoryTable: UITableView!
@@ -31,21 +29,14 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for group in 0...kGroups.count - 1 {
-            
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            
-            groups[group] = [
-                kGroupImagesKey : [UIImage](),
-                kGroupItemsKey : appDelegate.getItems(in: group)
-            ]
-            groupOpen.append(false)
-        }
-        
         // Style the tab bar
         let color = UIColor(colorLiteralRed: 92/255, green: 94/255, blue: 102/255, alpha: 1)
         tabBarController?.tabBar.barTintColor = color
         tabBarController?.tabBar.tintColor = .white
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        refreshInventory()
     }
     
     
@@ -150,6 +141,30 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
 
     
     // MARK: - Private API
+    
+    // Refreshes the inventory data source
+    fileprivate func refreshInventory() {
+        for group in 0...kGroups.count - 1 {
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            
+            groups[group] = [
+                kGroupImagesKey : [UIImage](),
+                kGroupItemsKey : appDelegate.getItems(in: group)
+            ]
+            
+            if firstTime {
+                groupOpen.append(false)
+            }
+        }
+        
+        if !firstTime {
+            inventoryTable.reloadData()
+        }
+        else {
+            firstTime = false
+        }
+    }
     
     // Returns whether the given group list has dropped down or not
     fileprivate func getOpenStatus(for group: Int) -> Bool {

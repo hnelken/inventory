@@ -28,6 +28,7 @@ class SelectedItemViewController: UIViewController, AKPickerViewDataSource, AKPi
     fileprivate var isSpecial = false
     fileprivate var editingGroup = false
     fileprivate var editingName = false
+    fileprivate var changesSaved = false
     
     // MARK: - IB Outlets
     // -    Labels
@@ -141,9 +142,9 @@ class SelectedItemViewController: UIViewController, AKPickerViewDataSource, AKPi
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        //if let vc = segue.destinationViewController as? InventoryViewController {
-        //vc.rowChanged
-        //}
+        if changesSaved && segue.identifier == kBackSegue {
+            updateSelectedItem()
+        }
     }
     
     
@@ -248,7 +249,8 @@ class SelectedItemViewController: UIViewController, AKPickerViewDataSource, AKPi
     }
     
     @IBAction func savePressed(_ sender: AnyObject) {
-        
+        changesSaved = true
+        performSegue(withIdentifier: kBackSegue, sender: self)
     }
     
     @IBAction func deletePressed(_ sender: AnyObject) {
@@ -287,6 +289,27 @@ class SelectedItemViewController: UIViewController, AKPickerViewDataSource, AKPi
     
     
     // MARK: - Private API
+    
+    func updateSelectedItem() {
+        guard let item = initItem else {
+            return
+        }
+        
+        // Make changes to item
+        item.name = itemNameLabel.text
+        item.group = Int32(lastGroupRow)
+        item.special = isSpecial
+        item.quantity = Int32(lastQuantityRow)
+        item.unitType = Int32(lastUnitRow)
+        
+        // Save context
+        do {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            try appDelegate.managedObjectContext.save()
+        } catch let error as NSError  {
+            print("Could not update item \(error), \(error.userInfo)")
+        }
+    }
     
     fileprivate func getAttributedPickerTitle(for row: Int) -> NSAttributedString {
         return NSAttributedString(string: kGroups[row], attributes: [
