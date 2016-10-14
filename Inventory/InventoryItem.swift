@@ -10,13 +10,16 @@ import Foundation
 
 class InventoryItem {
     
+    var name: String
+    var group: Int
+    var special: Bool
+    
     var imageName: String = "cup.png"
-    var name: String = "Item name"
-    var group: Int = 0
     var unitType: Int = 2
     var quantity: Int = 25
+    var lowThresh: Int = 5
+    var highThresh: Int = 25
     var inCart: Bool = false
-    var special: Bool = false
     var indexPath: IndexPath?
     
     init(name: String, group: Int, special: Bool) {

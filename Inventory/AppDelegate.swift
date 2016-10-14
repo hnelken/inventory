@@ -72,6 +72,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         newItem.unitType = Int32(item.unitType)
         newItem.imageName = item.imageName
         newItem.inCart = item.inCart
+        newItem.lowThresh = Int32(item.lowThresh)
+        newItem.highThresh = Int32(item.highThresh)
         
         // Save context
         do {
@@ -170,17 +172,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //---------------------------------------//
         
         // Add entries in CoreData for each inventory item
-        for i in 0...kGroups.count - 1 {
-            let group = kItems[i]
-            
-            if group != nil || group!.count > 0 {
-                for j in 0...group!.count - 1 {
-                    let item = InventoryItem(name: group![j], group: i, special: false)
-                    addItemToInventory(item)
-                }
+        for group in 0...kGroups.count - 1 {
+            if let itemNames = kItems[group] {
+                installGroup(group, itemNames: itemNames)
             }
         }
         print("Added default items to CoreData")
+    }
+    
+    fileprivate func installGroup(_ group: Int, itemNames: [String]) {
+        if itemNames.count > 0 {
+            for i in 0...itemNames.count - 1 {
+                let item = InventoryItem(name: itemNames[i], group: group, special: false)
+                addItemToInventory(item)
+            }
+        }
     }
     
     // Install some test data in kItems global var
