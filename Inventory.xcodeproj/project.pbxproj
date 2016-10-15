@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D807273C1DB2AD35007C15E7 /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80727391DB2AD35007C15E7 /* RangeSlider.swift */; };
+		D807273D1DB2AD35007C15E7 /* RangeSliderThumbLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D807273A1DB2AD35007C15E7 /* RangeSliderThumbLayer.swift */; };
+		D807273E1DB2AD35007C15E7 /* RangeSliderTrackLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D807273B1DB2AD35007C15E7 /* RangeSliderTrackLayer.swift */; };
 		D808F0EE1D919CD4000FA30B /* penic-highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = D808F0ED1D919CD4000FA30B /* penic-highlight.png */; };
 		D808F0F01D91D31B000FA30B /* AKPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D808F0EF1D91D31B000FA30B /* AKPickerView.swift */; };
 		D808F0F21D91D393000FA30B /* FadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D808F0F11D91D393000FA30B /* FadingButton.swift */; };
@@ -239,6 +242,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D80727391DB2AD35007C15E7 /* RangeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeSlider.swift; sourceTree = "<group>"; };
+		D807273A1DB2AD35007C15E7 /* RangeSliderThumbLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeSliderThumbLayer.swift; sourceTree = "<group>"; };
+		D807273B1DB2AD35007C15E7 /* RangeSliderTrackLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeSliderTrackLayer.swift; sourceTree = "<group>"; };
 		D808F0ED1D919CD4000FA30B /* penic-highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "penic-highlight.png"; sourceTree = "<group>"; };
 		D808F0EF1D91D31B000FA30B /* AKPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKPickerView.swift; sourceTree = "<group>"; };
 		D808F0F11D91D393000FA30B /* FadingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadingButton.swift; sourceTree = "<group>"; };
@@ -486,6 +492,9 @@
 		D8753FD01D7DF13200DA4D6C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D80727391DB2AD35007C15E7 /* RangeSlider.swift */,
+				D807273A1DB2AD35007C15E7 /* RangeSliderThumbLayer.swift */,
+				D807273B1DB2AD35007C15E7 /* RangeSliderTrackLayer.swift */,
 				D808F0EF1D91D31B000FA30B /* AKPickerView.swift */,
 				D8DCFD881D5522AC00363030 /* ShadowLabel.swift */,
 				D8DCFD7C1D4AC61F00363030 /* InventoryTableCell.swift */,
@@ -1075,13 +1084,16 @@
 				D808F0F21D91D393000FA30B /* FadingButton.swift in Sources */,
 				D8DCFD7B1D4AC5F600363030 /* InventoryViewController.swift in Sources */,
 				D8DCF2B01D49938C00363030 /* GradientBGView.swift in Sources */,
+				D807273D1DB2AD35007C15E7 /* RangeSliderThumbLayer.swift in Sources */,
 				D8753FD51D7F3CE000DA4D6C /* SelectedItemViewController.swift in Sources */,
 				D872BFE91DA56C720071542A /* InventoryModel.xcdatamodeld in Sources */,
+				D807273E1DB2AD35007C15E7 /* RangeSliderTrackLayer.swift in Sources */,
 				D8DCFD891D5522AC00363030 /* ShadowLabel.swift in Sources */,
 				D8BAE2A51D95A207006EB38B /* InventoryItem.swift in Sources */,
 				D872BFEB1DA573380071542A /* ShoppingCartViewController.swift in Sources */,
 				D8DCF2B21D4AB3DF00363030 /* PasswordViewController.swift in Sources */,
 				D8DCF29C1D49679200363030 /* AppDelegate.swift in Sources */,
+				D807273C1DB2AD35007C15E7 /* RangeSlider.swift in Sources */,
 				D808F0F01D91D31B000FA30B /* AKPickerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

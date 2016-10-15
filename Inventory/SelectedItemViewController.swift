@@ -45,6 +45,7 @@ class SelectedItemViewController: UIViewController, AKPickerViewDataSource, AKPi
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var groupPicker: UIPickerView!
     @IBOutlet weak var unitPicker: AKPickerView!
+    @IBOutlet weak var rangeSlider: RangeSlider!
     
     // -    Buttons
     @IBOutlet weak var minusButton: FadingButton!
@@ -135,8 +136,24 @@ class SelectedItemViewController: UIViewController, AKPickerViewDataSource, AKPi
         // Set horizontal picker delegate / data source
         unitPicker.dataSource = self
         unitPicker.delegate = self
+        
+        // Set up range slider
+        rangeSlider.lateInit()
+        rangeSlider?.addTarget(self, action: #selector(SelectedItemViewController.rangeSliderValueChanged(_:)),
+                              for: .valueChanged)
     }
     
+    override func viewDidLayoutSubviews() {
+        let margin: CGFloat = 20.0
+        let width = view.bounds.width - 2.0 * margin
+        rangeSlider?.frame = CGRect(x: margin, y: margin + topLayoutGuide.length,
+                                   width: width, height: 31.0)
+    }
+    
+    // MARK: - RangeSlider API
+    func rangeSliderValueChanged(_ rangeSlider: RangeSlider) {
+        print("Range slider value changed: (\(rangeSlider.lowerValue) \(rangeSlider.upperValue))")
+    }
     
     // MARK: - Navigation
     
