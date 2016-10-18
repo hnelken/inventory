@@ -68,6 +68,22 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 50))
+        let header = UIButton(frame: CGRect(x: 0, y: 15, width: tableView.frame.size.width, height: 20))
+        header.setTitle(kGroups[section], for: .normal)
+        header.titleLabel?.textAlignment = .left
+        header.titleLabel?.textColor = .white
+        header.backgroundColor = .clear
+        view.backgroundColor = .black
+        view.addSubview(header)
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+    
     // heightForRow
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
@@ -114,7 +130,8 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.row == 0 {
-            toggleOpenStatus(for: indexPath.section)
+            toggleOpenStatus(for: indexPath)
+            inventoryTable.scrollToRow(at: indexPath, at: .top, animated: true)
         }
         else {
             // Save selected index and perform segue
@@ -175,7 +192,8 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     // Toggles a group drop down list
-    fileprivate func toggleOpenStatus(for group: Int) {
+    fileprivate func toggleOpenStatus(for indexPath: IndexPath) {
+        let group = indexPath.section
         if groupOpen.count > group {
             inventoryTable.reloadData()
             groupOpen[group] = !groupOpen[group]
