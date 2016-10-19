@@ -69,15 +69,11 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 50))
-        let header = UIButton(frame: CGRect(x: 0, y: 15, width: tableView.frame.size.width, height: 20))
-        header.setTitle(kGroups[section], for: .normal)
-        header.titleLabel?.textAlignment = .left
-        header.titleLabel?.textColor = .white
-        header.backgroundColor = .clear
-        view.backgroundColor = .black
-        view.addSubview(header)
-        return view
+        // Return custom header view
+        return InventoryHeaderView(headerSection: section,
+                                   frame: CGRect(x: 0, y: 0,
+                                                 width: tableView.frame.size.width,
+                                                 height: CGFloat(kHeaderHeight)))
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -130,7 +126,7 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.row == 0 {
-            toggleOpenStatus(for: indexPath)
+            toggleOpenStatus(for: indexPath.section)
             inventoryTable.scrollToRow(at: indexPath, at: .top, animated: true)
         }
         else {
@@ -156,6 +152,18 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
 
+    
+    // MARK: - Public API
+    func headerSelected(sender: AnyObject) {
+        if let header = sender as? InventoryHeaderView {
+            header.arrow.image = UIImage(named: kOpenGroupImage)
+            toggleOpenStatus(for: header.group)
+        }
+        else {
+            print("Nope")
+        }
+        
+    }
     
     // MARK: - Private API
     
@@ -192,8 +200,7 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     // Toggles a group drop down list
-    fileprivate func toggleOpenStatus(for indexPath: IndexPath) {
-        let group = indexPath.section
+    fileprivate func toggleOpenStatus(for group: Int) {
         if groupOpen.count > group {
             inventoryTable.reloadData()
             groupOpen[group] = !groupOpen[group]

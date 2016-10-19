@@ -20,6 +20,9 @@ let kQuantitySegue = "quantitySegue"
 let kItemSelectSegue = "itemSelectSegue"
 let kBackSegue = "backToTableSegue"
 
+// MAGIC NUMBER CONSTANTS
+let kHeaderHeight = 50.0
+
 // INVENTORY CONSTANTS
 var kItems: [Int: [String]] = [
     0: [String](),
