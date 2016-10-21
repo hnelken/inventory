@@ -70,10 +70,13 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         // Return custom header view
-        return InventoryHeaderView(headerSection: section,
-                                   frame: CGRect(x: 0, y: 0,
-                                                 width: tableView.frame.size.width,
-                                                 height: CGFloat(kHeaderHeight)))
+        return InventoryHeaderView(
+            inventory: self,
+            headerSection: section,
+            frame: CGRect(x: 0, y: 0,
+                          width: tableView.frame.size.width,
+                          height: CGFloat(kHeaderHeight))
+        )
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -154,15 +157,14 @@ class InventoryViewController: UIViewController, UITableViewDataSource, UITableV
 
     
     // MARK: - Public API
-    func headerSelected(sender: AnyObject) {
-        if let header = sender as? InventoryHeaderView {
-            header.arrow.image = UIImage(named: kOpenGroupImage)
-            toggleOpenStatus(for: header.group)
-        }
-        else {
-            print("Nope")
-        }
+    func headerSelected(_ header: InventoryHeaderView) {
+     
+        // Change section header arrow image
+        header.arrow.image = (groupOpen[header.group])
+            ? UIImage(named: kClosedGroupImage)
+            : UIImage(named: kOpenGroupImage)
         
+        toggleOpenStatus(for: header.group)
     }
     
     // MARK: - Private API

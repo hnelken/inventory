@@ -8,14 +8,18 @@
 
 import UIKit
 
-class InventoryHeaderView: UIView {
+class InventoryHeaderView: UIButton {
     
     let group: Int
     let arrow: UIImageView
+    weak var controller: InventoryViewController?
     
-    init(headerSection: Int, frame: CGRect) {
+    init(inventory: InventoryViewController,
+         headerSection: Int,
+         frame: CGRect) {
         
         // Initialize
+        controller = inventory
         group = headerSection
         arrow = UIImageView(frame: CGRect(x: frame.width - 35, y: 15, width: 20, height: 20))
         arrow.image = UIImage(named: kClosedGroupImage)
@@ -31,18 +35,21 @@ class InventoryHeaderView: UIView {
         label.text = kGroups[group]
         
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
-        button.addTarget(self, action: #selector(InventoryViewController.headerSelected(sender:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(InventoryHeaderView.buttonPressed), for: .touchUpInside)
         button.setTitle("", for: .normal)
         button.backgroundColor = .clear
         
         addSubview(label)
         addSubview(arrow)
         addSubview(button)
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func buttonPressed() {
+        controller?.headerSelected(self)
     }
     
     /*
