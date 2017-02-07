@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cdS-OV-XDF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cdS-OV-XDF">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,6 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhC-II-tKF" customClass="FadingButton" customModule="Inventory" customModuleProvider="target">
+                                <rect key="frame" x="77.5" y="223.5" width="60" height="60"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="HEK-Lf-hqh"/>
@@ -34,6 +38,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NJp-Yb-WJw" customClass="FadingButton" customModule="Inventory" customModuleProvider="target">
+                                <rect key="frame" x="157.5" y="223.5" width="60" height="60"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="LFY-4v-zoI"/>
@@ -48,6 +53,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hoA-eT-LoO" customClass="FadingButton" customModule="Inventory" customModuleProvider="target">
+                                <rect key="frame" x="237.5" y="223.5" width="60" height="60"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="Mlj-8W-5Pp"/>
@@ -62,6 +68,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4t-K2-PWH" customClass="FadingButton" customModule="Inventory" customModuleProvider="target">
+                                <rect key="frame" x="77.5" y="303.5" width="60" height="60"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="Arl-Op-9j7"/>
@@ -76,6 +83,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uhg-3N-Nfz" customClass="FadingButton" customModule="Inventory" customModuleProvider="target">
+                                <rect key="frame" x="157.5" y="303.5" width="60" height="60"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Flj-aN-Ob5"/>
@@ -90,6 +98,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JOg-jX-88q" customClass="FadingButton" customModule="Inventory" customModuleProvider="target">
+                                <rect key="frame" x="237.5" y="303.5" width="60" height="60"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="u4m-bK-Lmc"/>
@@ -104,6 +113,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gj4-xG-BfB" customClass="FadingButton" customModule="Inventory" customModuleProvider="target">
+                                <rect key="frame" x="77.5" y="383.5" width="60" height="60"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="6Zu-Hs-kX5"/>
@@ -118,6 +128,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lFC-59-bfD" customClass="FadingButton" customModule="Inventory" customModuleProvider="target">
+                                <rect key="frame" x="157.5" y="383.5" width="60" height="60"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="X2T-0I-ItF"/>
@@ -132,6 +143,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPR-da-YQg" customClass="FadingButton" customModule="Inventory" customModuleProvider="target">
+                                <rect key="frame" x="237.5" y="383.5" width="60" height="60"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Fa4-1H-oL2"/>
@@ -146,6 +158,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to the Inventory!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5oe-ut-AQL" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
+                                <rect key="frame" x="16" y="55" width="343" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="T11-yQ-RDi"/>
                                     <constraint firstAttribute="width" constant="343" id="zSQ-cK-hVk"/>
@@ -155,6 +168,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter a valid password to begin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xT3-dJ-0JA" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
+                                <rect key="frame" x="19" y="521" width="337" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="DNe-2I-0AL"/>
                                     <constraint firstAttribute="width" constant="337" id="PPx-h8-cg6"/>
@@ -164,6 +178,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_    _    _    _" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="POW-mn-pLk" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
+                                <rect key="frame" x="77.5" y="96" width="220" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="220" id="bIQ-fY-yTa"/>
                                     <constraint firstAttribute="height" constant="54" id="eLI-y3-z20"/>
@@ -173,6 +188,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aby-2V-UFT" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
+                                <rect key="frame" x="78" y="96" width="42" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="U3k-g3-pmA"/>
                                     <constraint firstAttribute="width" constant="42" id="bse-1o-ZKt"/>
@@ -182,6 +198,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZ6-Vu-UlH" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
+                                <rect key="frame" x="136" y="96" width="42" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="42" id="dOa-bk-8fA"/>
                                     <constraint firstAttribute="height" constant="40" id="xdT-jf-rkA"/>
@@ -191,6 +208,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R35-hd-Wih" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
+                                <rect key="frame" x="196" y="96" width="42" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="6yI-aF-Y4r"/>
                                     <constraint firstAttribute="width" constant="42" id="SUN-fH-T9T"/>
@@ -200,6 +218,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VUv-lm-tuS" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
+                                <rect key="frame" x="255" y="96" width="42" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="42" id="LG9-Dh-tKB"/>
                                     <constraint firstAttribute="height" constant="41" id="nVV-bo-Gia"/>
@@ -209,6 +228,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NXa-1H-jQ2" customClass="FadingButton" customModule="Inventory" customModuleProvider="target">
+                                <rect key="frame" x="305" y="101" width="42" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="GYq-YQ-mqN"/>
                                     <constraint firstAttribute="width" constant="42" id="jVc-XE-a6f"/>
@@ -219,12 +239,14 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="N33-uW-1Gh">
+                                <rect key="frame" x="62.5" y="208.5" width="250" height="250"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="3K1-nN-yQ5"/>
                                     <constraint firstAttribute="height" constant="250" id="ylV-Po-YzG"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nC2-Z8-mMz" customClass="FadingButton" customModule="Inventory" customModuleProvider="target">
+                                <rect key="frame" x="78" y="572" width="219" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="0DP-Ga-L7d"/>
@@ -335,6 +357,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="91" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RYL-u8-AfT">
+                                <rect key="frame" x="0.0" y="68" width="375" height="550"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -343,10 +366,11 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bkt-Dv-4k4" id="c41-id-Aho">
-                                            <frame key="frameInset" width="375" height="49"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1C-R0-UM7" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
+                                                    <rect key="frame" x="23" y="8" width="294" height="33.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="49" id="EoK-2J-YDM"/>
                                                     </constraints>
@@ -360,6 +384,7 @@
                                                     </variation>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right-triangle-white.png" translatesAutoresizingMaskIntoConstraints="NO" id="VUc-PI-Uv2">
+                                                    <rect key="frame" x="327" y="12.5" width="25" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="01i-hZ-49U"/>
                                                         <constraint firstAttribute="height" constant="59" id="hn1-Yd-c9E"/>
@@ -391,10 +416,11 @@
                                         <rect key="frame" x="0.0" y="78" width="375" height="91"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rFa-7R-vdS" id="qOi-HJ-uMj">
-                                            <frame key="frameInset" width="375" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="90.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u51-Ur-b9V">
+                                                    <rect key="frame" x="0.0" y="8" width="75" height="74.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="75" id="1Mo-km-I3o"/>
                                                         <constraint firstAttribute="height" constant="59" id="1Xg-oh-dvb"/>
@@ -406,6 +432,7 @@
                                                     </variation>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wSd-Iz-UBR" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
+                                                    <rect key="frame" x="83" y="8" width="210" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="49" id="BiY-nC-61e"/>
                                                         <constraint firstAttribute="height" constant="50" id="wc7-y7-4MM"/>
@@ -420,6 +447,7 @@
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 units" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXD-uo-u99" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
+                                                    <rect key="frame" x="309" y="8" width="58" height="75"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="58" id="04R-E7-lSv"/>
                                                         <constraint firstAttribute="height" constant="75" id="c0z-3j-XbU"/>
@@ -429,21 +457,25 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vlc.png" translatesAutoresizingMaskIntoConstraints="NO" id="anv-PO-qmX">
+                                                    <rect key="frame" x="83" y="60" width="25" height="20.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="TVk-7k-ZEB"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-yellow.png" translatesAutoresizingMaskIntoConstraints="NO" id="gl2-pg-ar1">
+                                                    <rect key="frame" x="116" y="57.5" width="25" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="MKg-hU-4Gn"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-white.png" translatesAutoresizingMaskIntoConstraints="NO" id="t1b-Fr-m8x">
+                                                    <rect key="frame" x="149" y="57.5" width="25" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="hb4-Se-cCh"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-yellow.png" translatesAutoresizingMaskIntoConstraints="NO" id="bdl-rf-SnO">
+                                                    <rect key="frame" x="182" y="57.5" width="25" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="JkD-S5-wyr"/>
                                                     </constraints>
@@ -495,8 +527,10 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PB9-xC-b2D">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ngv-yh-ddk" customClass="FadingButton" customModule="Inventory" customModuleProvider="target">
+                                        <rect key="frame" x="12" y="30" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="RcO-dZ-Er5"/>
                                             <constraint firstAttribute="width" constant="30" id="gsW-lo-IIA"/>
@@ -509,6 +543,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fI-3B-fpA" customClass="FadingButton" customModule="Inventory" customModuleProvider="target">
+                                        <rect key="frame" x="328" y="30" width="35" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="35" id="Jmk-Rf-i1D"/>
                                             <constraint firstAttribute="height" constant="30" id="TgD-D5-oun"/>
@@ -521,6 +556,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inventory" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IwG-Zr-icK" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
+                                        <rect key="frame" x="142" y="30" width="91" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="345" id="96Y-wT-bbJ"/>
                                             <constraint firstAttribute="height" constant="30" id="F3K-ps-mNn"/>
@@ -593,8 +629,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z4f-gO-CZC">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View Item" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uNQ-bi-GTC" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
+                                        <rect key="frame" x="139.5" y="30" width="96" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="49" id="0de-yb-76a"/>
                                             <constraint firstAttribute="height" constant="38" id="Znz-nQ-X9a"/>
@@ -607,14 +645,15 @@
                                         <nil key="highlightedColor"/>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="vCU-7q-jSQ"/>
-                                                <exclude reference="Znz-nQ-X9a"/>
                                                 <exclude reference="0de-yb-76a"/>
+                                                <exclude reference="Znz-nQ-X9a"/>
                                                 <exclude reference="h9u-SQ-02d"/>
+                                                <exclude reference="vCU-7q-jSQ"/>
                                             </mask>
                                         </variation>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4bz-m7-0nH" customClass="FadingButton" customModule="Inventory" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="30" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="8pt-LY-zCi"/>
                                             <constraint firstAttribute="height" constant="30" id="dO8-fO-swm"/>
@@ -638,13 +677,16 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MkV-SA-knX">
+                                <rect key="frame" x="0.0" y="68" width="375" height="148"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cup.png" translatesAutoresizingMaskIntoConstraints="NO" id="AGa-6m-kNz">
+                                        <rect key="frame" x="8" y="8" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="pS4-oj-JGc"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ymD-Rc-OYu" customClass="FadingButton" customModule="Inventory" customModuleProvider="target">
+                                        <rect key="frame" x="13" y="116" width="90" height="24"/>
                                         <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="90" id="UwM-Cp-CoB"/>
@@ -659,6 +701,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Number X Item Number X Item Number X Item Number X Item Number X Item Number X" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P9s-7w-XyY" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
+                                        <rect key="frame" x="140" y="94" width="227" height="54"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="345" id="NUm-Q7-pe9"/>
                                             <constraint firstAttribute="width" constant="49" id="QWj-GO-Clk"/>
@@ -671,15 +714,16 @@
                                         <nil key="highlightedColor"/>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="bxl-Ur-bJI"/>
-                                                <exclude reference="QWj-GO-Clk"/>
-                                                <exclude reference="v9t-ql-0Sv"/>
-                                                <exclude reference="c5y-cp-HqG"/>
                                                 <exclude reference="NUm-Q7-pe9"/>
+                                                <exclude reference="QWj-GO-Clk"/>
+                                                <exclude reference="bxl-Ur-bJI"/>
+                                                <exclude reference="c5y-cp-HqG"/>
+                                                <exclude reference="v9t-ql-0Sv"/>
                                             </mask>
                                         </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group:" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVG-ZX-6nS" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
+                                        <rect key="frame" x="128" y="77" width="61" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="3D6-WQ-QR5"/>
                                             <constraint firstAttribute="width" constant="200" id="Exl-P4-s2V"/>
@@ -699,6 +743,7 @@
                                         </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Number X Item Number X Item Number X Item Number X Item Number X Item Number X" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8Y-uF-yd7" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
+                                        <rect key="frame" x="132" y="8" width="235" height="69"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="345" id="GEz-NT-Oef"/>
                                             <constraint firstAttribute="width" constant="200" id="RAG-n6-hOr"/>
@@ -711,11 +756,11 @@
                                         <nil key="highlightedColor"/>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="RAG-n6-hOr"/>
-                                                <exclude reference="gRU-0w-9jp"/>
-                                                <exclude reference="ZwU-Xr-VbS"/>
-                                                <exclude reference="hZP-I8-kh4"/>
                                                 <exclude reference="GEz-NT-Oef"/>
+                                                <exclude reference="RAG-n6-hOr"/>
+                                                <exclude reference="ZwU-Xr-VbS"/>
+                                                <exclude reference="gRU-0w-9jp"/>
+                                                <exclude reference="hZP-I8-kh4"/>
                                             </mask>
                                         </variation>
                                     </label>
@@ -740,14 +785,11 @@
                                     <constraint firstItem="AGa-6m-kNz" firstAttribute="top" secondItem="MkV-SA-knX" secondAttribute="top" constant="8" id="zUA-tD-IW2"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fzF-lP-hRc" customClass="RangeSlider" customModule="Inventory" customModuleProvider="target">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="eXy-oc-CYL"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eAu-jz-AAc" userLabel="Amount View">
+                                <rect key="frame" x="16" y="285" width="343" height="251"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NnI-i1-1Df" customClass="FadingButton" customModule="Inventory" customModuleProvider="target">
+                                        <rect key="frame" x="232" y="41" width="40" height="40"/>
                                         <color key="backgroundColor" red="0.2392231132" green="0.83589804290000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="FTy-Oe-KhL"/>
@@ -759,6 +801,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGX-TQ-a1E" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
+                                        <rect key="frame" x="119" y="20" width="105" height="82"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="105" id="0wD-9j-cye"/>
                                             <constraint firstAttribute="height" constant="82" id="C8y-8s-Vqz"/>
@@ -768,6 +811,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current amount in stock:" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zg8-V5-g8m" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="242" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="K7V-j7-Hmq"/>
                                             <constraint firstAttribute="width" constant="345" id="S4V-a2-phb"/>
@@ -780,19 +824,21 @@
                                         <nil key="highlightedColor"/>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="S4V-a2-phb"/>
                                                 <exclude reference="K7V-j7-Hmq"/>
+                                                <exclude reference="S4V-a2-phb"/>
                                                 <exclude reference="VfS-j5-joE"/>
                                             </mask>
                                         </variation>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uQU-08-8xf" customClass="AKPickerView" customModule="Inventory" customModuleProvider="target">
+                                        <rect key="frame" x="-20" y="102" width="383" height="47"/>
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="47" id="yaI-qN-ZfH"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGh-1L-VVV" customClass="FadingButton" customModule="Inventory" customModuleProvider="target">
+                                        <rect key="frame" x="78" y="41" width="40" height="40"/>
                                         <color key="backgroundColor" red="0.85596196339999997" green="0.19731626629999999" blue="0.1901863308" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="CBG-Ve-yEL"/>
@@ -823,18 +869,15 @@
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="MkV-SA-knX" firstAttribute="leading" secondItem="f6u-Tp-HYc" secondAttribute="leadingMargin" constant="-16" id="3yO-3G-eiy"/>
-                            <constraint firstItem="TqB-ei-CQl" firstAttribute="top" secondItem="eAu-jz-AAc" secondAttribute="bottom" constant="116" id="4hc-tq-08p"/>
+                            <constraint firstItem="TqB-ei-CQl" firstAttribute="top" secondItem="eAu-jz-AAc" secondAttribute="bottom" constant="82" id="4hc-tq-08p"/>
                             <constraint firstAttribute="trailingMargin" secondItem="z4f-gO-CZC" secondAttribute="trailing" constant="-16" id="56d-Qt-mkj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="eAu-jz-AAc" secondAttribute="trailing" id="HNB-mh-jxm"/>
                             <constraint firstAttribute="leadingMargin" secondItem="eAu-jz-AAc" secondAttribute="leading" id="HaC-uz-3cl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="MkV-SA-knX" secondAttribute="trailing" constant="-16" id="Hwf-hK-f6b"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="fzF-lP-hRc" secondAttribute="trailing" id="Lcw-FU-zdS"/>
-                            <constraint firstItem="fzF-lP-hRc" firstAttribute="top" secondItem="MkV-SA-knX" secondAttribute="bottom" constant="8" id="M6O-eE-T3P"/>
                             <constraint firstItem="z4f-gO-CZC" firstAttribute="leading" secondItem="f6u-Tp-HYc" secondAttribute="leadingMargin" constant="-16" id="e5L-dV-sPR"/>
                             <constraint firstItem="MkV-SA-knX" firstAttribute="top" secondItem="z4f-gO-CZC" secondAttribute="bottom" id="lNX-oY-oYW"/>
+                            <constraint firstItem="eAu-jz-AAc" firstAttribute="top" secondItem="MkV-SA-knX" secondAttribute="bottom" constant="69" id="mHb-Yd-M98"/>
                             <constraint firstItem="z4f-gO-CZC" firstAttribute="top" secondItem="0dx-Um-A2t" secondAttribute="bottom" constant="-20" id="nNu-fn-cam"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="fzF-lP-hRc" secondAttribute="leading" id="xkv-Z8-OCm"/>
-                            <constraint firstItem="eAu-jz-AAc" firstAttribute="top" secondItem="fzF-lP-hRc" secondAttribute="bottom" constant="8" id="zyK-mL-geV"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -856,8 +899,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ji3-bd-IUr">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EZc-jE-8z7" customClass="FadingButton" customModule="Inventory" customModuleProvider="target">
+                                        <rect key="frame" x="12" y="30" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="Crk-Vj-oft"/>
                                             <constraint firstAttribute="height" constant="30" id="u9c-e7-Cko"/>
@@ -870,6 +915,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h8P-mc-sut" customClass="FadingButton" customModule="Inventory" customModuleProvider="target">
+                                        <rect key="frame" x="328" y="30" width="35" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Cso-M6-fsu"/>
                                             <constraint firstAttribute="width" constant="35" id="Y4I-TS-kfn"/>
@@ -879,6 +925,7 @@
                                         </state>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shopping Cart" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H9l-2N-On9" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
+                                        <rect key="frame" x="116" y="30" width="143.5" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="GWb-PQ-MSn"/>
                                             <constraint firstAttribute="height" constant="30" id="UUf-qf-1ky"/>
@@ -911,18 +958,20 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="91" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hlh-au-Dpc">
+                                <rect key="frame" x="0.0" y="68" width="375" height="550"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="inventoryItemCell" rowHeight="91" id="BjA-gJ-QTl" customClass="InventoryTableCell" customModule="Inventory" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="1000" height="91"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="91"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BjA-gJ-QTl" id="E7n-YL-JWS">
-                                            <frame key="frameInset" width="1000" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="90.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ifd-sn-Zab">
+                                                    <rect key="frame" x="0.0" y="8" width="75" height="74.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="75" id="OHa-0o-eIN"/>
                                                         <constraint firstAttribute="height" constant="59" id="uBp-kC-KZU"/>
@@ -934,6 +983,7 @@
                                                     </variation>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T6r-4D-b5u" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
+                                                    <rect key="frame" x="83" y="8" width="210" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="49" id="KhM-1l-Kze"/>
                                                         <constraint firstAttribute="height" constant="50" id="QIW-sy-B2u"/>
@@ -948,6 +998,7 @@
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 units" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUv-bq-drc" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
+                                                    <rect key="frame" x="309" y="8" width="58" height="75"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="75" id="ObU-Vk-R2k"/>
                                                         <constraint firstAttribute="width" constant="58" id="Sgm-bZ-54C"/>
@@ -957,21 +1008,25 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vlc.png" translatesAutoresizingMaskIntoConstraints="NO" id="wjk-Pl-cRr">
+                                                    <rect key="frame" x="83" y="60" width="25" height="20.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="L8K-VM-tl6"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-yellow.png" translatesAutoresizingMaskIntoConstraints="NO" id="L2c-XG-eLE">
+                                                    <rect key="frame" x="116" y="57.5" width="25" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="LFw-ZG-mTW"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-white.png" translatesAutoresizingMaskIntoConstraints="NO" id="lO8-oQ-y9r">
+                                                    <rect key="frame" x="149" y="57.5" width="25" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="gZa-bX-GzQ"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-yellow.png" translatesAutoresizingMaskIntoConstraints="NO" id="9pF-Nu-jFG">
+                                                    <rect key="frame" x="182" y="57.5" width="25" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="TKv-yd-O1m"/>
                                                     </constraints>
@@ -1034,7 +1089,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="hlh-au-Dpc" secondAttribute="trailing" constant="-16" id="p1L-D9-5Nt"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Shopping Cart" image="cart1-white.png" badgeValue="25" id="DZD-pT-t2w"/>
+                    <tabBarItem key="tabBarItem" title="Shopping Cart" image="cart1-white.png" badgeValue="2" id="DZD-pT-t2w"/>
                     <connections>
                         <outlet property="shoppingCart" destination="hlh-au-Dpc" id="2Vu-nb-Dwy"/>
                     </connections>
@@ -1056,6 +1111,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cup.png" translatesAutoresizingMaskIntoConstraints="NO" id="DnR-4q-UCW">
+                                <rect key="frame" x="16" y="80" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="5YW-ea-5WC"/>
                                     <constraint firstAttribute="height" constant="59" id="aWy-7v-2eY"/>
@@ -1068,6 +1124,7 @@
                                 </variation>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SKL-JE-r15" customClass="FadingButton" customModule="Inventory" customModuleProvider="target">
+                                <rect key="frame" x="21" y="186" width="90" height="24"/>
                                 <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="pOp-qC-JtO"/>
@@ -1081,21 +1138,8 @@
                                     <action selector="editImagePressed:" destination="5Vr-3r-AF2" eventType="touchUpInside" id="9tg-wm-S0P"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QUU-25-dey" customClass="FadingButton" customModule="Inventory" customModuleProvider="target">
-                                <color key="backgroundColor" red="0.2392231132" green="0.83589804290000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="dpI-hS-X1E"/>
-                                    <constraint firstAttribute="width" constant="219" id="rVW-JP-xWc"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
-                                <state key="normal" title="Save Changes">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="savePressed:" destination="5Vr-3r-AF2" eventType="touchUpInside" id="5rw-Lq-8cs"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Number X Item Number X Item Number X Item Number X Item Number X Item Number X" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iEr-Po-uFq" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
+                                <rect key="frame" x="128" y="173" width="231" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="9yb-Ud-g9H"/>
                                     <constraint firstAttribute="width" constant="49" id="CLN-XQ-BVo"/>
@@ -1118,6 +1162,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cheese Cheese Cheese Cheese Cheese Cheese Cheese Cheese Cheese" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dc-Eg-8ZE" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
+                                <rect key="frame" x="128" y="104" width="231" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="49" id="9ck-uN-Iv0"/>
                                     <constraint firstAttribute="width" constant="200" id="bzP-e3-CTS"/>
@@ -1138,6 +1183,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Name:" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WLs-K8-744" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
+                                <rect key="frame" x="157" y="152" width="105" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="105" id="3e6-B1-oO5"/>
                                     <constraint firstAttribute="height" constant="17" id="ISu-If-LPv"/>
@@ -1157,6 +1203,7 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Oh-P7-M8G" customClass="FadingButton" customModule="Inventory" customModuleProvider="target">
+                                <rect key="frame" x="128" y="150" width="21" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="21" id="2Az-Tm-8Fn"/>
                                     <constraint firstAttribute="height" constant="21" id="E3Y-Mp-jhr"/>
@@ -1169,6 +1216,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rM9-Jx-DIv" customClass="FadingButton" customModule="Inventory" customModuleProvider="target">
+                                <rect key="frame" x="128" y="83" width="21" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="21" id="ZwM-Mm-eqx"/>
                                     <constraint firstAttribute="height" constant="21" id="e1N-ck-Tdq"/>
@@ -1181,6 +1229,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group:" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LWC-wh-FSq" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
+                                <rect key="frame" x="157" y="83" width="61" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="33V-H8-ObN"/>
                                     <constraint firstAttribute="height" constant="21" id="49H-ex-zYj"/>
@@ -1200,6 +1249,7 @@
                                 </variation>
                             </label>
                             <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gdf-FM-eRP" userLabel="Group Picker">
+                                <rect key="frame" x="16" y="218" width="343" height="244"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="l25-YM-XZa"/>
@@ -1210,8 +1260,10 @@
                                 </connections>
                             </pickerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1L-2j-p02" userLabel="Amount View">
+                                <rect key="frame" x="16" y="218" width="343" height="229"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZoZ-I3-Bz9" customClass="FadingButton" customModule="Inventory" customModuleProvider="target">
+                                        <rect key="frame" x="232" y="39" width="40" height="40"/>
                                         <color key="backgroundColor" red="0.2392231132" green="0.83589804290000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="1J4-yn-pcs"/>
@@ -1223,6 +1275,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NbB-18-1k3" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
+                                        <rect key="frame" x="119" y="18" width="105" height="82"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="105" id="MT1-r1-N1k"/>
                                             <constraint firstAttribute="height" constant="82" id="c3y-RN-BUJ"/>
@@ -1232,6 +1285,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current amount in stock:" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zc5-L3-tiL" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="242" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="345" id="NTY-ju-9ZL"/>
                                             <constraint firstAttribute="width" constant="200" id="QIa-HA-ccM"/>
@@ -1251,12 +1305,14 @@
                                         </variation>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WKU-wc-Swp" customClass="AKPickerView" customModule="Inventory" customModuleProvider="target">
+                                        <rect key="frame" x="-20" y="100" width="383" height="47"/>
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="47" id="vfK-y8-uly"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QiM-pC-usU" customClass="FadingButton" customModule="Inventory" customModuleProvider="target">
+                                        <rect key="frame" x="78" y="39" width="40" height="40"/>
                                         <color key="backgroundColor" red="0.85596196339999997" green="0.19731626629999999" blue="0.1901863308" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="892-iZ-rZ1"/>
@@ -1268,44 +1324,34 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R1N-jq-LKg" customClass="RangeSlider" customModule="Inventory" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="155" width="343" height="31"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="31" id="5Ln-QM-hyp"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="ZoZ-I3-Bz9" firstAttribute="top" secondItem="NbB-18-1k3" secondAttribute="bottom" constant="-61" id="2SP-QT-PW9"/>
-                                    <constraint firstAttribute="bottom" secondItem="R1N-jq-LKg" secondAttribute="bottom" constant="15" id="7AO-MA-mKI"/>
                                     <constraint firstItem="ZoZ-I3-Bz9" firstAttribute="leading" secondItem="NbB-18-1k3" secondAttribute="trailing" constant="8" id="7IH-SW-FEz"/>
+                                    <constraint firstItem="R1N-jq-LKg" firstAttribute="leading" secondItem="Q1L-2j-p02" secondAttribute="leading" id="Hhd-Ki-eV9"/>
                                     <constraint firstItem="NbB-18-1k3" firstAttribute="centerX" secondItem="Q1L-2j-p02" secondAttribute="centerX" id="Ho5-y1-f83"/>
-                                    <constraint firstItem="R1N-jq-LKg" firstAttribute="leading" secondItem="Q1L-2j-p02" secondAttribute="leading" id="PkQ-db-3wm"/>
+                                    <constraint firstItem="R1N-jq-LKg" firstAttribute="top" secondItem="WKU-wc-Swp" secondAttribute="bottom" constant="8" id="PEU-AG-QbD"/>
                                     <constraint firstItem="zc5-L3-tiL" firstAttribute="top" secondItem="Q1L-2j-p02" secondAttribute="top" id="RYr-Cd-HJr"/>
                                     <constraint firstAttribute="width" constant="343" id="RyP-gN-9S4"/>
-                                    <constraint firstItem="R1N-jq-LKg" firstAttribute="top" secondItem="WKU-wc-Swp" secondAttribute="bottom" constant="15" id="fDo-LM-I0X"/>
+                                    <constraint firstAttribute="trailing" secondItem="R1N-jq-LKg" secondAttribute="trailing" id="V5I-7M-8st"/>
                                     <constraint firstItem="WKU-wc-Swp" firstAttribute="leading" secondItem="Q1L-2j-p02" secondAttribute="leading" constant="-20" id="fMz-5C-3hx"/>
                                     <constraint firstItem="zc5-L3-tiL" firstAttribute="leading" secondItem="Q1L-2j-p02" secondAttribute="leadingMargin" constant="-8" id="gBO-7T-ALu"/>
-                                    <constraint firstItem="NbB-18-1k3" firstAttribute="top" secondItem="Q1L-2j-p02" secondAttribute="top" constant="20" id="gNI-wN-bw9"/>
+                                    <constraint firstItem="NbB-18-1k3" firstAttribute="top" secondItem="Q1L-2j-p02" secondAttribute="top" constant="18" id="gNI-wN-bw9"/>
                                     <constraint firstItem="WKU-wc-Swp" firstAttribute="top" secondItem="NbB-18-1k3" secondAttribute="bottom" id="hBC-Le-qnZ"/>
                                     <constraint firstItem="NbB-18-1k3" firstAttribute="leading" secondItem="QiM-pC-usU" secondAttribute="trailing" constant="1" id="hnI-Rj-Ymq"/>
                                     <constraint firstItem="QiM-pC-usU" firstAttribute="top" secondItem="NbB-18-1k3" secondAttribute="bottom" constant="-61" id="iGa-cr-sG6"/>
-                                    <constraint firstAttribute="trailing" secondItem="R1N-jq-LKg" secondAttribute="trailing" id="kah-Tg-dbU"/>
                                     <constraint firstAttribute="trailing" secondItem="WKU-wc-Swp" secondAttribute="trailing" constant="-20" id="yS7-TW-YKp"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mGz-zp-Vhx" customClass="FadingButton" customModule="Inventory" customModuleProvider="target">
-                                <color key="backgroundColor" red="0.85596196339999997" green="0.19731626629999999" blue="0.1901863308" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="LBO-aY-52W"/>
-                                    <constraint firstAttribute="width" constant="219" id="jmx-nC-6F9"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
-                                <state key="normal" title="Delete Item">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="deletePressed:" destination="5Vr-3r-AF2" eventType="touchUpInside" id="mBg-ap-qvw"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G5P-BH-MAX">
+                                <rect key="frame" x="128" y="179" width="231" height="30"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.84530722128378377" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
@@ -1314,6 +1360,7 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current item group:" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8DB-b8-qiD" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
+                                <rect key="frame" x="16" y="218" width="195" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="345" id="M3f-eQ-t8l"/>
                                     <constraint firstAttribute="height" constant="25" id="S3g-4s-DXU"/>
@@ -1332,23 +1379,11 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q6N-eS-eGG" customClass="FadingButton" customModule="Inventory" customModuleProvider="target">
-                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="219" id="7Qy-8O-VyA"/>
-                                    <constraint firstAttribute="height" constant="40" id="DSf-T3-1KI"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
-                                <state key="normal" title="Add to Shopping Cart">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="addToCartPressed:" destination="5Vr-3r-AF2" eventType="touchUpInside" id="I5N-B9-Y6Z"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TyU-0z-CDN">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View Item" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtJ-i1-EUR" customClass="ShadowLabel" customModule="Inventory" customModuleProvider="target">
+                                        <rect key="frame" x="140" y="30" width="96" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="5SW-2v-wSg"/>
                                             <constraint firstAttribute="width" constant="345" id="JAm-jn-BtH"/>
@@ -1361,14 +1396,15 @@
                                         <nil key="highlightedColor"/>
                                         <variation key="default">
                                             <mask key="constraints">
+                                                <exclude reference="5SW-2v-wSg"/>
                                                 <exclude reference="JAm-jn-BtH"/>
                                                 <exclude reference="LcY-Lo-jfd"/>
                                                 <exclude reference="kfb-is-ocV"/>
-                                                <exclude reference="5SW-2v-wSg"/>
                                             </mask>
                                         </variation>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dnp-gH-qrG" customClass="FadingButton" customModule="Inventory" customModuleProvider="target">
+                                        <rect key="frame" x="12" y="30" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="2NE-Vo-MFH"/>
                                             <constraint firstAttribute="height" constant="30" id="3G8-tz-KjE"/>
@@ -1381,6 +1417,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTX-tZ-q2x">
+                                        <rect key="frame" x="333" y="30" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="oTt-YI-0qV"/>
                                             <constraint firstAttribute="height" constant="30" id="vfL-hK-bhc"/>
@@ -1405,10 +1442,56 @@
                                     <constraint firstAttribute="bottom" secondItem="bTX-tZ-q2x" secondAttribute="bottom" constant="8" id="m16-Vq-2gd"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QUU-25-dey" customClass="FadingButton" customModule="Inventory" customModuleProvider="target">
+                                <rect key="frame" x="78" y="470" width="219" height="40"/>
+                                <color key="backgroundColor" red="0.2392231132" green="0.83589804290000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="dpI-hS-X1E"/>
+                                    <constraint firstAttribute="width" constant="219" id="rVW-JP-xWc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="Save Changes">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="savePressed:" destination="5Vr-3r-AF2" eventType="touchUpInside" id="5rw-Lq-8cs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mGz-zp-Vhx" customClass="FadingButton" customModule="Inventory" customModuleProvider="target">
+                                <rect key="frame" x="78" y="570" width="219" height="40"/>
+                                <color key="backgroundColor" red="0.85596196339999997" green="0.19731626629999999" blue="0.1901863308" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="LBO-aY-52W"/>
+                                    <constraint firstAttribute="width" constant="219" id="jmx-nC-6F9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="Delete Item">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="deletePressed:" destination="5Vr-3r-AF2" eventType="touchUpInside" id="mBg-ap-qvw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q6N-eS-eGG" customClass="FadingButton" customModule="Inventory" customModuleProvider="target">
+                                <rect key="frame" x="78" y="520" width="219" height="40"/>
+                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="219" id="7Qy-8O-VyA"/>
+                                    <constraint firstAttribute="height" constant="40" id="DSf-T3-1KI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="Add to Shopping Cart">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addToCartPressed:" destination="5Vr-3r-AF2" eventType="touchUpInside" id="I5N-B9-Y6Z"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="5dc-Eg-8ZE" secondAttribute="trailing" id="0nH-0k-DPK"/>
+                            <constraint firstItem="clf-N4-joJ" firstAttribute="top" secondItem="mGz-zp-Vhx" secondAttribute="bottom" constant="8" id="0nz-eD-KOs"/>
                             <constraint firstItem="TyU-0z-CDN" firstAttribute="top" secondItem="NdX-fW-cEq" secondAttribute="bottom" constant="-20" id="2je-hX-6NH"/>
                             <constraint firstItem="Q6N-eS-eGG" firstAttribute="centerX" secondItem="qqi-2a-esk" secondAttribute="centerX" id="3eM-h0-VXY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iEr-Po-uFq" secondAttribute="trailing" id="5rI-hY-2o0"/>
@@ -1416,15 +1499,13 @@
                             <constraint firstItem="Q6N-eS-eGG" firstAttribute="top" secondItem="iEr-Po-uFq" secondAttribute="bottom" constant="52" id="6HU-IA-y2e"/>
                             <constraint firstItem="clf-N4-joJ" firstAttribute="top" secondItem="mGz-zp-Vhx" secondAttribute="bottom" constant="24" id="6ln-gf-Ifc"/>
                             <constraint firstItem="mGz-zp-Vhx" firstAttribute="top" secondItem="Q1L-2j-p02" secondAttribute="bottom" constant="25" id="8Gg-zs-4Ms"/>
-                            <constraint firstItem="QUU-25-dey" firstAttribute="top" secondItem="Q1L-2j-p02" secondAttribute="bottom" id="8sk-j2-rs4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="G5P-BH-MAX" secondAttribute="trailing" id="CSC-R6-FgS"/>
                             <constraint firstItem="5dc-Eg-8ZE" firstAttribute="leading" secondItem="DnR-4q-UCW" secondAttribute="trailing" constant="8" id="CSr-eA-5eC"/>
                             <constraint firstItem="LWC-wh-FSq" firstAttribute="top" secondItem="rM9-Jx-DIv" secondAttribute="bottom" constant="-21" id="CUV-a1-xhL"/>
                             <constraint firstItem="TyU-0z-CDN" firstAttribute="leading" secondItem="qqi-2a-esk" secondAttribute="leadingMargin" constant="-16" id="CwV-Ov-hrp"/>
                             <constraint firstItem="mGz-zp-Vhx" firstAttribute="centerX" secondItem="qqi-2a-esk" secondAttribute="centerX" id="DT1-Pk-i0B"/>
-                            <constraint firstItem="Q1L-2j-p02" firstAttribute="top" secondItem="SKL-JE-r15" secondAttribute="bottom" constant="15" id="EPy-xd-D6Y"/>
+                            <constraint firstItem="Q1L-2j-p02" firstAttribute="top" secondItem="SKL-JE-r15" secondAttribute="bottom" constant="8" id="EPy-xd-D6Y"/>
                             <constraint firstItem="gdf-FM-eRP" firstAttribute="leading" secondItem="8DB-b8-qiD" secondAttribute="trailing" constant="-195" id="FMu-sJ-BE6"/>
-                            <constraint firstItem="clf-N4-joJ" firstAttribute="top" secondItem="mGz-zp-Vhx" secondAttribute="bottom" constant="16" id="FSw-NU-bk1"/>
                             <constraint firstItem="DnR-4q-UCW" firstAttribute="top" secondItem="NdX-fW-cEq" secondAttribute="bottom" constant="48" id="MBF-Vr-xCD"/>
                             <constraint firstItem="mGz-zp-Vhx" firstAttribute="top" secondItem="Q1L-2j-p02" secondAttribute="bottom" constant="25" id="MUY-Ps-jeh"/>
                             <constraint firstItem="iEr-Po-uFq" firstAttribute="centerX" secondItem="qqi-2a-esk" secondAttribute="centerX" id="Men-6H-nVb"/>
@@ -1449,6 +1530,7 @@
                             <constraint firstItem="iEr-Po-uFq" firstAttribute="top" secondItem="8Oh-P7-M8G" secondAttribute="bottom" constant="2" id="aEc-AW-te7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iEr-Po-uFq" secondAttribute="trailing" id="bbj-7N-GIc"/>
                             <constraint firstItem="Q6N-eS-eGG" firstAttribute="top" secondItem="QUU-25-dey" secondAttribute="bottom" constant="10" id="d14-Pe-dgR"/>
+                            <constraint firstItem="QUU-25-dey" firstAttribute="top" secondItem="Q1L-2j-p02" secondAttribute="bottom" constant="23" id="dGh-cp-Ncy"/>
                             <constraint firstItem="gdf-FM-eRP" firstAttribute="centerX" secondItem="qqi-2a-esk" secondAttribute="centerX" id="ew8-YP-n9v"/>
                             <constraint firstItem="8Oh-P7-M8G" firstAttribute="leading" secondItem="DnR-4q-UCW" secondAttribute="trailing" constant="12" id="fFu-l2-AsN"/>
                             <constraint firstItem="LWC-wh-FSq" firstAttribute="leading" secondItem="rM9-Jx-DIv" secondAttribute="trailing" constant="8" id="feZ-Uc-MOZ"/>
@@ -1465,10 +1547,10 @@
                             <constraint firstAttribute="leadingMargin" secondItem="SKL-JE-r15" secondAttribute="leading" constant="-5" id="ntc-Jf-FQm"/>
                             <constraint firstItem="DnR-4q-UCW" firstAttribute="top" secondItem="iEr-Po-uFq" secondAttribute="bottom" constant="-132" id="pbN-Ds-jg3"/>
                             <constraint firstItem="G5P-BH-MAX" firstAttribute="leading" secondItem="DnR-4q-UCW" secondAttribute="trailing" constant="12" id="sNR-t1-NBp"/>
-                            <constraint firstItem="8DB-b8-qiD" firstAttribute="top" secondItem="SKL-JE-r15" secondAttribute="bottom" constant="15" id="uK4-d3-Hwz"/>
+                            <constraint firstItem="8DB-b8-qiD" firstAttribute="top" secondItem="SKL-JE-r15" secondAttribute="bottom" constant="8" id="uK4-d3-Hwz"/>
                             <constraint firstItem="QUU-25-dey" firstAttribute="centerX" secondItem="qqi-2a-esk" secondAttribute="centerX" id="vuU-RP-t53"/>
                             <constraint firstItem="iEr-Po-uFq" firstAttribute="top" secondItem="8Oh-P7-M8G" secondAttribute="bottom" constant="8" id="wFl-cg-Mxk"/>
-                            <constraint firstItem="QUU-25-dey" firstAttribute="top" secondItem="gdf-FM-eRP" secondAttribute="bottom" id="ygT-NO-GBu"/>
+                            <constraint firstItem="QUU-25-dey" firstAttribute="top" secondItem="gdf-FM-eRP" secondAttribute="bottom" constant="8" id="ygT-NO-GBu"/>
                             <constraint firstAttribute="leadingMargin" secondItem="DnR-4q-UCW" secondAttribute="leading" id="z0H-CX-CuQ"/>
                         </constraints>
                         <variation key="default">
@@ -1530,7 +1612,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SaA-pO-SAv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="8mc-YU-dby" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3260" y="-642"/>
+            <point key="canvasLocation" x="3260" y="-642.72863568215894"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ySu-Jz-v1T">
